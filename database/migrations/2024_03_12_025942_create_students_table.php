@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
             $table->string('student_name',30);
             $table->string('student_image',255);
             $table->date('birth_date');

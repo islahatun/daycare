@@ -23,8 +23,34 @@
     <script src="{!! asset('assets-cms/vendor/tinymce/tinymce.min.js') !!}"></script>
     <script src="{!! asset('assets-cms/vendor/php-email-form/validate.js') !!}"></script>
 
+    {{-- datatables --}}
+<script src="{!! asset('assets/datatables/datatables.min.js') !!}"></script>
+{{-- <script src="{!! asset('assets-admin/assets/vendor/simple-datatables/simple-datatables.js')!!}"></script> --}}
+
+{{-- scroll datatables --}}
+<script src="{!! asset('assets/datatables/Scroller-2.1.1/js/dataTables.scroller.js') !!}"></script>
+
+{{-- fixed datatables --}}
+<script src="{!! asset('assets/datatables/FixedColumns-4.2.2/js/fixedColumns.dataTables.js') !!}"></script>
+
+{{-- fixedHeader datatables --}}
+<script src="{!! asset('assets/datatables/FixedHeader-3.3.2/js/dataTables.fixedHeader.js') !!}"></script>
+
+{{-- sweet alert --}}
+<script src="{!! asset('assets/sweetalert2/sweetalert2.min.js') !!}"></script>
+
+{{-- toastr --}}
+<script src="{!! asset('assets/toastr/toastr.min.js') !!}"></script>
+
+
+    <!-- jquery-deserialize modif -->
+<script src="{!! asset('assets/node_modules/jquery-deserialize/src/jquery.deserialize.js') !!}"></script>
+<!-- jquery-deserialize modif -->
+
   <!-- Template Main JS File -->
     <script src="{!! asset('assets-cms/js/main.js') !!}"></script>
+    <script src="{!! asset('assets-cms/js/jquery.js') !!}"></script>
+
 
 </body>
 
