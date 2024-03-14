@@ -20,4 +20,7 @@ use App\Http\Controllers\DashboardController;
 // });
 
 Route::get('/',[HomeController::class,'index'])->middleware('guest');
+Route::get('/register', function () {
+    return view('Home.register');
+});
 Route::get('/dashboard',[DashboardController::class,'index']);
