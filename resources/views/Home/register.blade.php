@@ -4,7 +4,7 @@
 
 <div class="p-3"></div>
     <div class="d-flex justify-content-center p-5">
-        <div class="card border-primary mb-3 w-50">
+        <div class="card border-primary mb-3 w-80">
             <div class="text-primary p-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -39,11 +39,11 @@
                         id="home"
                         role="tabpanel"
                         aria-labelledby="home-tab">
-                        <form id="formLogin">
+                        <form id="formLogin" >
                             @csrf
                             <div class="mb-3 row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
-                                <div class="col-sm-7">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Username</label>
+                                <div class="col-sm-8">
                                     <input
                                         type="text"
                                         class="form-control"
@@ -51,8 +51,8 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-7">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+                                <div class="col-sm-8">
                                     <input type="password" class="form-control" id="inputPassword">
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                         id="profile"
                         role="tabpanel"
                         aria-labelledby="profile-tab">
-                        <form id="FormRegister">
+                        <form id="FormRegister" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col">
@@ -128,9 +128,9 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="address" class="col-sm-4 col-form-label">Address</label>
+                                        <label for="telp" class="col-sm-4 col-form-label">Telp / No Hp</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="address" name="address">
+                                            <input type="text" class="form-control" id="telp" name="telp">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -153,10 +153,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="card text-end">
-                                <button class="btn btn-primary" type="">Register</button>
+                                <button class="btn btn-primary" type="submit">Register</button>
                             </div>
                         </form>
                     </div>
@@ -172,8 +170,47 @@
 @section('script')
 <script>
 
-$(document).ready(function(){
 
+
+    $('#FormRegister').submit(function(e){
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+                url: '/registration',
+                type: 'post',
+                data: formData,
+                processData: false,
+                contentType: false, // Pastikan konten tipe diatur ke false
+                success: function(data, textStatus, jqXHR) {
+
+                    let view = jQuery.parseJSON(data);
+                    if (view.status == true) {
+                        toastr.success(view.message);
+                        setTimeout(function() {
+    location.reload();
+}, 1000);
+                    } else {
+                        toastr.error(view.message);
+                        setTimeout(function() {
+    location.reload();
+}, 1000);
+                    }
+                },
+                error: function(reject) {
+
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    })
+
+
+                }
+
+            });
+    })
+
+$(document).ready(function(){
+    $('input[name="birth_date"]').datepicker();
 })
 </script>
 @endsection

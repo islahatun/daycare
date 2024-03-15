@@ -88,6 +88,8 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+    <!-- Template Main JS File -->
+    <script src="{!! asset('assets/js/jquery.min.js') !!}"></script>
   <!-- Vendor JS Files -->
   <script src="{!! asset('assets-home/vendor/purecounter/purecounter_vanilla.js') !!}"></script>
   <script src="{!! asset('assets-home/vendor/aos/aos.js') !!}"></script>
@@ -97,8 +99,16 @@
   <script src="{!! asset('assets-home/vendor/swiper/swiper-bundle.min.js') !!}"></script>
   <script src="{!! asset('assets-home/vendor/php-email-form/validate.js') !!}"></script>
 
+       <!-- Template jquery ui File -->
+       <script src="{!! asset('assets/jquery-ui/jquery-ui.min.js') !!}"></script>
+
+       <!-- Template toastr File -->
+       <script src="{!! asset('assets/toastr/toastr.min.js') !!}"></script>
+
   <!-- Template Main JS File -->
   <script src="{!! asset('assets-home/js/main.js') !!}"></script>
+
+
 
 </body>
 
