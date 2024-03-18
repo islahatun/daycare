@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('student_name',30);
             $table->string('student_image',255);
             $table->date('birth_date');
+            $table->integer('age');
             $table->string('birth_city',30);
             $table->string('mother_name',30)->nullable();
             $table->string('father_name',30)->nullable();
