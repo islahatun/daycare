@@ -1,53 +1,34 @@
 @extends('layouts.main')
 
 @section('container')
-
-<div class="p-3"></div>
+    <div class="p-3"></div>
     <div class="d-flex justify-content-center p-5">
         <div class="card border-primary mb-3 w-80">
             <div class="text-primary p-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button
-                            class="nav-link active"
-                            id="home-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#home"
-                            type="button"
-                            role="tab"
-                            aria-controls="home"
-                            aria-selected="true">Login</button>
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">Login</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button
-                            class="nav-link"
-                            id="profile-tab"
-                            data-bs-toggle="tab"
-                            data-bs-target="#profile"
-                            type="button"
-                            role="tab"
-                            aria-controls="profile"
-                            aria-selected="false">Register</button>
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">Register</button>
                     </li>
-
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="list-tab" data-bs-toggle="tab" data-bs-target="#list" type="button"
+                            role="tab" aria-controls="list" aria-selected="false">List Student</button>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
-                    <div
-                        class="tab-pane fade show active"
-                        id="home"
-                        role="tabpanel"
-                        aria-labelledby="home-tab">
-                        <form id="formLogin" >
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form id="formLogin">
                             @csrf
                             <div class="mb-3 row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Username</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="staticEmail">
+                                    <input type="text" class="form-control" id="staticEmail">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -61,11 +42,7 @@
                             </div>
                         </form>
                     </div>
-                    <div
-                        class="tab-pane fade"
-                        id="profile"
-                        role="tabpanel"
-                        aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <form id="FormRegister" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -73,49 +50,41 @@
                                     <div class="mb-3 row">
                                         <label for="student_name" class="col-sm-4 col-form-label">Name</label>
                                         <div class="col-sm-7">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="student_name"
+                                            <input type="text" class="form-control" id="student_name"
                                                 name="student_name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="birth_date" class="col-sm-4 col-form-label">Birth Date</label>
                                         <div class="col-sm-7">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="birth_date"
-                                                name="birth_date">
+                                            <input type="text" class="form-control" id="birth_date" name="birth_date">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="birth_city" class="col-sm-4 col-form-label">Birth city</label>
                                         <div class="col-sm-7">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                id="birth_city"
-                                                name="birth_city">
+                                            <input type="text" class="form-control" id="birth_city" name="birth_city">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="mother_name" class="col-sm-4 col-form-label">Mother Name</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="mother_name" name="mother_name">
+                                            <input type="text" class="form-control" id="mother_name"
+                                                name="mother_name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="mother_job" class="col-sm-4 col-form-label">Mother Job</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="mother_job" name="mother_job">
+                                            <input type="text" class="form-control" id="mother_job"
+                                                name="mother_job">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="father_name" class="col-sm-4 col-form-label">Father Name</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="father_name" name="father_name">
+                                            <input type="text" class="form-control" id="father_name"
+                                                name="father_name">
                                         </div>
                                     </div>
 
@@ -124,7 +93,8 @@
                                     <div class="mb-3 row">
                                         <label for="father_job" class="col-sm-4 col-form-label">Father job</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" id="father_job" name="father_job">
+                                            <input type="text" class="form-control" id="father_job"
+                                                name="father_job">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -148,7 +118,8 @@
                                     <div class="mb-3 row">
                                         <label for="student_image" class="col-sm-4 col-form-label">Image</label>
                                         <div class="col-sm-7">
-                                            <input type="file" class="form-control" id="student_image" name="student_image">
+                                            <input type="file" class="form-control" id="student_image"
+                                                name="student_image">
                                         </div>
                                     </div>
                                 </div>
@@ -158,24 +129,33 @@
                             </div>
                         </form>
                     </div>
+                    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                        <div>
+                            <table class="table table-striped table-hover w-100" id="dt">
+                                <thead>
+                                    <td>No</td>
+                                    <td>Name</td>
+                                    <td>Age (Years)</td>
+                                    <td>Status</td>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 @endsection
 
 @section('script')
-<script>
-
-
-
-    $('#FormRegister').submit(function(e){
-        e.preventDefault();
-        var formData = new FormData(this);
-        $.ajax({
+    <script>
+        $('#FormRegister').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
                 url: '/registration',
                 type: 'post',
                 data: formData,
@@ -187,13 +167,13 @@
                     if (view.status == true) {
                         toastr.success(view.message);
                         setTimeout(function() {
-    location.reload();
-}, 1000);
+                            location.reload();
+                        }, 1000);
                     } else {
                         toastr.error(view.message);
                         setTimeout(function() {
-    location.reload();
-}, 1000);
+                            location.reload();
+                        }, 1000);
                     }
                 },
                 error: function(reject) {
@@ -207,10 +187,40 @@
                 }
 
             });
-    })
+        })
 
-$(document).ready(function(){
-    $('input[name="birth_date"]').datepicker();
-})
-</script>
+        $(document).ready(function() {
+            $('input[name="birth_date"]').datepicker();
+
+            dt = $('#dt').DataTable({
+                "destroy": true,
+                "processing": true,
+                "select": true,
+                "ajax": {
+                    "url": "{{ route('getDataList') }}",
+                },
+                "columns": [{
+                        data: "DT_RowIndex",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "student_name",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "student_age",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "status",
+                        orderable: true,
+                        searchable: true
+                    }
+                ]
+            })
+        })
+    </script>
 @endsection

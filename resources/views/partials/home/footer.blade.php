@@ -99,6 +99,9 @@
   <script src="{!! asset('assets-home/vendor/swiper/swiper-bundle.min.js') !!}"></script>
   <script src="{!! asset('assets-home/vendor/php-email-form/validate.js') !!}"></script>
 
+      {{-- datatables --}}
+<script src="{!! asset('assets/datatables/datatables.min.js') !!}"></script>
+
        <!-- Template jquery ui File -->
        <script src="{!! asset('assets/jquery-ui/jquery-ui.min.js') !!}"></script>
 

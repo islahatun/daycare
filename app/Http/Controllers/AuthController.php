@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
 
 class AuthController extends Controller
 {
@@ -24,21 +25,28 @@ class AuthController extends Controller
             'telp'          => 'required',
         ]);
 
-        if($request->file('student_image')){
-            $validate['student_image'] = $request->file('student_image')->store('profilStudent');
+        $birth_date                 = date('Y', strtotime($request->birth_date));
+        $yearNow                    = date('Y');
+        $age                        = $yearNow - $birth_date;
+
+        if ($request->file('student_image')) {
+            $validate['student_age']            = $age;
+            $validate['student_image']  = $request->file('student_image')->store('profilStudent');
+
+
             $regist = Student::create($validate);
-            if($regist){
+            if ($regist) {
                 $message = array(
                     'status' => true,
                     'message' => 'Data Berhasil ditambahkan'
                 );
-            }else{
+            } else {
                 $message = array(
                     'status' => false,
                     'message' => 'Data gagal ditambahkan'
                 );
             }
-        }else{
+        } else {
             $message = array(
                 'status' => false,
                 'message' => 'Gagal upload Foto'
@@ -46,5 +54,15 @@ class AuthController extends Controller
         }
 
         echo json_encode($message);
+    }
+
+    public function getDataList()
+    {
+        $result = Student::all();
+        return DataTables::of($result)->addIndexColumn()
+            ->addColumn('status', function ($result) {
+
+                return $result->registration_status == 1?'Student':"Waiting list";
+            })->make(true);
     }
 }

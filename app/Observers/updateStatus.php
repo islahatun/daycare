@@ -11,17 +11,13 @@ class updateStatus
      */
     public function created(Student $student): void
     {
-        $birthDate      = $student->birthdate;
-        $yearBirthDate  = date('Y',strtotime($birthDate));
-        $age            = date('Y') - $yearBirthDate;
-
-
-        $countStudent   = Student::where('age',$age)->count();
+        $age            = $student->student_age;
+        $countStudent   = Student::where('student_age',$age)->count();
 
         if($countStudent > 30){
-            Student::where('id',$student)->update(['registration_status'=>0]);
+            Student::where('id',$student->id)->update(['registration_status'=>'0']);
         }else{
-            Student::where('id',$student)->update(['registration_status'=>1]);
+            Student::where('id',$student->id)->update(['registration_status'=>'1']);
         }
 
     }

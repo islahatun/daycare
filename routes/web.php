@@ -25,4 +25,6 @@ Route::get('/register', function () {
     return view('Home.register');
 });
 Route::post('/registration',[AuthController::class,'registration']);
+route::get('/data-list',[AuthController::class,'getDataList'])->name('getDataList');
 Route::get('/dashboard',[DashboardController::class,'index']);
+
