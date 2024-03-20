@@ -23,8 +23,18 @@ class StudentController extends Controller
     public function getData(){
         $data   = Student::all();
 
-        return DataTables::of($data)->addIndexColumn()->make(true);
+        return DataTables::of($data)->addIndexColumn()
+        ->addColumn('payment_status',function($data){
+            return $data->payment_status ==1?"PAID":"NOT PAID";
+        })
+        ->addColumn('status', function ($data) {
+            return $data->registration_status == 1?"Student":"Waiting list";
+        })->make(true);
 
+    }
+
+    public function sentEmail($id){
+        return "hai ".$id;
     }
 
     public function create()

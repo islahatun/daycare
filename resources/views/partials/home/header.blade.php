@@ -24,7 +24,7 @@
   <link href="{!! asset('assets-home/vendor/remixicon/remixicon.css') !!}" rel="stylesheet">
   <link href="{!! asset('assets-home/vendor/swiper/swiper-bundle.min.css') !!}" rel="stylesheet">
 
-  <!-- Template jquery ui File -->
+  <!-- Template jquery datatables File -->
   <link href="{!! asset('assets/datatables/datatables.min.css') !!}" rel="stylesheet">
 
      <!-- Template jquery ui File -->

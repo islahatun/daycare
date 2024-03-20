@@ -14,6 +14,9 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+<!-- Template Main JS File -->
+<script src="{!! asset('assets/js/jquery.min.js') !!}"></script>
+
     <script src="{!! asset('assets-cms/vendor/apexcharts/apexcharts.min.js') !!}"></script>
     <script src="{!! asset('assets-cms/vendor/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
     <script src="{!! asset('assets-cms/vendor/chart.js/chart.umd.js') !!}"></script>
@@ -49,7 +52,8 @@
 
   <!-- Template Main JS File -->
     <script src="{!! asset('assets-cms/js/main.js') !!}"></script>
-    <script src="{!! asset('assets-cms/js/jquery.js') !!}"></script>
+    <script src="{!! asset('assets/js/common.js') !!}"></script>
+
 
 
 </body>
