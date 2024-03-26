@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\registration;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Mail;
 
 class StudentController extends Controller
 {
@@ -34,7 +36,14 @@ class StudentController extends Controller
     }
 
     public function sentEmail($id){
-        return "hai ".$id;
+        $student    = Student::find($id);
+        $detail     = [
+            'name'          => $student->student_name,
+            'age'           => $student->student_age,
+            'mother_name'   => $student->mother_name,
+            'status'        => $student->registration_status
+        ];
+        Mail::to($student->email)->send(new registration($detail) );
     }
 
     public function create()

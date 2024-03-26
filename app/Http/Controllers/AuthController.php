@@ -13,7 +13,7 @@ class AuthController extends Controller
     {
         $validate = $request->validate([
             'student_name'  => 'required',
-            'student_image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'student_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'birth_date'    => 'required',
             'birth_city'    => 'required',
             'address'       => 'required',

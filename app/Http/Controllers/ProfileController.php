@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -51,7 +52,49 @@ class ProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate = $request->validate([
+            'student_name'  => 'required',
+            'student_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'birth_date'    => 'required',
+            'birth_city'    => 'required',
+            'address'       => 'required',
+            'mother_name'   => 'required',
+            'mother_job'    => 'required',
+            'father_name'   => 'required',
+            'father_job'    => 'required',
+            'email'         => 'required|unique:students',
+            'telp'          => 'required',
+        ]);
+
+        $birth_date                 = date('Y', strtotime($request->birth_date));
+        $yearNow                    = date('Y');
+        $age                        = $yearNow - $birth_date;
+
+        if ($request->file('student_image')) {
+            $validate['student_age']    = $age;
+            $validate['student_image']  = $request->file('student_image')->store('profilStudent');
+
+
+            $regist = Student::where('id',$id)->update($validate);
+            if ($regist) {
+                $message = array(
+                    'status'  => true,
+                    'message' => 'Data created successfully'
+                );
+            } else {
+                $message = array(
+                    'status'  => false,
+                    'message' => 'Data Created failed'
+                );
+            }
+        } else {
+            $message = array(
+                'status'  => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DevelopmentChild;
+use Yajra\DataTables\DataTables;
+
 
 class developmentChildern extends Controller
 {
@@ -27,7 +30,25 @@ class developmentChildern extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate   = $request->validate([
+            'argument'  => 'required'
+        ]);
+
+        $result     = DevelopmentChild::create($validate);
+
+        if($result){
+            $message = array(
+                'status' => true,
+                'message' => 'Data added successfully'
+            );
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Data added failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**
@@ -35,7 +56,12 @@ class developmentChildern extends Controller
      */
     public function show(string $id)
     {
-        //
+        $result = DevelopmentChild::all();
+        if($id){
+            $result = DevelopmentChild::find($id);
+        }
+
+        return DataTables::of($result)->addIndexColumn()->make(true);
     }
 
     /**
@@ -51,7 +77,25 @@ class developmentChildern extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate   = $request->validate([
+            'argument'  => 'required'
+        ]);
+
+        $result     = DevelopmentChild::where('id',$id)->update($validate);
+
+        if($result){
+            $message = array(
+                'status' => true,
+                'message' => 'Data update successfully'
+            );
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Data update failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**
@@ -59,6 +103,20 @@ class developmentChildern extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $result     = DevelopmentChild::where('id',$id)->delete();
+
+        if($result){
+            $message = array(
+                'status' => true,
+                'message' => 'Data deleted successfully'
+            );
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Data deleted failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 }

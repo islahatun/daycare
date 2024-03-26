@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActiviesChildern;
 use Illuminate\Http\Request;
 
 class activityChildernController extends Controller
@@ -27,7 +28,27 @@ class activityChildernController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'title'         => 'required',
+            'description'   => 'required',
+            'image'         => 'required',
+            'date'          => 'required'
+        ]);
+
+        $result = ActiviesChildern::create($validate);
+        if($result){
+            $message = array(
+                'status'    => true,
+                'message'   => 'Data created successfully'
+            );
+        }else{
+            $message = array(
+                'status'    => false,
+                'message'   => 'Data created failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**
@@ -51,7 +72,27 @@ class activityChildernController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate = $request->validate([
+            'title'         => 'required',
+            'description'   => 'required',
+            'image'         => 'required',
+            'date'          => 'required'
+        ]);
+
+        $result = ActiviesChildern::where('id',$id)->update($validate);
+        if($result){
+            $message = array(
+                'status'    => true,
+                'message'   => 'Data created successfully'
+            );
+        }else{
+            $message = array(
+                'status'    => false,
+                'message'   => 'Data created failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**
@@ -59,6 +100,19 @@ class activityChildernController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $result = ActiviesChildern::where('id',$id)->delete();
+        if($result){
+            $message = array(
+                'status' => true,
+                'message' => 'Data deleted successfuly'
+            );
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Data deleted failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 }
