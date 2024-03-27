@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\TransDevelopmentChild;
 
 class TransDeveloperChildernController extends Controller
 {
@@ -22,17 +25,37 @@ class TransDeveloperChildernController extends Controller
         //
     }
 
+    public function getData(){
+        
+        $result     = TransDevelopmentChild::all();
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $request->validate([
             "data"                             => 'array',
             "data.*.student_id"                => 'requred',
             "data.*.development_childerns_id"  => 'required',
             "data.*.score"                     => 'required'
         ]);
+
+        $result   = TransDevelopmentChild::insert($request->input("data"));
+        if($result){
+            $message = array(
+                'status'    => true,
+                'message'   => 'Data created successfully'
+            );
+        }else{
+            $message = array(
+                'status'    => false,
+                'message'   => 'Data created failed'
+            );
+        }
+
+        echo json_encode($message);
     }
 
     /**
@@ -56,7 +79,38 @@ class TransDeveloperChildernController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "data"                             => 'array',
+            "data.*.student_id"                => 'requred',
+            "data.*.development_childerns_id"  => 'required',
+            "data.*.score"                     => 'required'
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+
+            TransDevelopmentChild::where('student_id',$id)->delete();
+            TransDevelopmentChild::insert($request->input("data"));
+
+            DB::commit();
+
+            $message = array(
+                'status'    => true,
+                'message'   => 'Data created successfully'
+            );
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            $message = array(
+                'status'    => false,
+                'message'   => 'Data created failed'
+            );
+        }
+
+
+        echo json_encode($message);
     }
 
     /**

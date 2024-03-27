@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -70,6 +72,7 @@ class ProfileController extends Controller
         $yearNow                    = date('Y');
         $age                        = $yearNow - $birth_date;
 
+
         if ($request->file('student_image')) {
             $validate['student_age']    = $age;
             $validate['student_image']  = $request->file('student_image')->store('profilStudent');
@@ -95,6 +98,25 @@ class ProfileController extends Controller
         }
 
         echo json_encode($message);
+    }
+
+    public function updateUser(Request $request, string $id){
+        $validate   = $request->validate([
+            'password'  => 'required'
+        ]);
+
+        $result    = User::where('student_id',$id)->update($validate);
+        if ($result) {
+            $message = array(
+                'status'  => true,
+                'message' => 'Data created successfully'
+            );
+        } else {
+            $message = array(
+                'status'  => false,
+                'message' => 'Data Created failed'
+            );
+        }
     }
 
     /**
