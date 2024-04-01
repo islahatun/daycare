@@ -12,7 +12,7 @@ class activityChildernController extends Controller
      */
     public function index()
     {
-        //
+        return view('cms.activityChildern');
     }
 
     /**

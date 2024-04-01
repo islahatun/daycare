@@ -7,14 +7,14 @@ use App\Models\DevelopmentChild;
 use Yajra\DataTables\DataTables;
 
 
-class developmentChildern extends Controller
+class developmentChildernController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('cms.DevelopmentChildern');
     }
 
     /**

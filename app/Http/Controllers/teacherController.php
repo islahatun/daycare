@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class teacherController extends Controller
 {
@@ -12,7 +15,7 @@ class teacherController extends Controller
      */
     public function index()
     {
-        //
+        return view('cms.teacher');
     }
 
     /**
@@ -23,6 +26,20 @@ class teacherController extends Controller
         //
     }
 
+    public function getData(){
+        $result  = Teacher::all();
+
+        return DataTables::of($result)->addIndexColumn()
+        ->addColumn('image', function ($result) {
+            $image  = asset('storage/' . $result->image_teacher);
+            return $image;
+        })
+            ->addColumn('graduate_of', function ($result) {
+                return $result->graduate_of.",".$result->major."-".$result->university;
+            })->make(true);
+
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -31,6 +48,7 @@ class teacherController extends Controller
         $validate = $request->validate([
             'name_teacher'      => 'required',
             'image_teacher'     => 'required',
+            'telp'              => 'required',
             'birth_date'        => 'required',
             'birth_city'        => 'required',
             'address'           => 'required',
@@ -39,6 +57,15 @@ class teacherController extends Controller
             'university'        => 'required',
             'graduation_year'   => 'required'
         ]);
+
+        if ($request->file('image_teacher')) {
+            $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
 
         $result = Teacher::create($validate);
         if($result){
@@ -110,13 +137,20 @@ class teacherController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = Teacher::where('id',$id)->delete();
-        if($result){
-            $message = array(
-                'status' => true,
-                'message' => 'Data deleted successfuly'
-            );
-        }else{
+        DB::beginTransaction();
+        $data   = Teacher::find($id);
+
+        try {
+        Teacher::where('id',$id)->delete();
+        Storage::delete($data->image_teacher);
+
+        DB::commit();
+
+        $message = array(
+            'status' => true,
+            'message' => 'Data deleted successfuly'
+        );
+        } catch (\Throwable $th) {
             $message = array(
                 'status' => false,
                 'message' => 'Data deleted failed'

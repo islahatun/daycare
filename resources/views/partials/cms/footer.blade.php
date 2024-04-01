@@ -50,6 +50,9 @@
 <script src="{!! asset('assets/node_modules/jquery-deserialize/src/jquery.deserialize.js') !!}"></script>
 <!-- jquery-deserialize modif -->
 
+<!-- Template jquery ui File -->
+<script src="{!! asset('assets/jquery-ui/jquery-ui.min.js') !!}"></script>
+
   <!-- Template Main JS File -->
     <script src="{!! asset('assets-cms/js/main.js') !!}"></script>
     <script src="{!! asset('assets/js/common.js') !!}"></script>

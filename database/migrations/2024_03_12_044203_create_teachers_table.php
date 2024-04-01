@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_teacher',30);
             $table->string('image_teacher',255);
             $table->date('birth_date');
+            $table->string('telp',13);
             $table->string('birth_city',30);
             $table->text('address');
             $table->string('graduate_of',50);
