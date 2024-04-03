@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActiviesChildern;
 use Illuminate\Http\Request;
+use App\Models\ActiviesChildern;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class activityChildernController extends Controller
 {
@@ -23,6 +26,16 @@ class activityChildernController extends Controller
         //
     }
 
+    public function getData(){
+        $result  = ActiviesChildern::all();
+
+        return DataTables::of($result)->addIndexColumn()
+        ->addColumn('image', function ($result) {
+            $image  = asset('storage/' . $result->image);
+            return $image;
+        })->make(true);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -34,6 +47,15 @@ class activityChildernController extends Controller
             'image'         => 'required',
             'date'          => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validate['image']  = $request->file('image')->store('activityImage');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
 
         $result = ActiviesChildern::create($validate);
         if($result){
@@ -79,6 +101,18 @@ class activityChildernController extends Controller
             'date'          => 'required'
         ]);
 
+        $data   = ActiviesChildern::where('id',$id)->delete();
+        Storage::delete($data->image);
+
+        if ($request->file('image')) {
+            $validate['image']  = $request->file('image')->store('activityImage');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
+
         $result = ActiviesChildern::where('id',$id)->update($validate);
         if($result){
             $message = array(
@@ -100,6 +134,9 @@ class activityChildernController extends Controller
      */
     public function destroy(string $id)
     {
+        $data   = ActiviesChildern::where('id',$id)->delete();
+        Storage::delete($data->image);
+
         $result = ActiviesChildern::where('id',$id)->delete();
         if($result){
             $message = array(

@@ -42,5 +42,8 @@ Route::resource('profile',ProfileController::class);
 Route::resource('teacher',teacherController::class);
 Route::get('/getDataTeacher',[teacherController::class,'getData'])->name('getDataTeacher');
 Route::resource('developmentChildern', developmentChildernController::class);
+
 Route::resource('activityChildern',activityChildernController::class);
+Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity');
+
 Route::resource('trans',TransDeveloperChildernController::class);
