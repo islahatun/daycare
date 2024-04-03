@@ -48,7 +48,7 @@ class teacherController extends Controller
         $validate = $request->validate([
             'name_teacher'      => 'required',
             'image_teacher'     => 'required',
-            'telp'              => 'required',
+            'telp'              => 'required|unique:teachers',
             'birth_date'        => 'required',
             'birth_city'        => 'required',
             'address'           => 'required',
@@ -115,6 +115,15 @@ class teacherController extends Controller
             'university'        => 'required',
             'graduation_year'   => 'required'
         ]);
+
+        if ($request->file('image_teacher')) {
+            $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
 
         $result = Teacher::where('id',$id)->update($validate);
         if($result){

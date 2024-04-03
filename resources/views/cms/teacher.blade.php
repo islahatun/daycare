@@ -143,9 +143,9 @@
                             let id = data.id;
 
                             // setting title modal
-                            $("#ModalLabel").html("Ubah")
+                            $("#modal-title").html("Ubah")
                             // open modal
-                            $('#Modal').modal('toggle');
+                            $('#modal').modal('toggle');
 
                             method = 'PUT';
                             formUrl = `/teacher/${id}`;
