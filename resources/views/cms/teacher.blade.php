@@ -286,8 +286,8 @@
                                 },
                                 {
                                     "render": function (data, type, row, meta) {
-
-                                        return '<button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Add</' +
+                                        let id = row.id
+                                        return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</' +
                                             'button>'
                                     },
                                     "targets": 6
@@ -297,6 +297,29 @@
 
                         initSelectRowDataTables('#dt', dt);
                     })
+
+                    function detail(id){
+                        let idx = getSelectedRowDataTables(dt);
+                        if (idx) {
+                            let data = dt
+                                .row(idx.row)
+                                .data();
+                            // reset form
+                            $(fm).each(function () {
+                                this.reset();
+                            });
+
+                            // mengambil data
+                            $(fm).deserialize(data)
+
+                            // setting title modal
+                            $("#modal-title").html("Edit")
+                            $(".modal-footer").hide()
+                            // open modal
+                            $('#modal').modal('toggle');
+
+                        }
+                    }
                 </script>
 
                 @endsection

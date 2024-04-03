@@ -39,6 +39,7 @@ class teacherController extends Controller
             })->make(true);
 
     }
+    
 
     /**
      * Store a newly created resource in storage.

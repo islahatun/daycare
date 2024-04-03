@@ -38,6 +38,9 @@
          <!-- Template jquery ui File -->
      <link href="{!! asset('assets/jquery-ui/jquery-ui.min.css') !!}" rel="stylesheet">
 
+      <!-- sweetalert -->
+    <link href="{!! asset('assets/sweetalert2/sweetalert2.min.css') !!}" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="{!! asset('assets-cms/css/style.css') !!}" rel="stylesheet">
 
