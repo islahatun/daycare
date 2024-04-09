@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('father_job',30);
             $table->string('email')->unique();
             $table->string('telp',13)->unique();
+            $table->year('year');
             $table->integer('validate')->default(0);
             $table->enum('registration_status',[0,1])->nullable();
             $table->enum('payment_status',[0,1])->nullable();

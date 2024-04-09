@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
@@ -27,11 +28,7 @@ class TransDeveloperChildernController extends Controller
     }
 
     public function getData(){
-        $user       = Auth::user();
-        $result     = TransDevelopmentChild::all();
-        if($user->student_id != null){
-            $result     = TransDevelopmentChild::where('student_id',$user->student_id)->get();
-        }
+        $result         = Student::all();
 
         return DataTables::of($result)->addIndexColumn()->make(true);
 

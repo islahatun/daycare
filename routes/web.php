@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\teacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\developmentChildernController;
+use App\Http\Controllers\reportController;
 use App\Http\Controllers\TransDeveloperChildernController;
 
 /*
@@ -47,4 +48,8 @@ Route::get('/getDataDevelopmentChildern',[developmentChildernController::class,'
 Route::resource('activityChildern',activityChildernController::class);
 Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity');
 
-Route::resource('trans',TransDeveloperChildernController::class);
+Route::resource('trans-DevelopmentChildern',TransDeveloperChildernController::class);
+Route::get('/trans-DevelopmentChildern/getData', [TransDeveloperChildernController::class, 'getData'])->name('getDataAssessment');
+
+Route::get('/report',[reportController::class,'index'])->name('indexReport');
+Route::get('/report/teacher',[reportController::class,'reportTeacher'])->name('reportTeacher');

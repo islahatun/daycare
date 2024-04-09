@@ -30,7 +30,8 @@ class AuthController extends Controller
         $age                        = $yearNow - $birth_date;
 
         if ($request->file('student_image')) {
-            $validate['student_age']            = $age;
+            $validate['student_age']    = $age;
+            $validate['year']           = date('Y');
             $validate['student_image']  = $request->file('student_image')->store('profilStudent');
 
 

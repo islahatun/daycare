@@ -53,6 +53,13 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="/trans-DevelopmentChildern">
+          <i class="bi bi-card-list"></i>
+          <span>Assessment</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="/report">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Report</span>

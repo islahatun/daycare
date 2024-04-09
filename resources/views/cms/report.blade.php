@@ -4,9 +4,10 @@
 <div class = "card" >
 <div class="card-header">
     <div class="d-flex justify-content-end ">
-        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Add</button>
-        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
-        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button>
+        <a href="{{ route('reportTeacher') }}" class="btn btn-sm btn-primary" target="blank">Print</a>
+        {{-- <button class="btn btn-sm btn-primary" type="button" onclick="print(this)">Print</button> --}}
+        {{-- <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
+        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button> --}}
     </div>
 </div>
 <div class="card-body">
@@ -15,9 +16,12 @@
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th class="col-3">Student Name</th>
-                    <th class="col-2">Student Age (Years)</th>
-                    <th>Status  Assessment</th>
+                    <th class="col-3">Teacher Name</th>
+                    <th class="col-2">Teacher Image</th>
+                    <th>Telp</th>
+                    <th>E-mail</th>
+                    <th>Birth Date</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -26,92 +30,17 @@
 </div>
 </div>
 
-<div class="modal" id="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal-title"></h5 > <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="modal"
-    aria-label="Close"></button>
-</div>
-<div class="modal-body">
-<form id="form" method="post" enctype="multipart/form-data">
-    @csrf
-    <div class="mb-3 row">
-        <label for="name_teacher" class="col-sm-4 col-form-label">Name</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="name_teacher" name="name_teacher"></div>
-        </div>
-        <div class="mb-3 row">
-            <label for="birth_date" class="col-sm-4 col-form-label">Birth Date</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="birth_date" name="birth_date"></div>
-            </div>
-            <div class="mb-3 row">
-                <label for="birth_city" class="col-sm-4 col-form-label">Birth City</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="birth_city" name="birth_city"></div>
-                </div>
-            <div class="mb-3 row">
-                <label for="telp" class="col-sm-4 col-form-label">Telp Number</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="telp" name="telp"></div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="address" class="col-sm-4 col-form-label">Address</label>
-                    <div class="col-sm-8">
-                        <textarea type="text" class="form-control" id="address" name="address"></textarea></div>
-                    </div>
-                <div class="mb-3 row">
-                    <label for="graduate_of" class="col-sm-4 col-form-label">Graduate Of</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="graduate_of" name="graduate_of"></div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="major" class="col-sm-4 col-form-label">Major</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="major" name="major"></div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="university" class="col-sm-4 col-form-label">University</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="university" name="university"></div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="graduation_year" class="col-sm-4 col-form-label">Graduation year</label>
-                                <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="graduation_year"
-                                        name="graduation_year"></div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="image_teacher" class="col-sm-4 col-form-label">Photo Profile</label>
-                                    <div class="col-sm-8">
-                                        <input type="file" class="form-control" id="image_teacher" name="image_teacher"></div>
-                                    </div>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+@endsection
 
-                @endsection @section('script')
+@section('script')
 
                 <script>
                     let dt;
                     let formUrl = '';
                     let fm = '#form';
                     let method = '';
-                    function add(obj) {
+                    function print(obj) {
                         // reset form
                         $(fm).each(function () {
                             this.reset();
@@ -120,7 +49,7 @@
                         $("#modal-title").html("New");
 
                         method = 'post';
-                        formUrl = `trans-DevelopmentChildern`;
+                        formUrl = `teacher`;
                     }
 
                     function edit(obj) {
@@ -145,7 +74,7 @@
                             $('#modal').modal('toggle');
 
                             method = 'PUT';
-                            formUrl = `/trans-DevelopmentChildern/${id}`;
+                            formUrl = `/teacher/${id}`;
                         }
                     }
 
@@ -172,7 +101,7 @@
                                 .then((result) => {
                                     if (result.isConfirmed) {
                                         $.ajax({
-                                            url: `/trans-DevelopmentChildern/${dv}`,
+                                            url: `/teacher/${dv}`,
                                             type: "DELETE",
                                             cache: false,
                                             data: {
@@ -232,6 +161,7 @@
                     });
 
                     $(document).ready(function () {
+                        $('input[name="birth_date"]').datepicker({changeYear: true, changeMonth: true});
 
                         dt = $('#dt').DataTable({
                             "destroy": true,
@@ -239,7 +169,7 @@
                             "select": true,
                             "scrollX": true,
                             "ajax": {
-                                "url": "{{ route('getDataAssessment') }}"
+                                "url": "{{ route('getDataTeacher') }}"
                             },
                             "columns": [
                                 {
@@ -247,17 +177,46 @@
                                     orderable: true,
                                     searchable: true
                                 }, {
-                                    data: "student_name",
+                                    data: "name_teacher",
                                     orderable: true,
                                     searchable: true
                                 }, {
-                                    data: "student_age",
+                                    data: "image",
                                     orderable: true,
                                     searchable: true
-                                },  {
-                                    data: "status",
+                                }, {
+                                    data: "telp",
                                     orderable: true,
                                     searchable: true
+                                }, {
+                                    data: "birth_date",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "graduate_of",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "index",
+                                    orderable: true,
+                                    searchable: true
+                                }
+                            ],
+                            "columnDefs": [
+                                {
+                                    "render": function (data, type, row, meta) {
+                                        let image   = row.image
+                                        return '<img src="' + image + '">'
+                                    },
+                                    "targets": 2
+                                },
+                                {
+                                    "render": function (data, type, row, meta) {
+                                        let id = row.id
+                                        return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</' +
+                                            'button>'
+                                    },
+                                    "targets": 6
                                 }
                             ]
                         });

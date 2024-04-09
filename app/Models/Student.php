@@ -9,5 +9,10 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $guarded =['id'];
+    protected $guarded  =['id'];
+    protected $with     = ['transDevelopmentChildern'];
+
+    public function transDevelopmentChildern(){
+        return $this->hasMany(TransDevelopmentChild::class,'id','student_id');
+    }
 }
