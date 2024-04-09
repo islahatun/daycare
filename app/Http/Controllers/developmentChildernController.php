@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DevelopmentChild;
 use Yajra\DataTables\DataTables;
+use App\Http\Requests\DevelopmentChildernRequest;
 
 
 class developmentChildernController extends Controller
@@ -56,10 +57,11 @@ class developmentChildernController extends Controller
      */
     public function show(string $id)
     {
+       //
+    }
+
+    public function getData(){
         $result = DevelopmentChild::all();
-        if($id){
-            $result = DevelopmentChild::find($id);
-        }
 
         return DataTables::of($result)->addIndexColumn()->make(true);
     }
@@ -75,13 +77,13 @@ class developmentChildernController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DevelopmentChildernRequest $request, string $id)
     {
-        $validate   = $request->validate([
-            'argument'  => 'required'
-        ]);
+        $validate   = $request->validate();
 
-        $result     = DevelopmentChild::where('id',$id)->update($validate);
+        if($validate){
+            $result     = DevelopmentChild::where('id',$id)->update([$request->argument]);
+        }
 
         if($result){
             $message = array(

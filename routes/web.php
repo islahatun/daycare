@@ -41,7 +41,8 @@ Route::get('/student/sentEmail/{id}',[StudentController::class,'sentEmail']);
 Route::resource('profile',ProfileController::class);
 Route::resource('teacher',teacherController::class);
 Route::get('/getDataTeacher',[teacherController::class,'getData'])->name('getDataTeacher');
-Route::resource('developmentChildern', developmentChildernController::class);
+Route::resource('DevelopmentChildern', developmentChildernController::class);
+Route::get('/getDataDevelopmentChildern',[developmentChildernController::class,'getData'])->name('getDataDevelopmentChildern');
 
 Route::resource('activityChildern',activityChildernController::class);
 Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity');
