@@ -11,17 +11,26 @@
     </div>
 </div>
 <div class="card-body">
+    <div class="d-flex mt-3">
+        <div class="row">
+            <div class="col col-8">
+                <div class="input-group mb-3 ">
+                    <span class="input-group-text" >Filter</span>
+                    <input type="text" class="form-control" name="year" id="yearFilter" placeholder="Year">
+                  </div>
+            </div>
+        </div>
+
+    </div>
     <div class="mt-3">
         <table class="table table-striped w-100" id="dt">
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th class="col-3">Teacher Name</th>
-                    <th class="col-2">Teacher Image</th>
-                    <th>Telp</th>
-                    <th>E-mail</th>
+                    <th class="col-3">Student Name</th>
+                    <th class="col-2">Student Age</th>
                     <th>Birth Date</th>
-                    <th>Detail</th>
+                    <th>Address</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -161,7 +170,7 @@
                     });
 
                     $(document).ready(function () {
-                        $('input[name="birth_date"]').datepicker({changeYear: true, changeMonth: true});
+                        $('#yearFilter').yearpicker();
 
                         dt = $('#dt').DataTable({
                             "destroy": true,
@@ -169,7 +178,10 @@
                             "select": true,
                             "scrollX": true,
                             "ajax": {
-                                "url": "{{ route('getDataTeacher') }}"
+                                "url"   : "{{ route('getReportStudent') }}",
+                                "data"  : function (d) {
+        d.year = $('#yearFilter').val();
+    }
                             },
                             "columns": [
                                 {
@@ -177,15 +189,11 @@
                                     orderable: true,
                                     searchable: true
                                 }, {
-                                    data: "name_teacher",
+                                    data: "student_name",
                                     orderable: true,
                                     searchable: true
                                 }, {
-                                    data: "image",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "telp",
+                                    data: "student_age",
                                     orderable: true,
                                     searchable: true
                                 }, {
@@ -193,36 +201,21 @@
                                     orderable: true,
                                     searchable: true
                                 }, {
-                                    data: "graduate_of",
+                                    data: "address",
                                     orderable: true,
                                     searchable: true
-                                }, {
-                                    data: "index",
-                                    orderable: true,
-                                    searchable: true
-                                }
-                            ],
-                            "columnDefs": [
-                                {
-                                    "render": function (data, type, row, meta) {
-                                        let image   = row.image
-                                        return '<img src="' + image + '">'
-                                    },
-                                    "targets": 2
-                                },
-                                {
-                                    "render": function (data, type, row, meta) {
-                                        let id = row.id
-                                        return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</' +
-                                            'button>'
-                                    },
-                                    "targets": 6
                                 }
                             ]
                         });
 
                         initSelectRowDataTables('#dt', dt);
+
+                        $('#yearFilter').change(function(){
+                            dt.ajax.reload();
+                        })
                     })
+
+
 
                     function detail(id){
                         let idx = getSelectedRowDataTables(dt);

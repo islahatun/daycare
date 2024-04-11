@@ -45,6 +45,9 @@
 {{-- toastr --}}
 <script src="{!! asset('assets/toastr/toastr.min.js') !!}"></script>
 
+{{-- yearpicker --}}
+<script src="{!! asset('assets/yearpicker/js/yearpicker.js') !!}"></script>
+
 
     <!-- jquery-deserialize modif -->
 <script src="{!! asset('assets/node_modules/jquery-deserialize/src/jquery.deserialize.js') !!}"></script>

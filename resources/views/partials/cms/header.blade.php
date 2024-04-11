@@ -35,6 +35,9 @@
          <!-- Template toastr File -->
          <link href="{!! asset('assets/toastr/toastr.min.css') !!}" rel="stylesheet">
 
+         <!-- Template yearpicker File -->
+         <link href="{!! asset('assets/yearpicker/css/yearpicker.css') !!}" rel="stylesheet">
+
          <!-- Template jquery ui File -->
      <link href="{!! asset('assets/jquery-ui/jquery-ui.min.css') !!}" rel="stylesheet">
 

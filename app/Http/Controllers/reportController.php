@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use PDF;
+use App\Models\Student;
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class reportController extends Controller
 {
     public function index(){
         return view('cms.report');
+    }
+
+    public function getStudent(Request $request){
+
+        $data   = Student::where('validate',1)->get();
+        if($request->year != null){
+            $data   = Student::where('validate',1)->where('year',$request->year)->get();
+        }
+
+        return DataTables::of($data)->addIndexColumn()->make(true);
+
     }
 
     public function reportTeacher(){
