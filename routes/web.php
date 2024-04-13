@@ -53,5 +53,6 @@ Route::get('/trans-DevelopmentChildern/getData', [TransDeveloperChildernControll
 
 Route::get('/report',[reportController::class,'index'])->name('indexReport');
 Route::get('/report/teacher',[reportController::class,'reportTeacher'])->name('reportTeacher');
+Route::get('/report/getTeacher',[reportController::class,'getTeacher'])->name('getReportTeacher');
 Route::get('/report/getStudent',[reportController::class,'getStudent'])->name('getReportStudent');
 Route::get('/report/student',[reportController::class,'reportStudent'])->name('reportStudent');

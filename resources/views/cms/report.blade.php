@@ -1,244 +1,253 @@
 @extends('layouts.main_cms')
 
 @section('container')
-<div class = "card" >
-<div class="card-header">
-    <div class="d-flex justify-content-end ">
-        <a href="{{ route('reportTeacher') }}" class="btn btn-sm btn-primary" target="blank">Print</a>
-        {{-- <button class="btn btn-sm btn-primary" type="button" onclick="print(this)">Print</button> --}}
-        {{-- <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
-        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button> --}}
-    </div>
-</div>
-<div class="card-body">
-    <div class="d-flex mt-3">
-        <div class="row">
-            <div class="col col-8">
-                <div class="input-group mb-3 ">
-                    <span class="input-group-text" >Filter</span>
-                    <input type="text" class="form-control" name="year" id="yearFilter" placeholder="Year">
-                  </div>
+    <div class = "card">
+        <div class="card-header">
+            <div class="d-flex">
+                <h1 class="mt-3">Report Student</h1>
             </div>
         </div>
+        <div class="card-body">
 
+            <div class="d-flex justify-content-end mt-3">
+                <div class="row">
+                    <div class="col col-8">
+                        <div class="input-group mb-3 ">
+                            <span class="input-group-text">Filter</span>
+                            <input type="text" class="form-control" name="year" id="yearFilter" placeholder="Year">
+                        </div>
+                    </div>
+                    <div class="col col-4">
+                        <button class="btn btn-md btn-primary d-flex " type="button" onclick="print(this)">Print</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="mt-3">
+                <table class="table table-striped w-100" id="dt">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th class="col-3">Student Name</th>
+                            <th class="col-2">Student Age</th>
+                            <th>Birth Date</th>
+                            <th>Address</th>
+                            <th>Assessment</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div></div>
+        </div>
     </div>
-    <div class="mt-3">
-        <table class="table table-striped w-100" id="dt">
-            <thead>
-                <tr class="text-center">
-                    <th>No</th>
-                    <th class="col-3">Student Name</th>
-                    <th class="col-2">Student Age</th>
-                    <th>Birth Date</th>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+
+    <div class = "card">
+        <div class="card-header">
+            <div class="d-flex ">
+                <h1 class="mt-3">Report Teacher</h1>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="d-flex justify-content-end mt-3">
+                <div class="row">
+
+                    <div class="col col-4">
+                        <button class="btn btn-md btn-primary d-flex " type="button" onclick="printTeacher(this)">Print</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="mt-3">
+                <table class="table table-striped w-100" id="dt-teacher">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th class="col-3">Teacher Name</th>
+                            <th class="col-2">Telp</th>
+                            <th>Birth Date</th>
+                            <th>Gradulation</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div></div>
+        </div>
     </div>
-</div>
-</div>
 
+    <div class="modal" tabindex="-1" id="modal-assessment">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Assessment</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             @foreach ($data as $a )
+             <div>
+                <label for=""> {{ $a->argument }}</label>
+             </div>
+             <div class="form-check">
+                <i class="ri-emotion-unhappy-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
 
+                <i class="ri-emotion-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
+
+                <i class="ri-emotion-happy-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
+              </div>
+
+             @endforeach
+            </div>
+
+          </div>
+        </div>
+      </div>
 @endsection
 
 @section('script')
+    <script>
+        let dt;
+        let dtTeacher;
+        let formUrl = '';
+        let fm = '#form';
+        let method = '';
 
-                <script>
-                    let dt;
-                    let formUrl = '';
-                    let fm = '#form';
-                    let method = '';
-                    function print(obj) {
-                        // reset form
-                        $(fm).each(function () {
-                            this.reset();
-                        });
-                        $('#modal').modal('toggle');
-                        $("#modal-title").html("New");
 
-                        method = 'post';
-                        formUrl = `teacher`;
+        function print() {
+            var year = $('#yearFilter').val();
+            var urlDownload = "{{ route('reportStudent', ':year') }}"
+            urlDownload = urlDownload.replace(":year", year)
+            window.location.href = urlDownload
+
+        }
+
+        function printTeacher() {
+            window.location.href = "{{ route('reportTeacher') }}"
+
+        }
+
+        function asessment(obj){
+            $('#modal-assessment').modal('toggle');
+        }
+
+        $(document).ready(function() {
+            $('#yearFilter').yearpicker();
+
+            dt = $('#dt').DataTable({
+                "destroy": true,
+                "processing": true,
+                "select": true,
+                "scrollX": true,
+                "ajax": {
+                    "url": "{{ route('getReportStudent') }}",
+                    "data": function(d) {
+                        d.year = $('#yearFilter').val();
                     }
-
-                    function edit(obj) {
-                        let idx = getSelectedRowDataTables(dt);
-                        if (idx) {
-                            let data = dt
-                                .row(idx.row)
-                                .data();
-                            // reset form
-                            $(fm).each(function () {
-                                this.reset();
-                            });
-
-                            // mengambil data
-                            $(fm).deserialize(data)
-
-                            let id = data.id;
-
-                            // setting title modal
-                            $("#modal-title").html("Ubah")
-                            // open modal
-                            $('#modal').modal('toggle');
-
-                            method = 'PUT';
-                            formUrl = `/teacher/${id}`;
-                        }
-                    }
-
-                    function remove(obj) {
-                        let idx = getSelectedRowDataTables(dt);
-                        if (idx) {
-                            let data = dt
-                                .row(idx.row)
-                                .data();
-                            let dv = data.id
-                            let value = {
-                                id: dv
-                            }
-
-                            Swal
-                                .fire({
-                                    title: 'Apakah anda yakin.?',
-                                    text: "Data yang dihapus tidak dapat dikembalikan!",
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Ya!'
-                                })
-                                .then((result) => {
-                                    if (result.isConfirmed) {
-                                        $.ajax({
-                                            url: `/teacher/${dv}`,
-                                            type: "DELETE",
-                                            cache: false,
-                                            data: {
-                                                "_token": "{{ csrf_token() }}"
-                                            },
-                                            success: function (data, textStatus, jqXHR) {
-                                                let table = $('#dt').DataTable();
-                                                table
-                                                    .ajax
-                                                    .reload();
-                                                toastr.success('Data sandi berhasil dihapus.');
-                                            },
-                                            error: function (jqXHR, textStatus, errorThrown) {
-                                                toastr.error('Data sandi gagal dihapus.');
-                                            }
-                                        });
-                                    }
-                                })
-
-                        }
-                    }
-
-                    $("form").submit(function (e) {
-                        e.preventDefault();
-                        var formData = new FormData(this);
-                        $.ajax({
-                            url: formUrl,
-                            type: method,
-                            data: formData,
-                            processData: false,
-                            contentType: false, // Pastikan konten tipe diatur ke false
-                            success: function (data, textStatus, jqXHR) {
-
-                                let view = jQuery.parseJSON(data);
-                                if (view.status == true) {
-                                    toastr.success(view.message);
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 1000);
-                                } else {
-                                    toastr.error(view.message);
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 1000);
-                                }
-                            },
-                            error: function (reject) {
-
-                                var response = $.parseJSON(reject.responseText);
-                                $.each(response.errors, function (key, val) {
-                                    $("#" + key + "_error").text(val[0]);
-                                })
-
-                            }
-
-                        });
-                    });
-
-                    $(document).ready(function () {
-                        $('#yearFilter').yearpicker();
-
-                        dt = $('#dt').DataTable({
-                            "destroy": true,
-                            "processing": true,
-                            "select": true,
-                            "scrollX": true,
-                            "ajax": {
-                                "url"   : "{{ route('getReportStudent') }}",
-                                "data"  : function (d) {
-        d.year = $('#yearFilter').val();
-    }
-                            },
-                            "columns": [
+                },
+                "columns": [{
+                    data: "DT_RowIndex",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "student_name",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "student_age",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "birth_date",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "address",
+                    orderable: true,
+                    searchable: true
+                },{
+                    data: "index",
+                    orderable: true,
+                    searchable: true
+                }],
+                "columnDefs": [
                                 {
-                                    data: "DT_RowIndex",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "student_name",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "student_age",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "birth_date",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "address",
-                                    orderable: true,
-                                    searchable: true
+                                    "render": function (data, type, row, meta) {
+                                        let id = row.id
+                                        return '<button class="btn btn-sm btn-primary" type="button" onclick="asessment('+id+')">Asessment</' +
+                                            'button>'
+                                    },
+                                    "targets": 5
                                 }
                             ]
-                        });
 
-                        initSelectRowDataTables('#dt', dt);
+            });
 
-                        $('#yearFilter').change(function(){
-                            dt.ajax.reload();
-                        })
-                    })
+            initSelectRowDataTables('#dt', dt);
+
+            $('#yearFilter').change(function() {
+                dt.ajax.reload();
+            })
+
+            dtTeacher = $('#dt-teacher').DataTable({
+                "destroy": true,
+                "processing": true,
+                "select": true,
+                "scrollX": true,
+                "ajax": {
+                    "url": "{{ route('getReportTeacher') }}",
+                },
+                "columns": [{
+                    data: "DT_RowIndex",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "teacher_name",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "telp",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "birth_date",
+                    orderable: true,
+                    searchable: true
+                }, {
+                    data: "gradulation",
+                    orderable: true,
+                    searchable: true
+                }]
+            });
+        })
 
 
 
-                    function detail(id){
-                        let idx = getSelectedRowDataTables(dt);
-                        if (idx) {
-                            let data = dt
-                                .row(idx.row)
-                                .data();
-                            // reset form
-                            $(fm).each(function () {
-                                this.reset();
-                            });
+        function detail(id) {
+            let idx = getSelectedRowDataTables(dt);
+            if (idx) {
+                let data = dt
+                    .row(idx.row)
+                    .data();
+                // reset form
+                $(fm).each(function() {
+                    this.reset();
+                });
 
-                            // mengambil data
-                            $(fm).deserialize(data)
+                // mengambil data
+                $(fm).deserialize(data)
 
-                            // setting title modal
-                            $("#modal-title").html("Edit")
-                            $(".modal-footer").hide()
-                            // open modal
-                            $('#modal').modal('toggle');
+                // setting title modal
+                $("#modal-title").html("Edit")
+                $(".modal-footer").hide()
+                // open modal
+                $('#modal').modal('toggle');
 
-                        }
-                    }
-                </script>
-
-                @endsection
+            }
+        }
+    </script>
+@endsection

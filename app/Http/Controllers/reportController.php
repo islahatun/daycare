@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DevelopmentChild;
 use PDF;
 use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\TransDevelopmentChild;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Yajra\DataTables\DataTables;
 
 class reportController extends Controller
 {
     public function index(){
-        return view('cms.report');
+        $data =  DevelopmentChild::all();
+
+        return view('cms.report',compact('data'));
     }
 
     public function getStudent(Request $request){
@@ -24,14 +30,42 @@ class reportController extends Controller
 
     }
 
+    public function getTeacher(){
+        $data   = Teacher::all();
+
+        return DataTables::of($data)->addIndexColumn()
+        ->addColumn('gradulation',function($data){
+            return $data->graduate_of.','.$data->major.','.$data->university;
+        })
+        ->make(true);
+
+    }
+
     public function reportTeacher(){
-        $data = [
-            'title' => 'Contoh PDF dengan Laravel',
-            'content' => 'Ini adalah contoh dokumen PDF yang dihasilkan menggunakan DOMPDF di Laravel.'
+
+        $data       = [
+            'content'   => Teacher::all()
         ];
+        $pdf        = PDF::loadView('report.Teacher', $data);
 
-        $pdf = PDF::loadView('report.teacher', $data);
+        return $pdf->download('Report-Teacher.pdf');
+    }
 
-        return $pdf->download('example.pdf');
+    public function reportStudent(Request $request){
+
+        $data['content']   = Student::where('validate',1)->get();
+        if($request->year != null){
+            $data['content']   = Student::where('validate',1)->where('year',$request->year)->get();
+        }
+
+        $pdf        = PDF::loadView('report.Student', $data);
+
+
+        return $pdf->download('Report-student.pdf');
+        // Mengirimkan konten PDF langsung dalam respons JSON
+    // return Response::json([
+    //     'pdfContent' => $pdf->output(),
+    // ]);
+
     }
 }
