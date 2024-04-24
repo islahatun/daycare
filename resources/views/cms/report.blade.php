@@ -1,5 +1,21 @@
 @extends('layouts.main_cms')
 
+@section('style')
+<style>
+    .assessment input{
+        display: none
+    }
+    .assessment{
+        filter: grayscale(1)
+    }
+    .assessment input:hover+label,
+    .assessment input:checked+label{
+        filter: grayscale(0)
+    }
+</style>
+
+@endsection
+
 @section('container')
     <div class = "card">
         <div class="card-header">
@@ -91,14 +107,18 @@
             <div class="modal-body">
              @foreach ($data as $a )
              <div>
-                <label for=""> {{ $a->argument }}</label>
+                <label for="">
+                    <h4>{{ $a->argument }}</h4>
+                </label>
              </div>
-             <div class="form-check">
-                <i class="ri-emotion-unhappy-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
-
-                <i class="ri-emotion-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
-
-                <i class="ri-emotion-happy-line"><input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"></i>
+             <div class="form-check assessment ">
+                @foreach ($assessment as $as )
+                <input name="flexRadioDefault" id="flexRadioDefault{{ $as['score'] }}" type="radio" value="{{ $as['score'] }}">
+                <label for="{{ $as['score'] }}" class="value-assessment">
+                    <img src="{!! asset('assets/img/'.$as['img']) !!}" alt="{{ $as['img'] }}" width="50" height="50" class="mx-auto d-block">
+                    <h5>{{ $as['label'] }}</h5>
+                </label>
+                @endforeach
               </div>
 
              @endforeach

@@ -280,7 +280,7 @@
                                 {
                                     "render": function (data, type, row, meta) {
                                         let image   = row.image
-                                        return '<img src="' + image + '">'
+                                        return '<img width="50" height="50" src="' + image + '">'
                                     },
                                     "targets": 2
                                 },

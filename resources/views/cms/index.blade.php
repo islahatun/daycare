@@ -149,7 +149,7 @@
                 <!-- Line Chart -->
                 <div id="reportsChart"></div>
 
-                {{-- <script>
+                <script>
                   document.addEventListener("DOMContentLoaded", () => {
                     new ApexCharts(document.querySelector("#reportsChart"), {
                       series: [{
@@ -200,7 +200,7 @@
                       }
                     }).render();
                   });
-                </script> --}}
+                </script>
                 <!-- End Line Chart -->
 
               </div>

@@ -14,9 +14,26 @@ use Yajra\DataTables\DataTables;
 class reportController extends Controller
 {
     public function index(){
-        $data =  DevelopmentChild::all();
+        $data        =  DevelopmentChild::all();
+        $assessment  = [
+            [
+                'label' => 'Not Good',
+                'img'   => 'sad.png',
+                'score' =>  0
+            ],
+            [
+                'label' => 'Good',
+                'img'   => 'happiness.png',
+                'score' =>  1
+            ],
+            [
+                'label' => 'Very Good',
+                'img'   => 'happy.png',
+                'score' =>  3
+            ],
+        ];
 
-        return view('cms.report',compact('data'));
+        return view('cms.report',compact('data','assessment'));
     }
 
     public function getStudent(Request $request){

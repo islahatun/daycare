@@ -16,6 +16,7 @@
                 <tr class="text-center">
                     <th>No</th>
                     <th class="col-3">Title</th>
+                    <th class="col-3">Image</th>
                     <th class="col-2">Date</th>
                     <th>Detail</th>
                 </tr>
@@ -217,6 +218,10 @@
                                     orderable: true,
                                     searchable: true
                                 }, {
+                                    data: "image",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
                                     data: "date",
                                     orderable: true,
                                     searchable: true
@@ -229,11 +234,18 @@
                             "columnDefs": [
                                 {
                                     "render": function (data, type, row, meta) {
+                                        let image   = row.image
+                                        return '<img width="50" height="50" src="' + image + '">'
+                                    },
+                                    "targets": 2
+                                },
+                                {
+                                    "render": function (data, type, row, meta) {
                                         let id = row.id
                                         return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</' +
                                             'button>'
                                     },
-                                    "targets": 3
+                                    "targets": 4
                                 }
                             ]
                         });
