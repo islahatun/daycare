@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Student;
+use App\Mail\registration;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -34,14 +39,26 @@ class AuthController extends Controller
             $validate['year']           = date('Y');
             $validate['student_image']  = $request->file('student_image')->store('profilStudent');
 
+            DB::beginTransaction();
+            try {
+                $regist = Student::create($validate);
+                $detail     = [
+                    'name'          => $request->student_name,
+                    'age'           => $request->student_age,
+                    'mother_name'   => $request->mother_name,
+                    'status'        => $request->registration_status,
+                    'id'            => $regist->id
+                ];
 
-            $regist = Student::create($validate);
-            if ($regist) {
-                $message = array(
+                Mail::to($request->email)->send(new registration($detail));
+                DB::commit();
+
+                $message    = array(
                     'status' => true,
                     'message' => 'Data Berhasil ditambahkan'
                 );
-            } else {
+            } catch (\Throwable $th) {
+                DB::rollback();
                 $message = array(
                     'status' => false,
                     'message' => 'Data gagal ditambahkan'
@@ -63,7 +80,63 @@ class AuthController extends Controller
         return DataTables::of($result)->addIndexColumn()
             ->addColumn('status', function ($result) {
 
-                return $result->registration_status == 1?'Student':"Waiting list";
+                return $result->registration_status == 1 ? 'Student' : "Waiting list";
             })->make(true);
+    }
+
+    public function re_registration($id)
+    {
+        $student = Student::find($id);
+
+        return view('Home.re_registration', compact('student'));
+    }
+
+    public function submitRegistration(Request $request)
+    {
+        $validate = $request->validate([
+            'payment_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
+        if ($request->file('payment_image')) {
+
+            $validate['payment_image']  = $request->file('payment_image')->store('paymentImage');
+            $validate['payment_status'] = 1;
+
+            DB::beginTransaction();
+
+            try {
+                $student    = Student::create($validate);
+
+                // $data       = [
+                //     'student_id'    => $student->id,
+                //     'name'          => $student->name,
+                //     'email'         => $student->email
+                // ];
+
+                // $data['password']   = Hash::make('Password123');
+                // User::create($data);
+
+                DB::commit();
+
+                $message    = array(
+                    'status' => true,
+                    'message' => 'Data Berhasil ditambahkan'
+                );
+
+            } catch (\Throwable $th) {
+                DB::rollback();
+                $message = array(
+                    'status' => false,
+                    'message' => 'Data gagal ditambahkan'
+                );
+            }
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Gagal upload Foto'
+            );
+        }
+
+        echo json_encode($message);
     }
 }

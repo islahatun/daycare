@@ -33,6 +33,8 @@ Route::get('/register', function () {
     return view('Home.register');
 });
 Route::post('/registration', [AuthController::class, 'registration']);
+Route::get('/re-registration/{id}', [AuthController::class, 're_registration']);
+Route::post('/submitRegistration', [AuthController::class, 'submitRegistration']);
 route::get('/data-list', [AuthController::class, 'getDataList'])->name('getDataList');
 Route::get('/dashboard', [DashboardController::class, 'index']);
 

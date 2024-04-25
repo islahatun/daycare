@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\registration;
+use App\Models\User;
 use App\Models\Student;
+use App\Mail\registration;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class StudentController extends Controller
@@ -44,6 +46,28 @@ class StudentController extends Controller
             'status'        => $student->registration_status
         ];
         Mail::to($student->email)->send(new registration($detail) );
+    }
+
+    public function validateRegis($id){
+        $student    = student::find($id);
+        $data       = [
+                    'student_id'    => $student->id,
+                    'name'          => $student->name,
+                    'email'         => $student->email
+                ];
+
+                $data['password']   = Hash::make('Password123');
+                $data['role']       = 'Parent';
+                $user = User::create($data);
+                $user->assignRole('Parent');
+
+                $detail = [
+                    'name'      => $student->name,
+                    'email'     => $student->email,
+                    'password'  => 'Password123'
+                ];
+
+                Mail::to($student->email)->send(new registration($detail) );
     }
 
     public function create()
