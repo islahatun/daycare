@@ -51,10 +51,12 @@ Route::resource('activityChildern',activityChildernController::class);
 Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity');
 
 Route::resource('trans-DevelopmentChildern',TransDeveloperChildernController::class);
-Route::get('/trans-DevelopmentChildern/getData', [TransDeveloperChildernController::class, 'getData'])->name('getDataAssessment');
+Route::get('/getData-trans-DevelopmentChildern', [TransDeveloperChildernController::class, 'getDataStudent'])->name('getDataStudent');
+Route::get('/getData-assessment', [TransDeveloperChildernController::class, 'getDataAssessment'])->name('getDataAssessment');
 
 Route::get('/report',[reportController::class,'index'])->name('indexReport');
 Route::get('/report/teacher',[reportController::class,'reportTeacher'])->name('reportTeacher');
 Route::get('/report/getTeacher',[reportController::class,'getTeacher'])->name('getReportTeacher');
 Route::get('/report/getStudent',[reportController::class,'getStudent'])->name('getReportStudent');
 Route::get('/report/student',[reportController::class,'reportStudent'])->name('reportStudent');
+Route::post('/report/getReportAssessment',[reportController::class,'getReportAssessment'])->name('getReportAssessment');

@@ -4,9 +4,7 @@
 <div class = "card" >
 <div class="card-header">
     <div class="d-flex justify-content-end ">
-        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Add</button>
-        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
-        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button>
+        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Penilaian</button>
     </div>
 </div>
 <div class="card-body">
@@ -15,9 +13,9 @@
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th class="col-3">Student Name</th>
-                    <th class="col-2">Student Age (Years)</th>
-                    <th>Status  Assessment</th>
+                    <th class="col-3">Nama</th>
+                    <th class="col-2">Umur (Tahun)</th>
+                    <th>Status Penilaian</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -27,7 +25,7 @@
 </div>
 
 <div class="modal" id="modal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal-title"></h5 > <button
@@ -39,75 +37,32 @@
 <div class="modal-body">
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3 row">
-        <label for="name_teacher" class="col-sm-4 col-form-label">Name</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="name_teacher" name="name_teacher"></div>
-        </div>
-        <div class="mb-3 row">
-            <label for="birth_date" class="col-sm-4 col-form-label">Birth Date</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="birth_date" name="birth_date"></div>
-            </div>
-            <div class="mb-3 row">
-                <label for="birth_city" class="col-sm-4 col-form-label">Birth City</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="birth_city" name="birth_city"></div>
-                </div>
-            <div class="mb-3 row">
-                <label for="telp" class="col-sm-4 col-form-label">Telp Number</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="telp" name="telp"></div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="address" class="col-sm-4 col-form-label">Address</label>
-                    <div class="col-sm-8">
-                        <textarea type="text" class="form-control" id="address" name="address"></textarea></div>
-                    </div>
-                <div class="mb-3 row">
-                    <label for="graduate_of" class="col-sm-4 col-form-label">Graduate Of</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="graduate_of" name="graduate_of"></div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="major" class="col-sm-4 col-form-label">Major</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="major" name="major"></div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="university" class="col-sm-4 col-form-label">University</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="university" name="university"></div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="graduation_year" class="col-sm-4 col-form-label">Graduation year</label>
-                                <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="graduation_year"
-                                        name="graduation_year"></div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="image_teacher" class="col-sm-4 col-form-label">Photo Profile</label>
-                                    <div class="col-sm-8">
-                                        <input type="file" class="form-control" id="image_teacher" name="image_teacher"></div>
-                                    </div>
+    <input type="text" id="student_id" name="student_id">
+    <table class="table table-bordered w-100" id="dt-assessment">
+        <thead>
+            <tr class="text-center">
+                <th>No</th>
+                <th>Deskripsi</th>
+                <th>Kurang Baik</th>
+                <th>Baik</th>
+                <th>Sangat Baik</th>
+            </tr>
+        </thead>
+        <tbody>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+        </tbody>
+    </table>
+
+</form>
+</div>
+</div>
+</div>
 
                 @endsection @section('script')
 
                 <script>
                     let dt;
+                    let dt_assessment;
                     let formUrl = '';
                     let fm = '#form';
                     let method = '';
@@ -120,7 +75,7 @@
                         $("#modal-title").html("New");
 
                         method = 'post';
-                        formUrl = `trans-DevelopmentChildern`;
+                        formUrl = `teacher`;
                     }
 
                     function edit(obj) {
@@ -145,53 +100,7 @@
                             $('#modal').modal('toggle');
 
                             method = 'PUT';
-                            formUrl = `/trans-DevelopmentChildern/${id}`;
-                        }
-                    }
-
-                    function remove(obj) {
-                        let idx = getSelectedRowDataTables(dt);
-                        if (idx) {
-                            let data = dt
-                                .row(idx.row)
-                                .data();
-                            let dv = data.id
-                            let value = {
-                                id: dv
-                            }
-
-                            Swal
-                                .fire({
-                                    title: 'Apakah anda yakin.?',
-                                    text: "Data yang dihapus tidak dapat dikembalikan!",
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Ya!'
-                                })
-                                .then((result) => {
-                                    if (result.isConfirmed) {
-                                        $.ajax({
-                                            url: `/trans-DevelopmentChildern/${dv}`,
-                                            type: "DELETE",
-                                            cache: false,
-                                            data: {
-                                                "_token": "{{ csrf_token() }}"
-                                            },
-                                            success: function (data, textStatus, jqXHR) {
-                                                let table = $('#dt').DataTable();
-                                                table
-                                                    .ajax
-                                                    .reload();
-                                                toastr.success('Data sandi berhasil dihapus.');
-                                            },
-                                            error: function (jqXHR, textStatus, errorThrown) {
-                                                toastr.error('Data sandi gagal dihapus.');
-                                            }
-                                        });
-                                    }
-                                })
-
+                            formUrl = `/teacher/${id}`;
                         }
                     }
 
@@ -239,13 +148,14 @@
                             "select": true,
                             "scrollX": true,
                             "ajax": {
-                                "url": "{{ route('getDataAssessment') }}"
+                                "url": "{{ route('getDataStudent') }}"
                             },
                             "columns": [
                                 {
                                     data: "DT_RowIndex",
                                     orderable: true,
-                                    searchable: true
+                                    searchable: true,
+                                    class:"text-center"
                                 }, {
                                     data: "student_name",
                                     orderable: true,
@@ -254,39 +164,66 @@
                                     data: "student_age",
                                     orderable: true,
                                     searchable: true
-                                },  {
+                                }, {
                                     data: "status",
                                     orderable: true,
                                     searchable: true
                                 }
-                            ]
+                            ],
+
                         });
 
                         initSelectRowDataTables('#dt', dt);
+
+
+                        dt_assessment = $('#dt-assessment').DataTable({
+                            "destroy": true,
+                            "processing": true,
+                            "select": true,
+                            "ajax": {
+                                "url": "{{ route('getDataAssessment') }}"
+                            },
+                            "columns": [
+                                {
+                                    data: "DT_RowIndex",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "argument",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "sad",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "happiness",
+                                    orderable: true,
+                                    searchable: true
+                                },
+                                {
+                                    data: "happy",
+                                    orderable: true,
+                                    searchable: true
+                                }
+                            ],
+                            "columnDefs": [
+                                {"render": function ( data, type, row, meta ) {
+                                return '<input name="flexRadioDefault" id="sad" type="radio" value="1"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 2},
+                                {"render": function ( data, type, row, meta ) {
+                                    return '<input name="flexRadioDefault" id="sad" type="radio" value="3"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 3},
+                                {"render": function ( data, type, row, meta ) {
+                                    return '<input name="flexRadioDefault" id="sad" type="radio" value="5"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 4}
+                            ]
+
+                        });
                     })
-
-                    function detail(id){
-                        let idx = getSelectedRowDataTables(dt);
-                        if (idx) {
-                            let data = dt
-                                .row(idx.row)
-                                .data();
-                            // reset form
-                            $(fm).each(function () {
-                                this.reset();
-                            });
-
-                            // mengambil data
-                            $(fm).deserialize(data)
-
-                            // setting title modal
-                            $("#modal-title").html("Edit")
-                            $(".modal-footer").hide()
-                            // open modal
-                            $('#modal').modal('toggle');
-
-                        }
-                    }
                 </script>
 
                 @endsection

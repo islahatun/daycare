@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DevelopmentChild;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -27,11 +28,33 @@ class TransDeveloperChildernController extends Controller
         //
     }
 
-    public function getData(){
+    public function getDataStudent(){
         $result         = Student::all();
 
-        return DataTables::of($result)->addIndexColumn()->make(true);
+        return DataTables::of($result)->addIndexColumn()
+        ->addColumn('status', function ($data) {
+            return $data->registration_status == 1?"Student":"Waiting list";
+        })
+        ->addColumn('sad', function ($result) {
+            $image  = asset('assets/img/sad.png' );
+            return $image;
+        })
+        ->addColumn('happiness', function ($result) {
+            $image  = asset('assets/img/happiness.png' );
+            return $image;
+        })
+        ->addColumn('happy', function ($result) {
+            $image  = asset('assets/img/happy.png' );
+            return $image;
+        })
+        ->make(true);
 
+    }
+
+    public function getDataAssessment(){
+        $result     = DevelopmentChild::all();
+
+        return DataTables::of($result)->addIndexColumn()->make(true);
     }
 
     /**

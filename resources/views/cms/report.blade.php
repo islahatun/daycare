@@ -101,28 +101,24 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Assessment</h5>
+              <h5 class="modal-title" id="modal-title"> </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-             @foreach ($data as $a )
-             <div>
-                <label for="">
-                    <h4>{{ $a->argument }}</h4>
-                </label>
-             </div>
-             <div class="form-check assessment ">
-                @foreach ($assessment as $as )
-                <input name="flexRadioDefault" id="flexRadioDefault{{ $as['score'] }}" type="radio" value="{{ $as['score'] }}">
-                <label for="{{ $as['score'] }}" class="value-assessment">
-                    <img src="{!! asset('assets/img/'.$as['img']) !!}" alt="{{ $as['img'] }}" width="50" height="50" class="mx-auto d-block">
-                    <h5>{{ $as['label'] }}</h5>
-                </label>
-                @endforeach
-              </div>
+                <table class="table table-bordered w-100" id="dt-assessment">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>Deskripsi</th>
+                            <th>Kurang Baik</th>
+                            <th>Baik</th>
+                            <th>Sangat Baik</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-             @endforeach
-            </div>
+                    </tbody>
+                </table>
 
           </div>
         </div>
@@ -133,7 +129,9 @@
     <script>
         let dt;
         let dtTeacher;
+        let dt_assessment;
         let formUrl = '';
+        var id_student ='';
         let fm = '#form';
         let method = '';
 
@@ -151,12 +149,104 @@
 
         }
 
-        function asessment(obj){
-            $('#modal-assessment').modal('toggle');
+        // function asessment(obj){
+        //     $('#modal-assessment').modal('toggle');
+        // }
+
+        function asessment(id) {
+            let idx = getSelectedRowDataTables(dt);
+            if (idx) {
+                let data = dt
+                    .row(idx.row)
+                    .data();
+                // reset form
+                $(fm).each(function() {
+                    this.reset();
+                });
+                // mengambil data
+                $(fm).deserialize(data)
+                // setting title modal
+                $("#modal-title").html("Penilaian: "+data.student_name)
+
+                $('#dt-assessment').DataTable({
+                            "destroy": true,
+                            "processing": true,
+                            "select": true,
+                            "ajax": {
+                                "url": "{{ route('getReportAssessment') }}",
+                                data: {
+                                                "_token": "{{ csrf_token() }}",
+                                                "student_id":data.id
+                                            },
+                                "type": "post",
+                            },
+                            "columns": [
+                                {
+                                    data: "DT_RowIndex",
+                                    orderable: true,
+                                    searchable: true,
+                                    class:"text-end"
+                                }, {
+                                    data: "argument",
+                                    orderable: true,
+                                    searchable: true
+                                }, {
+                                    data: "index",
+                                    orderable: true,
+                                    searchable: true,
+                                    class:"text-center"
+                                }, {
+                                    data: "index",
+                                    orderable: true,
+                                    searchable: true,
+                                    class:"text-center"
+                                },
+                                {
+                                    data: "index",
+                                    orderable: true,
+                                    searchable: true,
+                                    class:"text-center"
+                                }
+                            ],
+                            "columnDefs": [
+                                {"render": function ( data, type, row, meta ) {
+                                    var style = "style ='filter: grayscale(1)'"
+                                    if(row.score == 1){
+                                        var style = "style ='filter: grayscale(0)'"
+                                    }
+                                return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 2},
+                                {"render": function ( data, type, row, meta ) {
+                                    var style = "style ='filter: grayscale(1)'"
+                                    if(row.score == 3){
+                                        var style = "style ='filter: grayscale(0)'"
+                                    }
+                                    return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 3},
+                                {"render": function ( data, type, row, meta ) {
+                                    var style = "style ='filter: grayscale(1)'"
+                                    if(row.score == 5){
+                                        var style = "style ='filter: grayscale(0)'"
+                                    }
+                                    return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                },
+                                "targets": 4}
+                            ]
+
+            });
+
+
+                // open modal
+                $('#modal-assessment').modal('toggle');
+            }
         }
 
         $(document).ready(function() {
             $('#yearFilter').yearpicker();
+
+            $('#student_id').val();
 
             dt = $('#dt').DataTable({
                 "destroy": true,
@@ -243,31 +333,8 @@
                     searchable: true
                 }]
             });
+
+
         })
-
-
-
-        function detail(id) {
-            let idx = getSelectedRowDataTables(dt);
-            if (idx) {
-                let data = dt
-                    .row(idx.row)
-                    .data();
-                // reset form
-                $(fm).each(function() {
-                    this.reset();
-                });
-
-                // mengambil data
-                $(fm).deserialize(data)
-
-                // setting title modal
-                $("#modal-title").html("Edit")
-                $(".modal-footer").hide()
-                // open modal
-                $('#modal').modal('toggle');
-
-            }
-        }
     </script>
 @endsection
