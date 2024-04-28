@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-end ">
                 <button class="btn btn-sm btn-success" type="button" onclick="sent(this)">Send E-mail</button>
-                <button class="btn btn-sm btn-success mx-2" type="button" onclick="validate(this)">Validate</button>
+                <button class="btn btn-sm btn-success mx-2" type="button" onclick="validateRegist(this)">Validate</button>
             </div>
         </div>
         <div class="card-body">
@@ -156,5 +156,43 @@
 
             initSelectRowDataTables('#dt', dt);
         })
+
+        function validateRegist(obj){
+            let idx = getSelectedRowDataTables(dt);
+
+            if (idx) {
+                let data = dt.row(idx.row).data();
+                $.ajax({
+                url: '/student/validateRegist/'+data.id,
+                type: 'get',
+                data: $(this).serialize(),
+                success: function(data, textStatus, jqXHR) {
+
+                    let view = jQuery.parseJSON(data);
+                    if (view.status == true) {
+                        toastr.success(view.message);
+                        let table = $('#dt').DataTable();
+                        table.ajax.reload();
+                        $('#Modal').modal('hide');
+
+                    } else {
+                        toastr.error(view.message);
+                    }
+                },
+                error: function(reject) {
+
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    })
+
+
+                }
+
+            });
+            }
+        }
+
+
     </script>
 @endsection

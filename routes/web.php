@@ -41,6 +41,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('students', StudentController::class);
 Route::get('/getDataListStudents', [StudentController::class, 'getData'])->name('getDataListStudents');
 Route::get('/student/sentEmail/{id}',[StudentController::class,'sentEmail']);
+Route::get('/student/validateRegist/{id}',[StudentController::class,'validateRegist']);
 Route::resource('profile',ProfileController::class);
 Route::resource('teacher',teacherController::class);
 Route::get('/getDataTeacher',[teacherController::class,'getData'])->name('getDataTeacher');

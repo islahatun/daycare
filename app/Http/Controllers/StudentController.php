@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\login;
 use App\Models\User;
 use App\Models\Student;
 use App\Mail\registration;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -68,6 +70,53 @@ class StudentController extends Controller
                 ];
 
                 Mail::to($student->email)->send(new registration($detail) );
+    }
+
+    public function validateRegist($id){
+
+        $student    = student::find($id);
+        $data       = [
+                    'student_id'    => $student->id,
+                    'name'          => $student->student_name,
+                    'email'         => $student->email
+                ];
+
+                $data['password']   = Hash::make('Password123');
+                $data['role']       = 'Parent';
+
+                $detail = [
+                    'name'      => $student->name,
+                    'email'     => $student->email,
+                    'password'  => 'Password123'
+                ];
+                DB::beginTransaction();
+
+                try {
+                    // update data student
+                    $student->validate  = 1;
+                    $student->save();
+
+                    $user = User::create($data);
+                    $user->assignRole('Parent');
+
+                    Mail::to($student->email)->send(new login($detail) );
+
+                   DB::commit();
+                $message    = array(
+                    'status' => true,
+                    'message' => 'Data berhsil terkirim'
+                );
+                } catch (\Throwable $th) {
+                    DB::rollback();
+
+                    $message    = array(
+                        'status' => false,
+                        'message' => 'Gagal mengirim data'
+                    );
+                }
+                echo json_encode($message);
+
+
     }
 
     public function create()
