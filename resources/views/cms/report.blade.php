@@ -214,7 +214,7 @@
                                     if(row.score == 1){
                                         var style = "style ='filter: grayscale(0)'"
                                     }
-                                return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 2},
                                 {"render": function ( data, type, row, meta ) {
@@ -222,7 +222,7 @@
                                     if(row.score == 3){
                                         var style = "style ='filter: grayscale(0)'"
                                     }
-                                    return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 3},
                                 {"render": function ( data, type, row, meta ) {
@@ -230,7 +230,7 @@
                                     if(row.score == 5){
                                         var style = "style ='filter: grayscale(0)'"
                                     }
-                                    return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
                             ]

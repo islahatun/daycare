@@ -11,6 +11,7 @@ use App\Http\Controllers\teacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\developmentChildernController;
 use App\Http\Controllers\reportController;
+use App\Http\Controllers\ReportStudent;
 use App\Http\Controllers\TransDeveloperChildernController;
 
 /*
@@ -61,3 +62,6 @@ Route::get('/report/getTeacher',[reportController::class,'getTeacher'])->name('g
 Route::get('/report/getStudent',[reportController::class,'getStudent'])->name('getReportStudent');
 Route::get('/report/student',[reportController::class,'reportStudent'])->name('reportStudent');
 Route::post('/report/getReportAssessment',[reportController::class,'getReportAssessment'])->name('getReportAssessment');
+
+// ortu
+Route::get('/reportStudent/assessment',[ReportStudent::class,'reportStudent'])->name('assessment');
