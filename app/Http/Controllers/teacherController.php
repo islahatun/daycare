@@ -39,7 +39,7 @@ class teacherController extends Controller
             })->make(true);
 
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -72,7 +72,7 @@ class teacherController extends Controller
         if($result){
             $message = array(
                 'status' => true,
-                'message' => 'Data added successfully'
+                'message' => 'Data Berhasil disimpan'
             );
         }else{
             $message = array(

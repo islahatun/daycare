@@ -73,12 +73,12 @@ class TransDeveloperChildernController extends Controller
         if($result){
             $message = array(
                 'status'    => true,
-                'message'   => 'Data created successfully'
+                'message'   => 'Data berhasil disimpan'
             );
         }else{
             $message = array(
                 'status'    => false,
-                'message'   => 'Data created failed'
+                'message'   => 'Data gagal disimpan'
             );
         }
 
@@ -124,7 +124,7 @@ class TransDeveloperChildernController extends Controller
 
             $message = array(
                 'status'    => true,
-                'message'   => 'Data created successfully'
+                'message'   => 'Data berhasil disimpan'
             );
 
         } catch (\Throwable $th) {
@@ -132,7 +132,7 @@ class TransDeveloperChildernController extends Controller
 
             $message = array(
                 'status'    => false,
-                'message'   => 'Data created failed'
+                'message'   => 'Data gagal disimpan'
             );
         }
 

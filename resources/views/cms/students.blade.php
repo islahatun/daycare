@@ -14,13 +14,13 @@
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
-                            <th class="col-4">Student Name</th>
-                            <th class="col-2">Age (years)</th>
-                            <th>Telp</th>
+                            <th class="col-4">Nama Anak</th>
+                            <th class="col-2">Umur Anak (Tahun)</th>
+                            <th>Telepon/No. Hp</th>
                             <th>E-mail</th>
-                            <th>Registration Status</th>
-                            <th>Validate</th>
-                            <th>Payment Status</th>
+                            <th>Status Registrasi</th>
+                            <th>Validasi</th>
+                            <th>Status Pembayaran</th>
                         </tr>
                     </thead>
                     <tbody>

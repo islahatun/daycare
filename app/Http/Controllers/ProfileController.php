@@ -82,18 +82,18 @@ class ProfileController extends Controller
             if ($regist) {
                 $message = array(
                     'status'  => true,
-                    'message' => 'Data created successfully'
+                    'message' => 'Data berhasil disimpan'
                 );
             } else {
                 $message = array(
                     'status'  => false,
-                    'message' => 'Data Created failed'
+                    'message' => 'Data gagal di simpan'
                 );
             }
         } else {
             $message = array(
                 'status'  => false,
-                'message' => 'Upload Photo failed'
+                'message' => 'Gagal uplaod foto'
             );
         }
 
@@ -109,12 +109,12 @@ class ProfileController extends Controller
         if ($result) {
             $message = array(
                 'status'  => true,
-                'message' => 'Data created successfully'
+                'message' => 'Data berhasil disimpan'
             );
         } else {
             $message = array(
                 'status'  => false,
-                'message' => 'Data Created failed'
+                'message' => 'Data gagal disimpan'
             );
         }
     }

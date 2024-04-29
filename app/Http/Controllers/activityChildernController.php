@@ -53,7 +53,7 @@ class activityChildernController extends Controller
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Upload Photo failed'
+                'message' => 'Gagal upload foto'
             );
         }
 
@@ -61,12 +61,12 @@ class activityChildernController extends Controller
         if($result){
             $message = array(
                 'status'    => true,
-                'message'   => 'Data created successfully'
+                'message'   => 'Data berhasil disimpan'
             );
         }else{
             $message = array(
                 'status'    => false,
-                'message'   => 'Data created failed'
+                'message'   => 'Data gagal disimpan'
             );
         }
 
@@ -109,7 +109,7 @@ class activityChildernController extends Controller
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Upload Photo failed'
+                'message' => 'Gagal upalod Foto'
             );
         }
 
@@ -117,12 +117,12 @@ class activityChildernController extends Controller
         if($result){
             $message = array(
                 'status'    => true,
-                'message'   => 'Data created successfully'
+                'message'   => 'Data berhasil disimpan'
             );
         }else{
             $message = array(
                 'status'    => false,
-                'message'   => 'Data created failed'
+                'message'   => 'Data gagal disimpan'
             );
         }
 
@@ -141,12 +141,12 @@ class activityChildernController extends Controller
         if($result){
             $message = array(
                 'status' => true,
-                'message' => 'Data deleted successfuly'
+                'message' => 'Data berhasil dihapus'
             );
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data deleted failed'
+                'message' => 'Data gagal di hapus'
             );
         }
 

@@ -4,9 +4,9 @@
 <div class = "card" >
 <div class="card-header">
     <div class="d-flex justify-content-end ">
-        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Add</button>
-        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
-        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button>
+        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Tambah</button>
+        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Ubah</button>
+        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Hapus</button>
     </div>
 </div>
 <div class="card-body">
@@ -15,9 +15,9 @@
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th class="col-3">Title</th>
-                    <th class="col-3">Image</th>
-                    <th class="col-2">Date</th>
+                    <th class="col-3">Judul</th>
+                    <th class="col-3">Gambar</th>
+                    <th class="col-2">Tanggal</th>
                     <th>Detail</th>
                 </tr>
             </thead>
@@ -41,29 +41,29 @@
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3 row">
-        <label for="title" class="col-sm-4 col-form-label">Title</label>
+        <label for="title" class="col-sm-4 col-form-label">Judul</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="title" name="title"></div>
         </div>
         <div class="mb-3 row">
-            <label for="description" class="col-sm-4 col-form-label">Description</label>
+            <label for="description" class="col-sm-4 col-form-label">Deskripsi</label>
             <div class="col-sm-8">
                 <textarea type="text" class="form-control" id="description" name="description" col></textarea></div>
             </div>
             <div class="mb-3 row">
-                <label for="date" class="col-sm-4 col-form-label">Date</label>
+                <label for="date" class="col-sm-4 col-form-label">Tanggal</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="date" name="date"></div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="image" class="col-sm-4 col-form-label">Image</label>
+                    <label for="image" class="col-sm-4 col-form-label">Gambar</label>
                     <div class="col-sm-8">
                         <input type="file" class="form-control" id="image" name="image"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

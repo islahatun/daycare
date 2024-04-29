@@ -40,12 +40,12 @@ class developmentChildernController extends Controller
         if($result){
             $message = array(
                 'status' => true,
-                'message' => 'Data added successfully'
+                'message' => 'Data berhasil disimpan'
             );
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data added failed'
+                'message' => 'Data gagal disimpan'
             );
         }
 
@@ -88,12 +88,12 @@ class developmentChildernController extends Controller
         if($result){
             $message = array(
                 'status' => true,
-                'message' => 'Data update successfully'
+                'message' => 'Data gagal disimpan'
             );
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data update failed'
+                'message' => 'Data gagal disimpan'
             );
         }
 

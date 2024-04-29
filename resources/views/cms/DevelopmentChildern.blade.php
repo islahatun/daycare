@@ -4,9 +4,9 @@
 <div class = "card" >
 <div class="card-header">
     <div class="d-flex justify-content-end ">
-        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Add</button>
-        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Edit</button>
-        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button>
+        <button class="btn btn-sm btn-primary" type="button" onclick="add(this)">Tambah</button>
+        <button class="btn btn-sm btn-success mx-2" type="button" onclick="edit(this)">Ubah</button>
+        <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Hapus</button>
     </div>
 </div>
 <div class="card-body">
@@ -44,8 +44,8 @@
             <input type="text" class="form-control" id="argument" name="argument"></div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
     </form>
 </div>

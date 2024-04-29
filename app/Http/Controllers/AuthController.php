@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Mail\registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -138,5 +139,20 @@ class AuthController extends Controller
         }
 
         echo json_encode($message);
+    }
+
+    public function login(Request $request){
+
+        $credencials    = $request->validate([
+            'email'     => 'required',
+            'password'  => 'required'
+        ]);
+
+        if(Auth::attempt($credencials)){
+            $request->session->regenerate();
+
+            return redirect()->intended('/dashboard');
+        }
+
     }
 }

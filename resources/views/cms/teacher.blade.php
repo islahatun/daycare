@@ -15,11 +15,11 @@
             <thead>
                 <tr class="text-center">
                     <th>No</th>
-                    <th class="col-3">Teacher Name</th>
-                    <th class="col-2">Teacher Image</th>
-                    <th>Telp</th>
+                    <th class="col-3">Nama Guru</th>
+                    <th class="col-2">Gambar Guru</th>
+                    <th>Telpon/ No.Hp</th>
                     <th>E-mail</th>
-                    <th>Birth Date</th>
+                    <th>Tanggal Lahir</th>
                     <th>Detail</th>
                 </tr>
             </thead>
@@ -43,47 +43,47 @@
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3 row">
-        <label for="name_teacher" class="col-sm-4 col-form-label">Name</label>
+        <label for="name_teacher" class="col-sm-4 col-form-label">Nama Guru</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="name_teacher" name="name_teacher"></div>
         </div>
         <div class="mb-3 row">
-            <label for="birth_date" class="col-sm-4 col-form-label">Birth Date</label>
+            <label for="birth_date" class="col-sm-4 col-form-label">Tanggal Lahir</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" id="birth_date" name="birth_date"></div>
             </div>
             <div class="mb-3 row">
-                <label for="birth_city" class="col-sm-4 col-form-label">Birth City</label>
+                <label for="birth_city" class="col-sm-4 col-form-label">Tempat Lahir</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="birth_city" name="birth_city"></div>
                 </div>
             <div class="mb-3 row">
-                <label for="telp" class="col-sm-4 col-form-label">Telp Number</label>
+                <label for="telp" class="col-sm-4 col-form-label">No Telepon/ No Hp</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="telp" name="telp"></div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="address" class="col-sm-4 col-form-label">Address</label>
+                    <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                     <div class="col-sm-8">
                         <textarea type="text" class="form-control" id="address" name="address"></textarea></div>
                     </div>
                 <div class="mb-3 row">
-                    <label for="graduate_of" class="col-sm-4 col-form-label">Graduate Of</label>
+                    <label for="graduate_of" class="col-sm-4 col-form-label">Jenjang pendidika (SMA/D3/S1/S2/S3)</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="graduate_of" name="graduate_of"></div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="major" class="col-sm-4 col-form-label">Major</label>
+                        <label for="major" class="col-sm-4 col-form-label">Jurusan</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="major" name="major"></div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="university" class="col-sm-4 col-form-label">University</label>
+                            <label for="university" class="col-sm-4 col-form-label">Universitas</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="university" name="university"></div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="graduation_year" class="col-sm-4 col-form-label">Graduation year</label>
+                                <label for="graduation_year" class="col-sm-4 col-form-label">Tahun Lulus</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
@@ -92,15 +92,15 @@
                                         name="graduation_year"></div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="image_teacher" class="col-sm-4 col-form-label">Photo Profile</label>
+                                    <label for="image_teacher" class="col-sm-4 col-form-label">Poto Profil</label>
                                     <div class="col-sm-8">
                                         <input type="file" class="form-control" id="image_teacher" name="image_teacher"></div>
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>
                         </div>

@@ -20,7 +20,7 @@
     <div class = "card">
         <div class="card-header">
             <div class="d-flex">
-                <h1 class="mt-3">Report Student</h1>
+                <h1 class="mt-3">Rapot Anak</h1>
             </div>
         </div>
         <div class="card-body">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col col-4">
-                        <button class="btn btn-md btn-primary d-flex " type="button" onclick="print(this)">Print</button>
+                        <button class="btn btn-md btn-primary d-flex " type="button" onclick="print(this)">Cetak</button>
                     </div>
 
                 </div>
@@ -46,11 +46,11 @@
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
-                            <th class="col-3">Student Name</th>
-                            <th class="col-2">Student Age</th>
-                            <th>Birth Date</th>
-                            <th>Address</th>
-                            <th>Assessment</th>
+                            <th class="col-3">Nama Anak</th>
+                            <th class="col-2">Umur Anak (Tahun)</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Alamat</th>
+                            <th>Penilaian</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
