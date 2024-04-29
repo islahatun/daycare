@@ -64,7 +64,7 @@ class teacherController extends Controller
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Upload Photo failed'
+                'message' => 'Gagal upload Foto'
             );
         }
 

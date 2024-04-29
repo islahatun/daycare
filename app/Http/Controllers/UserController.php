@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        Return view('cms.user');
     }
 
     /**
@@ -21,6 +22,16 @@ class UserController extends Controller
     public function create()
     {
         //
+    }
+
+    public function getData(){
+        $result  = User::all();
+
+        return DataTables::of($result)->addIndexColumn()
+        ->addColumn('image', function ($result) {
+            $image  = asset('storage/' . $result->image);
+            return $image;
+        })->make(true);
     }
 
     /**
@@ -34,6 +45,15 @@ class UserController extends Controller
             'role'  => 'required',
             'name'  => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validate['image']  = $request->file('image')->store('profileUser');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Gagal upload foto'
+            );
+        }
 
         $result = User::create($validate);
 
@@ -114,5 +134,7 @@ class UserController extends Controller
                 'message' => 'Data gagal dihapus'
             );
         }
+
+        echo json_encode($message);
     }
 }

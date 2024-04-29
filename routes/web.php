@@ -13,6 +13,7 @@ use App\Http\Controllers\developmentChildernController;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\ReportStudent;
 use App\Http\Controllers\TransDeveloperChildernController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +66,6 @@ Route::post('/report/getReportAssessment',[reportController::class,'getReportAss
 
 // ortu
 Route::get('/reportStudent/assessment',[ReportStudent::class,'reportStudent'])->name('assessment');
+
+Route::resource('user', UserController::class);
+Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
