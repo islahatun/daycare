@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\teacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\developmentChildernController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\ReportStudent;
 use App\Http\Controllers\TransDeveloperChildernController;
@@ -69,3 +70,6 @@ Route::get('/reportStudent/assessment',[ReportStudent::class,'reportStudent'])->
 
 Route::resource('user', UserController::class);
 Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
+
+Route::resource('info', InfoController::class);
+Route::get('/getInfo', [InfoController::class, 'getData'])->name('getiInfo');

@@ -60,12 +60,12 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
+                        {{-- <div class="mb-3 row">
                             <label for="image_teacher" class="col-sm-4 col-form-label">Poto Profil</label>
                             <div class="col-sm-8">
                                 <input type="file" class="form-control" id="image_teacher" name="image_teacher">
                             </div>
-                        </div>
+                        </div> --}}
 
                 </div>
                 <div class="modal-footer">

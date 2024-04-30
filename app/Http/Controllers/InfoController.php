@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Info;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
-class UserController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        Return view('cms.user');
+        return view('cms.info');
     }
 
     /**
@@ -24,39 +23,17 @@ class UserController extends Controller
         //
     }
 
-    public function getData(){
-        $result  = User::all();
-
-        return DataTables::of($result)->addIndexColumn()
-        ->addColumn('image', function ($result) {
-            $image  = asset('storage/' . $result->image);
-            return $image;
-        })->make(true);
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $validate   = $request->validate([
-            'name'  => 'required',
-            'email' => 'required',
-            'role'  => 'required',
-            'name'  => 'required'
+            "description"   => "required",
+            "value"         => "required"
         ]);
 
-        // if ($request->file('image')) {
-        //     $validate['image']  = $request->file('image')->store('profileUser');
-        // }else{
-        //     $message = array(
-        //         'status' => false,
-        //         'message' => 'Gagal upload foto'
-        //     );
-        // }
-
-        $result = User::create($validate);
-
+        $result     = Info::create($validate);
         if($result){
             $message = array(
                 'status' => true,
@@ -65,10 +42,9 @@ class UserController extends Controller
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data gagal disimpan'
+                'message' => 'Data added failed'
             );
         }
-
         echo json_encode($message);
     }
 
@@ -94,14 +70,11 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $validate   = $request->validate([
-            'name'  => 'required',
-            'email' => 'required',
-            'role'  => 'required',
-            'name'  => 'required'
+            "description"   => "required",
+            "value"         => "required"
         ]);
 
-        $result = User::where('id',$id)->update($validate);
-
+        $result     = Info::where("id",$id)->update($validate);
         if($result){
             $message = array(
                 'status' => true,
@@ -110,10 +83,9 @@ class UserController extends Controller
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data gagal disimpan'
+                'message' => 'Data Gagal disimpan'
             );
         }
-
         echo json_encode($message);
     }
 
@@ -122,19 +94,18 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = User::where('id',$id)->delete();
+        $result = Info::where("id",$id)->delete();
         if($result){
             $message = array(
-                'status' => false,
-                'message' => 'Data gagal hapus'
+                'status' => true,
+                'message' => 'Data Berhasil disimpan'
             );
         }else{
             $message = array(
                 'status' => false,
-                'message' => 'Data gagal dihapus'
+                'message' => 'Data Gagal disimpan'
             );
         }
-
         echo json_encode($message);
     }
 }
