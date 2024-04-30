@@ -73,3 +73,7 @@ Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
 
 Route::resource('info', InfoController::class);
 Route::get('/getInfo', [InfoController::class, 'getData'])->name('getiInfo');
+
+Route::PUT('/profileStudent/{id}', [ProfileController::class, 'update']);
+Route::PUT('/profileUser/{id}', [ProfileController::class, 'updateUser']);
+

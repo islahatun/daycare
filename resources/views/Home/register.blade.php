@@ -48,40 +48,40 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3 row">
-                                        <label for="student_name" class="col-sm-4 col-form-label">Name</label>
+                                        <label for="student_name" class="col-sm-4 col-form-label">Nama Anak</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="student_name"
                                                 name="student_name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="birth_date" class="col-sm-4 col-form-label">Birth Date</label>
+                                        <label for="birth_date" class="col-sm-4 col-form-label">Tanggal Lahir</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="birth_date" name="birth_date">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="birth_city" class="col-sm-4 col-form-label">Birth city</label>
+                                        <label for="birth_city" class="col-sm-4 col-form-label">Tmpat Lahir</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="birth_city" name="birth_city">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="mother_name" class="col-sm-4 col-form-label">Mother Name</label>
+                                        <label for="mother_name" class="col-sm-4 col-form-label">Nama Ibu</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="mother_name"
                                                 name="mother_name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="mother_job" class="col-sm-4 col-form-label">Mother Job</label>
+                                        <label for="mother_job" class="col-sm-4 col-form-label">Pekerjaan Ibu</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="mother_job"
                                                 name="mother_job">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="father_name" class="col-sm-4 col-form-label">Father Name</label>
+                                        <label for="father_name" class="col-sm-4 col-form-label">Nama Ayah</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="father_name"
                                                 name="father_name">
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="mb-3 row">
-                                        <label for="father_job" class="col-sm-4 col-form-label">Father job</label>
+                                        <label for="father_job" class="col-sm-4 col-form-label">Pekerjaan Ayah</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="father_job"
                                                 name="father_job">
@@ -104,19 +104,19 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="address" class="col-sm-4 col-form-label">Address</label>
+                                        <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                                         <div class="col-sm-7">
                                             <textarea type="text" class="form-control" id="address" name="address"> </textarea>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="email" class="col-sm-4 col-form-label">Email Address</label>
+                                        <label for="email" class="col-sm-4 col-form-label">Alamat E-Mail</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="email" name="email">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="student_image" class="col-sm-4 col-form-label">Image</label>
+                                        <label for="student_image" class="col-sm-4 col-form-label">Gambar Anak</label>
                                         <div class="col-sm-7">
                                             <input type="file" class="form-control" id="student_image"
                                                 name="student_image">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="card text-end">
-                                <button class="btn btn-primary" type="submit">Register</button>
+                                <button class="btn btn-primary" type="submit">Daftar</button>
                             </div>
                         </form>
                     </div>

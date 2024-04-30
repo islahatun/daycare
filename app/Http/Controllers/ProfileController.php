@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,7 +15,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('cms.profile');
+
+        $user   = Auth::User();
+        return view('cms.profile',compact('user'));
     }
 
     /**
@@ -64,7 +67,7 @@ class ProfileController extends Controller
             'mother_job'    => 'required',
             'father_name'   => 'required',
             'father_job'    => 'required',
-            'email'         => 'required|unique:students',
+            'email'         => 'required',
             'telp'          => 'required',
         ]);
 
@@ -117,6 +120,7 @@ class ProfileController extends Controller
                 'message' => 'Data gagal disimpan'
             );
         }
+        echo json_encode($message);
     }
 
     /**
