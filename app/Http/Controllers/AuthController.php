@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    public function index(){
+        return view('Home.register');
+    }
     public function registration(Request $request)
     {
         $validate = $request->validate([
@@ -143,16 +146,27 @@ class AuthController extends Controller
 
     public function login(Request $request){
 
-        $credencials    = $request->validate([
+        $credentials    = $request->validate([
             'email'     => 'required',
             'password'  => 'required'
         ]);
 
-        if(Auth::attempt($credencials)){
-            $request->session->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/user');
         }
 
+        return back()->with('loginError', 'Login Failed!');
+
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

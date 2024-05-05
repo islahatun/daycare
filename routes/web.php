@@ -32,14 +32,13 @@ use App\Http\Controllers\UserController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
-Route::get('/register', function () {
-    return view('Home.register');
-});
+Route::get('/register', [AuthController::class, 'index']);
 Route::post('/registration', [AuthController::class, 'registration']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::get('/re-registration/{id}', [AuthController::class, 're_registration']);
 Route::post('/submitRegistration', [AuthController::class, 'submitRegistration']);
 route::get('/data-list', [AuthController::class, 'getDataList'])->name('getDataList');
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::resource('students', StudentController::class);
 Route::get('/getDataListStudents', [StudentController::class, 'getData'])->name('getDataListStudents');

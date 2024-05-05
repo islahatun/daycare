@@ -18,7 +18,6 @@
                             <th class="col-3">Username</th>
                             <th class="col-2">email</th>
                             <th>Akses</th>
-                            <th>Gambar</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -222,10 +221,6 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "image",
-                    orderable: true,
-                    searchable: true
-                }, {
                     data: "email",
                     orderable: true,
                     searchable: true
@@ -233,14 +228,9 @@
                     data: "role",
                     orderable: true,
                     searchable: true
-                }],
-                "columnDefs": [{
-                    "render": function(data, type, row, meta) {
-                        let image = row.image
-                        return '<img width="50" height="50" src="' + image + '">'
-                    },
-                    "targets": 2
-                }, ]
+                }
+            ],
+
             });
 
             initSelectRowDataTables('#dt', dt);

@@ -26,11 +26,20 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="/user">
+          <i class="bi bi-card-list"></i>
+          <span>Daftar Pengguna</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="/teacher">
           <i class="bi bi-envelope"></i>
           <span>Daftar Guru</span>
         </a>
       </li><!-- End Contact Page Nav -->
+
+
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="/class">
@@ -39,6 +48,13 @@
         </a>
       </li> --}}
       <!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/info">
+          <i class="bi bi-card-list"></i>
+          <span>Info</span>
+        </a>
+      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/activityChildern">

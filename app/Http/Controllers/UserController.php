@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -55,7 +56,10 @@ class UserController extends Controller
         //     );
         // }
 
+        $validate['password']   = Hash::make('Password123');
+
         $result = User::create($validate);
+        $result->assignRole($request->role);
 
         if($result){
             $message = array(

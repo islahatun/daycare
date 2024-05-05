@@ -16,8 +16,8 @@ class ProfileController extends Controller
     public function index()
     {
 
-        $user   = Auth::User();
-        return view('cms.profile',compact('user'));
+        $roleUser   = Auth::User()->role;
+        return view('cms.profile',compact('roleUser'));
     }
 
     /**

@@ -23,22 +23,35 @@
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <form id="formLogin">
+                        @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{ session('success') }}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+
+                        @if (session()->has('loginError'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          {{ session('loginError') }}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+                        <form id="formLogin" method="post">
                             @csrf
                             <div class="mb-3 row">
-                                <label for="staticEmail" class="col-sm-4 col-form-label">Username</label>
+                                <label for="staticEmail" class="col-sm-4 col-form-label">E-Mail</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="staticEmail">
+                                    <input type="text" class="form-control" id="staticEmail" name="email">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="inputPassword">
+                                    <input type="password" class="form-control" id="inputPassword" name="password">
                                 </div>
                             </div>
                             <div class="card text-end">
-                                <button class="btn btn-primary">Login</button>
+                                <button class="btn btn-primary" type="submit">Login</button>
                             </div>
                         </form>
                     </div>
@@ -152,6 +165,43 @@
 
 @section('script')
     <script>
+        $('#formLogin').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                data: formData,
+                processData: false,
+                contentType: false, // Pastikan konten tipe diatur ke false
+                success: function(data, textStatus, jqXHR) {
+
+                    let view = jQuery.parseJSON(data);
+                    if (view.status == true) {
+                        toastr.success(view.message);
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        toastr.error(view.message);
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
+                    }
+                },
+                error: function(reject) {
+
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function(key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    })
+
+
+                }
+
+            });
+        })
+
         $('#FormRegister').submit(function(e) {
             e.preventDefault();
             var formData = new FormData(this);
