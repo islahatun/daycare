@@ -58,7 +58,8 @@
 </div>
 </div>
 
-                @endsection @section('script')
+                @endsection
+                @section('script')
 
                 <script>
                     let dt;
@@ -93,9 +94,11 @@
                             $(fm).deserialize(data)
 
                             let id = data.id;
+                            $("#student_id").val(id)
+
 
                             // setting title modal
-                            $("#modal-title").html("Ubah")
+                            $("#modal-title").html("Penilaian")
                             // open modal
                             $('#modal').modal('toggle');
 
@@ -103,6 +106,11 @@
                             formUrl = `/teacher/${id}`;
                         }
                     }
+
+                    function sad(id,value){
+
+console.log($("#student_id").val())
+}
 
                     $("form").submit(function (e) {
                         e.preventDefault();
@@ -209,21 +217,23 @@
                             ],
                             "columnDefs": [
                                 {"render": function ( data, type, row, meta ) {
-                                return '<input name="flexRadioDefault" id="sad" type="radio" value="1"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                return '<input name="flexRadioDefault" id="sad" type="radio" value="1" onclick="sad('+row.id+',1)"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 2},
                                 {"render": function ( data, type, row, meta ) {
-                                    return '<input name="flexRadioDefault" id="sad" type="radio" value="3"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return '<input name="flexRadioDefault" id="happiness" type="radio" value="3" onclick="happiness('+row.id+',3)"> <label for="happiness" class="value-assessment"> <img src="{!! asset("assets/img/happiness.png")!!}" alt="happiness" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 3},
                                 {"render": function ( data, type, row, meta ) {
-                                    return '<input name="flexRadioDefault" id="sad" type="radio" value="5"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return '<input name="flexRadioDefault" id="happy" type="radio" value="5" onclick="happy('+row.id+',5)"> <label for="happy" class="value-assessment"> <img src="{!! asset("assets/img/happy.png")!!}" alt="happy" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 4}
                             ]
 
                         });
                     })
+
+
                 </script>
 
                 @endsection

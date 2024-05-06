@@ -35,6 +35,7 @@ Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::get('/register', [AuthController::class, 'index']);
 Route::post('/registration', [AuthController::class, 'registration']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/re-registration/{id}', [AuthController::class, 're_registration']);
 Route::post('/submitRegistration', [AuthController::class, 'submitRegistration']);
 route::get('/data-list', [AuthController::class, 'getDataList'])->name('getDataList');

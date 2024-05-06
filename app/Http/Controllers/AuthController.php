@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('Home.register');
     }
     public function registration(Request $request)
@@ -126,7 +127,6 @@ class AuthController extends Controller
                     'status' => true,
                     'message' => 'Data Berhasil ditambahkan'
                 );
-
             } catch (\Throwable $th) {
                 DB::rollback();
                 $message = array(
@@ -134,7 +134,7 @@ class AuthController extends Controller
                     'message' => 'Data gagal ditambahkan'
                 );
             }
-        }else{
+        } else {
             $message = array(
                 'status' => false,
                 'message' => 'Gagal upload Foto'
@@ -144,7 +144,8 @@ class AuthController extends Controller
         echo json_encode($message);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $credentials    = $request->validate([
             'email'     => 'required',
@@ -154,11 +155,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/user');
+            return redirect()->intended('/dashboard');
         }
 
         return back()->with('loginError', 'Login Failed!');
-
     }
     public function logout(Request $request)
     {
