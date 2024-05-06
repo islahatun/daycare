@@ -7,6 +7,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,8 @@ class ProfileController extends Controller
     {
 
         $roleUser   = Auth::User()->role;
-        return view('cms.profile',compact('roleUser'));
+        $user       = Auth::User();
+        return view('cms.profile', compact('roleUser', 'user'));
     }
 
     /**
@@ -81,7 +83,7 @@ class ProfileController extends Controller
             $validate['student_image']  = $request->file('student_image')->store('profilStudent');
 
 
-            $regist = Student::where('id',$id)->update($validate);
+            $regist = Student::where('id', $id)->update($validate);
             if ($regist) {
                 $message = array(
                     'status'  => true,
@@ -103,12 +105,23 @@ class ProfileController extends Controller
         echo json_encode($message);
     }
 
-    public function updateUser(Request $request, string $id){
-        $validate   = $request->validate([
-            'password'  => 'required'
-        ]);
+    public function updateUser(Request $request, string $id)
+    {
+        if ($request->password == null) {
+            $validate   = [
+                'name'      => $request->name,
+                'email'     => $request->email,
+            ];
+        } else {
+            $validate   = [
+                'name'      => $request->name,
+                'email'     => $request->email
+            ];
+            $validate['password'] = Hash::make($request->password);
+        }
 
-        $result    = User::where('student_id',$id)->update($validate);
+
+        $result    = User::where('id', $id)->update($validate);
         if ($result) {
             $message = array(
                 'status'  => true,
@@ -120,7 +133,8 @@ class ProfileController extends Controller
                 'message' => 'Data gagal disimpan'
             );
         }
-        echo json_encode($message);
+        // echo json_encode($message);
+        return redirect()->intended('/profile');
     }
 
     /**

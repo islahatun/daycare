@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Info;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class InfoController extends Controller
 {
@@ -21,6 +22,12 @@ class InfoController extends Controller
     public function create()
     {
         //
+    }
+
+    public function getData(){
+        $result = Info::all();
+
+        return DataTables::of($result)->addIndexColumn()->make(true);
     }
 
     /**
