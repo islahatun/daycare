@@ -19,7 +19,8 @@ class ProfileController extends Controller
 
         $roleUser   = Auth::User()->role;
         $user       = Auth::User();
-        return view('cms.profile', compact('roleUser', 'user'));
+        $student    = Student::find($user->student_id);
+        return view('cms.profile', compact('roleUser', 'user','student'));
     }
 
     /**

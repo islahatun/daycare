@@ -31,7 +31,8 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('login');
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/register', [AuthController::class, 'index']);
 Route::post('/registration', [AuthController::class, 'registration']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -43,30 +44,30 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::resource('students', StudentController::class)->middleware('auth');
 Route::get('/getDataListStudents', [StudentController::class, 'getData'])->name('getDataListStudents')->middleware('auth');
-Route::get('/student/sentEmail/{id}',[StudentController::class,'sentEmail'])->middleware('auth');
-Route::get('/student/validateRegist/{id}',[StudentController::class,'validateRegist'])->middleware('auth');
-Route::resource('profile',ProfileController::class)->middleware('auth');
-Route::resource('teacher',teacherController::class)->middleware('auth');
-Route::get('/getDataTeacher',[teacherController::class,'getData'])->name('getDataTeacher')->middleware('auth');
+Route::get('/student/sentEmail/{id}', [StudentController::class, 'sentEmail'])->middleware('auth');
+Route::get('/student/validateRegist/{id}', [StudentController::class, 'validateRegist'])->middleware('auth');
+Route::resource('profile', ProfileController::class)->middleware('auth');
+Route::resource('teacher', teacherController::class)->middleware('auth');
+Route::get('/getDataTeacher', [teacherController::class, 'getData'])->name('getDataTeacher')->middleware('auth');
 Route::resource('DevelopmentChildern', developmentChildernController::class)->middleware('auth');
-Route::get('/getDataDevelopmentChildern',[developmentChildernController::class,'getData'])->name('getDataDevelopmentChildern')->middleware('auth');
+Route::get('/getDataDevelopmentChildern', [developmentChildernController::class, 'getData'])->name('getDataDevelopmentChildern')->middleware('auth');
 
-Route::resource('activityChildern',activityChildernController::class)->middleware('auth');
+Route::resource('activityChildern', activityChildernController::class)->middleware('auth');
 Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity')->middleware('auth');
 
-Route::resource('trans-DevelopmentChildern',TransDeveloperChildernController::class)->middleware('auth');
+Route::resource('trans-DevelopmentChildern', TransDeveloperChildernController::class)->middleware('auth');
 Route::get('/getData-trans-DevelopmentChildern', [TransDeveloperChildernController::class, 'getDataStudent'])->name('getDataStudent')->middleware('auth');
 Route::get('/getData-assessment', [TransDeveloperChildernController::class, 'getDataAssessment'])->name('getDataAssessment')->middleware('auth');
 
-Route::get('/report',[reportController::class,'index'])->name('indexReport');
-Route::get('/report/teacher',[reportController::class,'reportTeacher'])->name('reportTeacher');
-Route::get('/report/getTeacher',[reportController::class,'getTeacher'])->name('getReportTeacher');
-Route::get('/report/getStudent',[reportController::class,'getStudent'])->name('getReportStudent');
-Route::get('/report/student',[reportController::class,'reportStudent'])->name('reportStudent');
-Route::post('/report/getReportAssessment',[reportController::class,'getReportAssessment'])->name('getReportAssessment');
+Route::get('/report', [reportController::class, 'index'])->name('indexReport');
+Route::get('/report/teacher', [reportController::class, 'reportTeacher'])->name('reportTeacher');
+Route::get('/report/getTeacher', [reportController::class, 'getTeacher'])->name('getReportTeacher');
+Route::get('/report/getStudent', [reportController::class, 'getStudent'])->name('getReportStudent');
+Route::get('/report/student', [reportController::class, 'reportStudent'])->name('reportStudent');
+Route::post('/report/getReportAssessment', [reportController::class, 'getReportAssessment'])->name('getReportAssessment');
 
 // ortu
-Route::get('/reportStudent/assessment',[ReportStudent::class,'reportStudent'])->name('assessment');
+Route::get('/reportStudent/assessment', [ReportStudent::class, 'reportStudent'])->name('assessment');
 
 Route::resource('user', UserController::class);
 Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
@@ -76,4 +77,3 @@ Route::get('/getInfo', [InfoController::class, 'getData'])->name('getInfo');
 
 Route::PUT('/profileStudent/{id}', [ProfileController::class, 'update']);
 Route::PUT('/profileUser/{id}', [ProfileController::class, 'updateUser']);
-

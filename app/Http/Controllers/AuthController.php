@@ -110,7 +110,7 @@ class AuthController extends Controller
             DB::beginTransaction();
 
             try {
-                $student    = Student::create($validate);
+                $student    = Student::where('id',$request->id)->update($validate);
 
                 // $data       = [
                 //     'student_id'    => $student->id,

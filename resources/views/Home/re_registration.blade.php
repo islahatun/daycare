@@ -7,10 +7,11 @@
 
             <div class="card-body">
 
-                        <form id="FormRegister" method="post" enctype="multipart/form-data">
+                        <form id="Formre-Register" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col">
+                                    <input type="text" name="id" id="id" value="{{ $student->id }}">
                                     <div class="mb-3 row">
                                         <label for="student_name" class="col-sm-4 col-form-label">Name</label>
                                         <div class="col-sm-7">
@@ -105,7 +106,7 @@
 
 @section('script')
     <script>
-        $('#FormRegister').submit(function(e) {
+        $('#Formre-Register').submit(function(e) {
             e.preventDefault();
             var formData = new FormData(this);
             $.ajax({
@@ -120,7 +121,7 @@
                     if (view.status == true) {
                         toastr.success(view.message);
                         setTimeout(function() {
-                            location.reload();
+                            window.location.href = "/"
                         }, 1000);
                     } else {
                         toastr.error(view.message);

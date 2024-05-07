@@ -7,44 +7,52 @@
                 Profile
             </div>
             <div class="card-body mb-3">
-                <form id="FormRegister" method="post" enctype="multipart/form-data">
+                <form id="FormRegister" method="post" enctype="multipart/form-data"
+                    action="/profileStudent/{{ $student->id }}">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col">
                             <div class="mb-3 row">
                                 <label for="student_name" class="col-sm-4 col-form-label">Nama Anak</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="student_name" name="student_name">
+                                    <input type="text" class="form-control" id="student_name" name="student_name"
+                                        value="{{ $student->student_name }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="birth_date" class="col-sm-4 col-form-label">Tanggal Lahir</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="birth_date" name="birth_date">
+                                    <input type="text" class="form-control" id="birth_date" name="birth_date"
+                                        value="{{ $student->birth_date }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="birth_city" class="col-sm-4 col-form-label">Tmpat Lahir</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="birth_city" name="birth_city">
+                                    <input type="text" class="form-control" id="birth_city" name="birth_city"
+                                        value="{{ $student->birth_city }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="mother_name" class="col-sm-4 col-form-label">Nama Ibu</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="mother_name" name="mother_name">
+                                    <input type="text" class="form-control" id="mother_name" name="mother_name"
+                                        value="{{ $student->mother_name }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="mother_job" class="col-sm-4 col-form-label">Pekerjaan Ibu</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="mother_job" name="mother_job">
+                                    <input type="text" class="form-control" id="mother_job" name="mother_job"
+                                        value="{{ $student->mother_job }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="father_name" class="col-sm-4 col-form-label">Nama Ayah</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="father_name" name="father_name">
+                                    <input type="text" class="form-control" id="father_name" name="father_name"
+                                        value="{{ $student->father_name }}">
                                 </div>
                             </div>
 
@@ -53,19 +61,21 @@
                             <div class="mb-3 row">
                                 <label for="father_job" class="col-sm-4 col-form-label">Pekerjaan Ayah</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="father_job" name="father_job">
+                                    <input type="text" class="form-control" id="father_job" name="father_job"
+                                        value="{{ $student->father_job }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="telp" class="col-sm-4 col-form-label">Telp / No Hp</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="telp" name="telp">
+                                    <input type="text" class="form-control" id="telp" name="telp"
+                                        value="{{ $student->telp }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-7">
-                                    <textarea type="text" class="form-control" id="address" name="address"> </textarea>
+                                    <textarea type="text" class="form-control" id="address" name="address"> {{ $student->address }} </textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
