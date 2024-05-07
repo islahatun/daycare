@@ -11,7 +11,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" name="id" id="id" value="{{ $student->id }}">
+                                    <input type="hidden" name="id" id="id" value="{{ $student->id }}">
                                     <div class="mb-3 row">
                                         <label for="student_name" class="col-sm-4 col-form-label">Name</label>
                                         <div class="col-sm-7">

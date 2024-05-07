@@ -1,7 +1,6 @@
 @extends('layouts.main_cms')
 
 @section('style')
-
 @endsection
 
 @section('container')
@@ -15,7 +14,8 @@
             <div class="d-flex justify-content-end mt-3">
                 <div class="row">
                     <div class="col col-4">
-                        <button class="btn btn-md btn-primary d-flex " type="button" onclick="print(this)">Cetak</button>
+                        <button class="btn btn-md btn-primary d-flex mb-3 " type="button"
+                            onclick="print(this)">Cetak</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,6 @@
             </table>
         </div>
     </div>
-
 @endsection
 
 @section('script')
@@ -44,13 +43,13 @@
         let dtTeacher;
         let dt_assessment;
         let formUrl = '';
-        var id_student ='';
+        var id_student = '';
         let fm = '#form';
         let method = '';
 
 
         function print() {
-            window.location.href = "{{ route('reportStudent') }}"
+            window.location.href = "{{ route('Printassessment') }}"
 
         }
 
@@ -59,71 +58,78 @@
         $(document).ready(function() {
 
             $('#dt-assessment').DataTable({
-                            "destroy": true,
-                            "processing": true,
-                            "select": true,
-                            "ajax": {
-                                "url": "{{ route('getReportAssessment') }}",
-                                data: {
-                                                "_token": "{{ csrf_token() }}",
-                                                "student_id":data.id
-                                            },
-                                "type": "post",
-                            },
-                            "columns": [
-                                {
-                                    data: "DT_RowIndex",
-                                    orderable: true,
-                                    searchable: true,
-                                    class:"text-end"
-                                }, {
-                                    data: "argument",
-                                    orderable: true,
-                                    searchable: true
-                                }, {
-                                    data: "index",
-                                    orderable: true,
-                                    searchable: true,
-                                    class:"text-center"
-                                }, {
-                                    data: "index",
-                                    orderable: true,
-                                    searchable: true,
-                                    class:"text-center"
-                                },
-                                {
-                                    data: "index",
-                                    orderable: true,
-                                    searchable: true,
-                                    class:"text-center"
-                                }
-                            ],
-                            "columnDefs": [
-                                {"render": function ( data, type, row, meta ) {
-                                    var style = "style ='filter: grayscale(1)'"
-                                    if(row.score == 1){
-                                        var style = "style ='filter: grayscale(0)'"
-                                    }
-                                return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
-                                },
-                                "targets": 2},
-                                {"render": function ( data, type, row, meta ) {
-                                    var style = "style ='filter: grayscale(1)'"
-                                    if(row.score == 3){
-                                        var style = "style ='filter: grayscale(0)'"
-                                    }
-                                    return '<label for="sad"'+style+'> <img src="{!! asset("assets/img/happiness.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
-                                },
-                                "targets": 3},
-                                {"render": function ( data, type, row, meta ) {
-                                    var style = "style ='filter: grayscale(1)'"
-                                    if(row.score == 5){
-                                        var style = "style ='filter: grayscale(0)'"
-                                    }
-                                    return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
-                                },
-                                "targets": 4}
-                            ]
+                "destroy": true,
+                "processing": true,
+                "select": true,
+                "ajax": {
+                    "url": "{{ route('getReportAssessment') }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "student_id": data.id
+                    },
+                    "type": "post",
+                },
+                "columns": [{
+                        data: "DT_RowIndex",
+                        orderable: true,
+                        searchable: true,
+                        class: "text-end"
+                    }, {
+                        data: "argument",
+                        orderable: true,
+                        searchable: true
+                    }, {
+                        data: "index",
+                        orderable: true,
+                        searchable: true,
+                        class: "text-center"
+                    }, {
+                        data: "index",
+                        orderable: true,
+                        searchable: true,
+                        class: "text-center"
+                    },
+                    {
+                        data: "index",
+                        orderable: true,
+                        searchable: true,
+                        class: "text-center"
+                    }
+                ],
+                "columnDefs": [{
+                        "render": function(data, type, row, meta) {
+                            var style = "style ='filter: grayscale(1)'"
+                            if (row.score == 1) {
+                                var style = "style ='filter: grayscale(0)'"
+                            }
+                            return '<label for="sad"' + style +
+                                '> <img src="{!! asset('assets/img/sad.png') !!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
+                        },
+                        "targets": 2
+                    },
+                    {
+                        "render": function(data, type, row, meta) {
+                            var style = "style ='filter: grayscale(1)'"
+                            if (row.score == 3) {
+                                var style = "style ='filter: grayscale(0)'"
+                            }
+                            return '<label for="sad"' + style +
+                                '> <img src="{!! asset('assets/img/happiness.png') !!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
+                        },
+                        "targets": 3
+                    },
+                    {
+                        "render": function(data, type, row, meta) {
+                            var style = "style ='filter: grayscale(1)'"
+                            if (row.score == 5) {
+                                var style = "style ='filter: grayscale(0)'"
+                            }
+                            return ' <label for="sad"' + style +
+                                '> <img src="{!! asset('assets/img/happy.png') !!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
+                        },
+                        "targets": 4
+                    }
+                ]
 
             });
 

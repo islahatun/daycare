@@ -1,7 +1,7 @@
 @extends('layouts.main_cms')
 
 @section('container')
-    @if ($roleUser == 'parent')
+    @if ($roleUser == 'Parent')
         <div class="card">
             <div class="card-header">
                 Profile
@@ -13,6 +13,7 @@
                     @method('PUT')
                     <div class="row">
                         <div class="col">
+                            <input type="hidden" name="id" value="{{ $student->id }}">
                             <div class="mb-3 row">
                                 <label for="student_name" class="col-sm-4 col-form-label">Nama Anak</label>
                                 <div class="col-sm-7">
@@ -81,13 +82,14 @@
                             <div class="mb-3 row">
                                 <label for="email" class="col-sm-4 col-form-label">Alamat E-Mail</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <input type="text" class="form-control" id="email" name="email"
+                                        value="{{ $student->email }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="student_image" class="col-sm-4 col-form-label">Gambar Anak</label>
                                 <div class="col-sm-7">
-                                    <input type="file" class="form-control" id="student_image" name="student_image">
+                                    <img src="{!! asset('storage/' . $student->student_image) !!}" width="100" height="100">
                                 </div>
                             </div>
                         </div>
@@ -146,12 +148,11 @@
 @section('script')
     <script>
         $('#FormRegister').submit(function(e) {
-            var id = $('#id').val();
             e.preventDefault();
             var formData = new FormData(this);
             $.ajax({
-                url: `/profileStudent/${id}`,
-                type: 'PUT',
+                url: `/profileStudent`,
+                type: 'post',
                 data: formData,
                 processData: false,
                 contentType: false, // Pastikan konten tipe diatur ke false

@@ -84,7 +84,7 @@ class ProfileController extends Controller
             $validate['student_image']  = $request->file('student_image')->store('profilStudent');
 
 
-            $regist = Student::where('id', $id)->update($validate);
+            $regist = Student::where('id', $request->id)->update($validate);
             if ($regist) {
                 $message = array(
                     'status'  => true,

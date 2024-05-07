@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +16,18 @@ class ReportStudent extends Controller
         return view('cms.ReportStudent',compact('user'));
     }
     public function reportStudent(){
-        $user   = Auth::user();
-        $data   = TransDevelopmentChild::where('student_id',$user->student_id)->get();
-        $pdf    = PDF::loadView('report.assessmentStudent', $data);
+        $data   = TransDevelopmentChild::where('student_id',Auth::user()->student_id)->get();
 
-        return $pdf->download('Report-Assesment-'.$user->student_name.'.pdf');
+        if($data == false){
+            $pdf    = PDF::loadView('report.assessmentStudent', $data);
+
+        return $pdf->download('Report-Assesment-'.Auth::user()->student_name.'.pdf');
+        }
+
+
     }
 
-    public function getAssessment(){
+    public function getReportAssessment(){
         $user   = Auth::user();
         $data   = TransDevelopmentChild::where('student_id',$user->student_id)->get();
         return DataTables::of($data)->addIndexColumn()

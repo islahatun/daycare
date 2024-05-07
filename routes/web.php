@@ -67,7 +67,8 @@ Route::get('/report/student', [reportController::class, 'reportStudent'])->name(
 Route::post('/report/getReportAssessment', [reportController::class, 'getReportAssessment'])->name('getReportAssessment');
 
 // ortu
-Route::get('/reportStudent/assessment', [ReportStudent::class, 'reportStudent'])->name('assessment');
+Route::get('/reportStudent/assessment', [ReportStudent::class, 'index']);
+Route::get('/reportStudent/Printassessment', [ReportStudent::class, 'reportStudent'])->name('Printassessment');
 
 Route::resource('user', UserController::class);
 Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
@@ -75,5 +76,5 @@ Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
 Route::resource('info', InfoController::class);
 Route::get('/getInfo', [InfoController::class, 'getData'])->name('getInfo');
 
-Route::PUT('/profileStudent/{id}', [ProfileController::class, 'update']);
+Route::post('/profileStudent', [ProfileController::class, 'update']);
 Route::PUT('/profileUser/{id}', [ProfileController::class, 'updateUser']);
