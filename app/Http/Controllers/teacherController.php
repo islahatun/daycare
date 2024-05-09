@@ -103,11 +103,10 @@ class teacherController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         $validate = $request->validate([
             'name_teacher'      => 'required',
-            'image_teacher'     => 'required',
             'birth_date'        => 'required',
             'birth_city'        => 'required',
             'address'           => 'required',
@@ -126,7 +125,7 @@ class teacherController extends Controller
             );
         }
 
-        $result = Teacher::where('id',$id)->update($validate);
+        $result = Teacher::where('id',$request->id)->update($validate);
         if($result){
             $message = array(
                 'status' => true,

@@ -42,6 +42,7 @@
 <div class="modal-body">
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="id" id="id">
     <div class="mb-3 row">
         <label for="name_teacher" class="col-sm-4 col-form-label">Nama Guru</label>
         <div class="col-sm-8">
@@ -147,8 +148,8 @@
                             // open modal
                             $('#modal').modal('toggle');
 
-                            method = 'PUT';
-                            formUrl = `/teacher/${id}`;
+                            method = 'POST';
+                            formUrl = `/updateTeacher`;
                         }
                     }
 
