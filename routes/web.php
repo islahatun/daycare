@@ -51,11 +51,11 @@ Route::resource('teacher', teacherController::class)->middleware('auth')->except
 Route::post('/updateTeacher', [teacherController::class, 'update'])->name('updateTeacher')->middleware('auth');
 Route::get('/getDataTeacher', [teacherController::class, 'getData'])->name('getDataTeacher')->middleware('auth');
 Route::resource('DevelopmentChildern', developmentChildernController::class)->middleware('auth');
-Route::get('/updateDevelopmentChildern', [developmentChildernController::class, 'update'])->name('updateDevelopmentChildern')->middleware('auth');
+Route::post('/updateDevelopmentChildern', [developmentChildernController::class, 'update'])->name('updateDevelopmentChildern')->middleware('auth');
 Route::get('/getDataDevelopmentChildern', [developmentChildernController::class, 'getData'])->name('getDataDevelopmentChildern')->middleware('auth');
 
 Route::resource('activityChildern', activityChildernController::class)->middleware('auth');
-Route::get('/updateActivity', [activityChildernController::class, 'update'])->name('updateActivity')->middleware('auth');
+Route::post('/updateActivity', [activityChildernController::class, 'update'])->name('updateActivity')->middleware('auth');
 Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->name('getDataActivity')->middleware('auth');
 
 Route::resource('trans-DevelopmentChildern', TransDeveloperChildernController::class)->middleware('auth');

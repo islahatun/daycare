@@ -92,19 +92,17 @@ class activityChildernController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id=null)
     {
         $validate = $request->validate([
             'title'         => 'required',
             'description'   => 'required',
-            'image'         => 'required',
             'date'          => 'required'
         ]);
 
-        $data   = ActiviesChildern::where('id',$id)->delete();
-        Storage::delete($data->image);
-
         if ($request->file('image')) {
+            $data   = ActiviesChildern::find($request->id);
+            Storage::disk('public')->delete($data->image);
             $validate['image']  = $request->file('image')->store('activityImage');
         }else{
             $message = array(
@@ -113,7 +111,7 @@ class activityChildernController extends Controller
             );
         }
 
-        $result = ActiviesChildern::where('id',$id)->update($validate);
+        $result = ActiviesChildern::where('id',$request->id)->update($validate);
         if($result){
             $message = array(
                 'status'    => true,
@@ -134,8 +132,8 @@ class activityChildernController extends Controller
      */
     public function destroy(string $id)
     {
-        $data   = ActiviesChildern::where('id',$id)->delete();
-        Storage::delete($data->image);
+        $data   = ActiviesChildern::find($id);
+        Storage::disk('public')->delete($data->image);
 
         $result = ActiviesChildern::where('id',$id)->delete();
         if($result){
