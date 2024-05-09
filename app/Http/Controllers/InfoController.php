@@ -74,14 +74,14 @@ class InfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         $validate   = $request->validate([
             "description"   => "required",
             "value"         => "required"
         ]);
 
-        $result     = Info::where("id",$id)->update($validate);
+        $result     = Info::where("id",$request->id)->update($validate);
         if($result){
             $message = array(
                 'status' => true,

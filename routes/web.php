@@ -77,6 +77,7 @@ Route::resource('user', UserController::class);
 Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
 
 Route::resource('info', InfoController::class);
+Route::post('/updateInfo', [InfoController::class, 'update'])->name('updateInfo');
 Route::get('/getInfo', [InfoController::class, 'getData'])->name('getInfo');
 
 Route::post('/profileStudent', [ProfileController::class, 'update']);

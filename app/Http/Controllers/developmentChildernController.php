@@ -77,12 +77,14 @@ class developmentChildernController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DevelopmentChildernRequest $request, string $id)
+    public function update(DevelopmentChildernRequest $request, string $id=null)
     {
-        $validate   = $request->validate();
+        $validate   = $request->validate([
+            'argument'  => 'required'
+        ]);
 
         if($validate){
-            $result     = DevelopmentChild::where('id',$id)->update([$request->argument]);
+            $result     = DevelopmentChild::where('id',$request->id)->update($validate);
         }
 
         if($result){

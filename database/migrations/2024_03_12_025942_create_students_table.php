@@ -30,6 +30,7 @@ return new class extends Migration
             $table->enum('registration_status',[0,1])->nullable();
             $table->enum('payment_status',[0,1])->nullable();
             $table->string('payment_image',255)->nullable();
+            $table->enum('stats_gradulation',[0,1])->default(0);
             $table->timestamps();
         });
     }

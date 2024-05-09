@@ -35,6 +35,7 @@
                 <div class="modal-body">
                     <form id="form" method="post" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" id="id">
                         <div class="mb-3 row">
                             <label for="title" class="col-sm-4 col-form-label">Deskripsi</label>
                             <div class="col-sm-8">
@@ -96,8 +97,8 @@
                     // open modal
                     $('#modal').modal('toggle');
 
-                    method = 'PUT';
-                    formUrl = `/info/${id}`;
+                    method = 'post';
+                    formUrl = `/updateInfo`;
                 }
             }
 

@@ -14,13 +14,14 @@
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
-                            <th class="col-4">Nama Anak</th>
+                            <th class="col-2">Nama Anak</th>
                             <th class="col-2">Umur Anak (Tahun)</th>
                             <th>Telepon/No. Hp</th>
                             <th>E-mail</th>
                             <th>Status Registrasi</th>
                             <th>Validasi</th>
                             <th>Status Pembayaran</th>
+                            <th>Bukti Pembayaran</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -121,6 +122,11 @@
                         data: "payment_status",
                         orderable: true,
                         searchable: true
+                    },
+                    {
+                        data: "payment_image",
+                        orderable: true,
+                        searchable: true
                     }
                 ],
                 "columnDefs": [
@@ -151,6 +157,11 @@
                     return '<span class="badge '+color+'">'+status+'</span>'
                 },
                 "targets": 7},
+                {"render": function ( data, type, row, meta ) {
+
+                    return "<a href="+row.payment_image+" target='blank'><span class='badge bg-success' >Gambar</span></a>"
+                },
+                "targets": 8},
             ]
             });
 

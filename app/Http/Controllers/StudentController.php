@@ -33,6 +33,10 @@ class StudentController extends Controller
         ->addColumn('payment_status',function($data){
             return $data->payment_status ==1?"PAID":"NOT PAID";
         })
+        ->addColumn('payment_image', function ($result) {
+            $image  = asset('storage/' . $result->payment_image);
+            return $image;
+        })
         ->addColumn('status', function ($data) {
             return $data->registration_status == 1?"Student":"Waiting list";
         })->make(true);
