@@ -37,7 +37,7 @@
 <div class="modal-body">
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
-    <input type="text" id="student_id" name="student_id">
+    <input type="hidden" id="student_id" name="student_id">
     <table class="table table-bordered w-100" id="dt-assessment">
         <thead>
             <tr class="text-center">
@@ -107,46 +107,9 @@
                         }
                     }
 
-                    function sad(id,value){
 
-console.log($("#student_id").val())
-}
 
-                    $("form").submit(function (e) {
-                        e.preventDefault();
-                        var formData = new FormData(this);
-                        $.ajax({
-                            url: formUrl,
-                            type: method,
-                            data: formData,
-                            processData: false,
-                            contentType: false, // Pastikan konten tipe diatur ke false
-                            success: function (data, textStatus, jqXHR) {
 
-                                let view = jQuery.parseJSON(data);
-                                if (view.status == true) {
-                                    toastr.success(view.message);
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 1000);
-                                } else {
-                                    toastr.error(view.message);
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 1000);
-                                }
-                            },
-                            error: function (reject) {
-
-                                var response = $.parseJSON(reject.responseText);
-                                $.each(response.errors, function (key, val) {
-                                    $("#" + key + "_error").text(val[0]);
-                                })
-
-                            }
-
-                        });
-                    });
 
                     $(document).ready(function () {
 
@@ -217,21 +180,72 @@ console.log($("#student_id").val())
                             ],
                             "columnDefs": [
                                 {"render": function ( data, type, row, meta ) {
-                                return '<input name="flexRadioDefault" id="sad" type="radio" value="1" onclick="sad('+row.id+',1)"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
+                                return '<input name="flexRadioDefault" id="sad" type="radio" value="1" onclick="setSad('+row.id+',1)"> <label for="sad" class="value-assessment"> <img src="{!! asset("assets/img/sad.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 2},
                                 {"render": function ( data, type, row, meta ) {
-                                    return '<input name="flexRadioDefault" id="happiness" type="radio" value="3" onclick="happiness('+row.id+',3)"> <label for="happiness" class="value-assessment"> <img src="{!! asset("assets/img/happiness.png")!!}" alt="happiness" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return '<input name="flexRadioDefault" id="happiness" type="radio" value="3" onclick="setHappiness('+row.id+',3)"> <label for="happiness" class="value-assessment"> <img src="{!! asset("assets/img/happiness.png")!!}" alt="happiness" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 3},
                                 {"render": function ( data, type, row, meta ) {
-                                    return '<input name="flexRadioDefault" id="happy" type="radio" value="5" onclick="happy('+row.id+',5)"> <label for="happy" class="value-assessment"> <img src="{!! asset("assets/img/happy.png")!!}" alt="happy" width="50" height="50" class="mx-auto d-block" </label>'
+                                    return '<input name="flexRadioDefault" id="happy" type="radio" value="5" onclick="setHappy('+row.id+',5)"> <label for="happy" class="value-assessment"> <img src="{!! asset("assets/img/happy.png")!!}" alt="happy" width="50" height="50" class="mx-auto d-block" </label>'
                                 },
                                 "targets": 4}
                             ]
 
                         });
                     })
+
+
+                    function setSad(id,value){
+                        submit(id,value)
+                    }
+
+                    function setHappy(id,value){
+                        submit(id,value)
+                    }
+
+                    function setHappiness(id,value){
+                        submit(id,value)
+                    }
+
+                    function submit(id, value){
+
+                        $.ajax({
+                            url: `/submitAssessment`,
+                            type: 'post',
+                            cache: false,
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "id"    : id,
+                                "score" : value,
+                                "student_id" : $('#student_id').val()
+                            },
+
+                            success: function (data, textStatus, jqXHR) {
+
+                                let view = jQuery.parseJSON(data);
+                                if (view.status == true) {
+                                    toastr.success(view.message);
+                                
+                                } else {
+                                    toastr.error(view.message);
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 1000);
+                                }
+                            },
+                            error: function (reject) {
+
+                                var response = $.parseJSON(reject.responseText);
+                                $.each(response.errors, function (key, val) {
+                                    $("#" + key + "_error").text(val[0]);
+                                })
+
+                            }
+
+                        });
+                    }
 
 
                 </script>

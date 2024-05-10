@@ -62,14 +62,27 @@ class TransDeveloperChildernController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            "data"                             => 'array',
-            "data.*.student_id"                => 'requred',
-            "data.*.development_childerns_id"  => 'required',
-            "data.*.score"                     => 'required'
-        ]);
+        $data   = TransDevelopmentChild::where('development_childerns_id',$request->id)->where('student_id',$request->student_id)->first();
+        if($data){
+            $update = [
+                'student_id'                => $request->student_id,
+                'development_childerns_id'   => $request->id,
+                'score'                     => $request->score
+            ];
 
-        $result   = TransDevelopmentChild::insert($request->input("data"));
+            $result = TransDevelopmentChild::where('development_childerns_id',$request->id)->where('student_id',$request->student_id)->update($update);
+
+        }else{
+            $insert = [
+                'student_id'                => $request->student_id,
+                'development_childerns_id'   => $request->id,
+                'score'                     => $request->score
+            ];
+
+            $result = TransDevelopmentChild::create($insert);
+        }
+
+
         if($result){
             $message = array(
                 'status'    => true,
