@@ -27,6 +27,7 @@
                         <th>Kurang Baik</th>
                         <th>Baik</th>
                         <th>Sangat Baik</th>
+                        <th>Score</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,6 +92,12 @@
                     },
                     {
                         data: "index",
+                        orderable: true,
+                        searchable: true,
+                        class: "text-center"
+                    },
+                    {
+                        data: "score",
                         orderable: true,
                         searchable: true,
                         class: "text-center"

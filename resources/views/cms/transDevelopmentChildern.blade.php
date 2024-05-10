@@ -46,6 +46,7 @@
                 <th>Kurang Baik</th>
                 <th>Baik</th>
                 <th>Sangat Baik</th>
+                <th>Score</th>
             </tr>
         </thead>
         <tbody>
@@ -176,6 +177,11 @@
                                     data: "happy",
                                     orderable: true,
                                     searchable: true
+                                },
+                                {
+                                    data: "score",
+                                    orderable: true,
+                                    searchable: true
                                 }
                             ],
                             "columnDefs": [
@@ -227,7 +233,7 @@
                                 let view = jQuery.parseJSON(data);
                                 if (view.status == true) {
                                     toastr.success(view.message);
-                                
+
                                 } else {
                                     toastr.error(view.message);
                                     setTimeout(function () {
