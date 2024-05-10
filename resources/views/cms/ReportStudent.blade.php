@@ -19,6 +19,7 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="syudent_id" id="student_id" value="{{ $user->student_id }}">
             <table class="table table-bordered w-100" id="dt-assessment">
                 <thead>
                     <tr class="text-center">
@@ -57,7 +58,7 @@
 
 
         $(document).ready(function() {
-
+            var data = $('#student_id').val();
             $('#dt-assessment').DataTable({
                 "destroy": true,
                 "processing": true,
@@ -66,7 +67,7 @@
                     "url": "{{ route('getReportAssessment') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
-                        "student_id": data.id
+                        "student_id": data
                     },
                     "type": "post",
                 },

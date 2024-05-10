@@ -18,11 +18,11 @@ class ReportStudent extends Controller
     public function reportStudent(){
         $data   = TransDevelopmentChild::where('student_id',Auth::user()->student_id)->get();
 
-        if($data == false){
+        // if($data == false){
             $pdf    = PDF::loadView('report.assessmentStudent', $data);
 
         return $pdf->download('Report-Assesment-'.Auth::user()->student_name.'.pdf');
-        }
+        // }
 
 
     }

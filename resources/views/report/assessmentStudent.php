@@ -38,6 +38,7 @@
                     <img src="{!! asset('assets/img/happy.png')!!}" alt="sad" width="50" height="50" class="mx-auto d-block">
                 </label>
                 </td>
+                <td>{{ $d->score }}</td>
             </tr>
             @endforeach
         </tbody>
