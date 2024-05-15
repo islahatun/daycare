@@ -37,6 +37,7 @@
 <div class="modal-body">
 <form id="form" method="post" enctype="multipart/form-data">
     @csrf
+    <select name="" id=""></select>
     <input type="hidden" id="student_id" name="student_id">
     <table class="table table-bordered w-100" id="dt-assessment">
         <thead>

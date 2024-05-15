@@ -3,47 +3,31 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Kider - DayCare</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Daycare</title>
-    <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- Favicons -->
-    <link href="{!! asset('assets-home/img/favicon.png') !!}" rel="icon">
-    <link href="{!! asset('assets-home/img/apple-touch-icon.png') !!}" rel="apple-touch-icon">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{!! asset('assets-home/vendor/aos/aos.css') !!}" rel="stylesheet">
-    <link href="{!! asset('assets-home/vendor/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
-    <link href="{!! asset('assets-home/vendor/bootstrap-icons/bootstrap-icons.css') !!}" rel="stylesheet">
-    <link href="{!! asset('assets-home/vendor/glightbox/css/glightbox.min.css') !!}" rel="stylesheet">
-    <link href="{!! asset('assets-home/vendor/remixicon/remixicon.css') !!}" rel="stylesheet">
-    <link href="{!! asset('assets-home/vendor/swiper/swiper-bundle.min.css') !!}" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Template jquery datatables File -->
-    <link href="{!! asset('assets/datatables/datatables.min.css') !!}" rel="stylesheet">
-
-    <!-- Template jquery ui File -->
-    <link href="{!! asset('assets/jquery-ui/jquery-ui.min.css') !!}" rel="stylesheet">
-
-    <!-- Template toastr File -->
-    <link href="{!! asset('assets/toastr/toastr.min.css') !!}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{!! asset('assets-home/css/style.css') !!}" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="{!! asset('assets-kider/lib/animate/animate.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('assets-kider/lib/owlcarousel/assets/owl.carousel.min.css') !!}" rel="stylesheet">
 
 
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{!! asset('assets-kider/css/bootstrap.min.css') !!}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: FlexStart
-  * Updated: Mar 12 2024 with Bootstrap v5.3.3
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- Template Stylesheet -->
+    <link href="{!! asset('assets-kider/css/style.css') !!}" rel="stylesheet">
+</head>
