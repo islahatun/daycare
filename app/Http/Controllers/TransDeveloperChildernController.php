@@ -28,33 +28,49 @@ class TransDeveloperChildernController extends Controller
         //
     }
 
-    public function getDataStudent(){
+    public function getDataStudent()
+    {
         $result         = Student::all();
 
         return DataTables::of($result)->addIndexColumn()
-        ->addColumn('status', function ($data) {
-            return $data->registration_status == 1?"Student":"Waiting list";
-        })
-        ->addColumn('sad', function ($result) {
-            $image  = asset('assets/img/sad.png' );
-            return $image;
-        })
-        ->addColumn('happiness', function ($result) {
-            $image  = asset('assets/img/happiness.png' );
-            return $image;
-        })
-        ->addColumn('happy', function ($result) {
-            $image  = asset('assets/img/happy.png' );
-            return $image;
-        })
-        ->make(true);
-
+            ->addColumn('status', function ($data) {
+                return $data->registration_status == 1 ? "Student" : "Waiting list";
+            })
+            ->addColumn('sad', function ($result) {
+                $image  = asset('assets/img/sad.png');
+                return $image;
+            })
+            ->addColumn('happiness', function ($result) {
+                $image  = asset('assets/img/happiness.png');
+                return $image;
+            })
+            ->addColumn('happy', function ($result) {
+                $image  = asset('assets/img/happy.png');
+                return $image;
+            })
+            ->make(true);
     }
 
-    public function getDataAssessment(){
-        $result     = DevelopmentChild::all();
+    public function getDataAssessment($from = null)
+    {
+        $data_trans     = TransDevelopmentChild::where('assessment_from', $from)->get();
+        // dd($data_trans);
+        if ($data_trans->isEmpty()) {
+            $result     = DevelopmentChild::all();
+            return DataTables::of($result)->addIndexColumn()
+                ->addColumn('score', function ($data) {
+                    return '';
+                })
+                ->make(true);
+        } else {
+            $result     = TransDevelopmentChild::where('assessment_from', $from)->get();
 
-        return DataTables::of($result)->addIndexColumn()->make(true);
+            return DataTables::of($result)->addIndexColumn()
+                ->addColumn('argument', function ($data) {
+                    return $data->assessment->argument;
+                })
+                ->make(true);
+        }
     }
 
     /**
@@ -62,33 +78,34 @@ class TransDeveloperChildernController extends Controller
      */
     public function store(Request $request)
     {
-        $data   = TransDevelopmentChild::where('development_childerns_id',$request->id)->where('student_id',$request->student_id)->first();
-        if($data){
+        $data   = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->where('assessment_from',$request->assessment_from)->first();
+        if ($data) {
             $update = [
                 'student_id'                => $request->student_id,
-                'development_childerns_id'   => $request->id,
-                'score'                     => $request->score
+                'development_childerns_id'  => $request->id,
+                'score'                     => $request->score,
+                'assessment_from'           => $request->assessment_from
             ];
 
-            $result = TransDevelopmentChild::where('development_childerns_id',$request->id)->where('student_id',$request->student_id)->update($update);
-
-        }else{
+            $result = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->update($update);
+        } else {
             $insert = [
                 'student_id'                => $request->student_id,
-                'development_childerns_id'   => $request->id,
-                'score'                     => $request->score
+                'development_childerns_id'  => $request->id,
+                'score'                     => $request->score,
+                'assessment_from'           => $request->assessment_from
             ];
 
             $result = TransDevelopmentChild::create($insert);
         }
 
 
-        if($result){
+        if ($result) {
             $message = array(
                 'status'    => true,
                 'message'   => 'Data berhasil disimpan'
             );
-        }else{
+        } else {
             $message = array(
                 'status'    => false,
                 'message'   => 'Data gagal disimpan'
@@ -130,7 +147,7 @@ class TransDeveloperChildernController extends Controller
 
         try {
 
-            TransDevelopmentChild::where('student_id',$id)->delete();
+            TransDevelopmentChild::where('student_id', $id)->delete();
             TransDevelopmentChild::insert($request->input("data"));
 
             DB::commit();
@@ -139,7 +156,6 @@ class TransDeveloperChildernController extends Controller
                 'status'    => true,
                 'message'   => 'Data berhasil disimpan'
             );
-
         } catch (\Throwable $th) {
             DB::rollBack();
 

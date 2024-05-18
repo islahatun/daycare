@@ -3,7 +3,7 @@
 @section('container')
     <div class="p-3"></div>
     <div class="d-flex justify-content-center p-5">
-        <div class="card border-primary mb-3 w-80">
+        <div class="card border-primary mb-3">
             <div class="text-primary p-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">

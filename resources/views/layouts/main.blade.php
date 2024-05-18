@@ -1,4 +1,5 @@
 @include('partials.home.header')
+@yield('style')
 
 <body>
     <div class="container-fluid">
@@ -10,6 +11,7 @@
         </div>
         <!-- Spinner End -->
         @include('partials.home.navbar')
+        @yield('carousel')
 
         @yield('container')
 
@@ -20,3 +22,4 @@
     </div>
 
     @include('partials.home.footer')
+    @yield('script')
