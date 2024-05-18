@@ -30,4 +30,16 @@
 
     <!-- Template Stylesheet -->
     <link href="{!! asset('assets-kider/css/style.css') !!}" rel="stylesheet">
+
+        <!-- Template jquery datatables File -->
+        <link href="{!! asset('assets/datatables/datatables.min.css') !!}" rel="stylesheet">
+
+        <!-- Template jquery ui File -->
+        <link href="{!! asset('assets/jquery-ui/jquery-ui.min.css') !!}" rel="stylesheet">
+
+        <!-- Template toastr File -->
+        <link href="{!! asset('assets/toastr/toastr.min.css') !!}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{!! asset('assets-home/css/style.css') !!}" rel="stylesheet">
 </head>

@@ -25,7 +25,7 @@
                     <span>Penilaian Anak</span>
                 </a>
             </li><!-- End Profile Page Nav -->
-        @else
+        @elseif(Auth()->user()->role == 'Admininstrator')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/students">
                     <i class="bi bi-question-circle"></i>
@@ -63,7 +63,7 @@
                     <span>Info</span>
                 </a>
             </li><!-- End Register Page Nav -->
-
+        @elseif(Auth()->user()->role == 'Teacher')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/activityChildern">
                     <i class="bi bi-card-list"></i>
@@ -84,6 +84,19 @@
                 </a>
             </li><!-- End Register Page Nav -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/report">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Report</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+        @elseif(Auth()->user()->role == 'Headmaster')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/profile">
+                    <i class="bi bi-person"></i>
+                    <span>Profil</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/report">
                     <i class="bi bi-box-arrow-in-right"></i>
