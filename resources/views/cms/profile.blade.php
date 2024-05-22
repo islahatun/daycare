@@ -100,6 +100,79 @@
                 </form>
             </div>
         </div>
+    @elseif ($roleUser ==='Teacher')
+    <div class="card">
+        <div class="card-header">
+            Profile
+        </div>
+        <div class="card-body mb-3">
+            <form id="FormRegister" method="post" enctype="multipart/form-data"
+                action="/profileTeacher/{{ $student->id }}">
+                @csrf
+                @method('PUT')
+                <div class="mb-3 row">
+                    <label for="name_teacher" class="col-sm-4 col-form-label">Nama Guru</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name_teacher" name="name_teacher" value="{{ $teacher->name_teacher }}" ></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="birth_date" class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $teacher->birth_date }}" ></div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="birth_city" class="col-sm-4 col-form-label">Tempat Lahir</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="birth_city" name="birth_city" value="{{ $teacher->birth_city }}" ></div>
+                            </div>
+                        <div class="mb-3 row">
+                            <label for="telp" class="col-sm-4 col-form-label">No Telepon/ No Hp</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="telp" name="telp" value="{{ $teacher->telp }}" ></div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="address" class="col-sm-4 col-form-label">Alamat</label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" id="address" name="address"></textarea value="{{ $teacher->address }}" ></div>
+                                </div>
+                            <div class="mb-3 row">
+                                <label for="graduate_of" class="col-sm-4 col-form-label">Jenjang pendidika (SMA/D3/S1/S2/S3)</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="graduate_of" name="graduate_of" value="{{ $teacher->graduate_of }}" ></div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="major" class="col-sm-4 col-form-label">Jurusan</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="major" name="major" value="{{ $teacher->major }}" ></div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="university" class="col-sm-4 col-form-label">Universitas</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="university" name="university" value="{{ $teacher->university }}" ></div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="graduation_year" class="col-sm-4 col-form-label">Tahun Lulus</label>
+                                            <div class="col-sm-8">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="graduation_year"
+                                                    name="graduation_year" value="{{ $teacher->graduation_year }}" ></div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="image_teacher" class="col-sm-4 col-form-label">Poto Profil</label>
+                                                <div class="col-sm-8">
+                                                    <img src="{!! asset('storage/' . $teacher->image_teacher) !!}" width="100" height="100">
+                                                    <input type="file" class="form-control" id="image_teacher" name="image_teacher"  ></div>
+                                                </div>
+
+                                            </div>
+                <div class="card text-end">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
     @endif
 
 

@@ -45,7 +45,8 @@ class activityChildernController extends Controller
             'title'         => 'required',
             'description'   => 'required',
             'image'         => 'required',
-            'date'          => 'required'
+            'date'          => 'required',
+            'status'        => 'required'
         ]);
 
         if ($request->file('image')) {
@@ -97,7 +98,8 @@ class activityChildernController extends Controller
         $validate = $request->validate([
             'title'         => 'required',
             'description'   => 'required',
-            'date'          => 'required'
+            'date'          => 'required',
+            'status'        => 'required'
         ]);
 
         if ($request->file('image')) {

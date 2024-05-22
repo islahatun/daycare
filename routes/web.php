@@ -83,3 +83,4 @@ Route::get('/getInfo', [InfoController::class, 'getData'])->name('getInfo');
 
 Route::post('/profileStudent', [ProfileController::class, 'update']);
 Route::PUT('/profileUser/{id}', [ProfileController::class, 'updateUser']);
+Route::PUT('/profileTeacher/{id}', [ProfileController::class, 'updateTeacher']);

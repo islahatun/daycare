@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class ProfileController extends Controller
 
         $roleUser   = Auth::User()->role;
         $user       = Auth::User();
-        $student    = Student::find($user->student_id);
+        $student    = Student::find($user->personal_id);
+        $teacher    = Teacher::find($user->personal_id);
         return view('cms.profile', compact('roleUser', 'user','student'));
     }
 
@@ -136,6 +138,46 @@ class ProfileController extends Controller
         }
         // echo json_encode($message);
         return redirect()->intended('/profile');
+    }
+
+    public function profileTeacher(Request $request, $id){
+
+        $validate = $request->validate([
+            'name_teacher'      => 'required',
+            'birth_date'        => 'required',
+            'birth_city'        => 'required',
+            'address'           => 'required',
+            'graduate_of'       => 'required',
+            'major'             => 'required',
+            'university'        => 'required',
+            'graduation_year'   => 'required'
+        ]);
+
+        if ($request->file('image_teacher')) {
+            $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Upload Photo failed'
+            );
+        }
+
+        $result = Teacher::where('id',$id)->update($validate);
+        if($result){
+            $message = array(
+                'status' => true,
+                'message' => 'Data updated successfuly'
+            );
+        }else{
+            $message = array(
+                'status' => false,
+                'message' => 'Data updated failed'
+            );
+        }
+
+        // echo json_encode($message);
+        return redirect()->intended('/profile');
+
     }
 
     /**

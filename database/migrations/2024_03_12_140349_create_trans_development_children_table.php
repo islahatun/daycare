@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('development_childerns_id');
             $table->double('score',2,2);
             $table->string('assessment_from')->nullable();
+            $table->string('validasi')->default('0');
             $table->timestamps();
         });
     }

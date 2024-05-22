@@ -57,7 +57,7 @@ class StudentController extends Controller
     public function validateRegis($id){
         $student    = student::find($id);
         $data       = [
-                    'student_id'    => $student->id,
+                    'personal_id'    => $student->id,
                     'name'          => $student->name,
                     'email'         => $student->email
                 ];

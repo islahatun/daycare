@@ -62,6 +62,12 @@
                         <input type="file" class="form-control" id="image" name="image"></div>
                     </div>
                 </div>
+                <div class="mb-3 row">
+                    <label for="image" class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control" id="status" name="status"></div>
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>

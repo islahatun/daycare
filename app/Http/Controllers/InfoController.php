@@ -37,7 +37,7 @@ class InfoController extends Controller
     {
         $validate   = $request->validate([
             "description"   => "required",
-            "value"         => "required"
+            "value"         => "required",
         ]);
 
         $result     = Info::create($validate);

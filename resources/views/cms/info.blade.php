@@ -48,6 +48,15 @@
                                 <input type="text" class="form-control" id="value" name="value">
                             </div>
                         </div>
+                        <div class="mb-3 row">
+                            <label for="date" class="col-sm-4 col-form-label">Isi</label>
+                            <div class="col-sm-8">
+                                <select>
+                                    <option value="1">Publish</option>
+                                    <option value="0">Private</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -204,6 +213,10 @@
                         searchable: true
                     }, {
                         data: "value",
+                        orderable: true,
+                        searchable: true
+                    },{
+                        data: "status",
                         orderable: true,
                         searchable: true
                     }],
