@@ -646,67 +646,6 @@
             "time": "2023-10-06T06:47:41+00:00"
         },
         {
-            "name": "ezyang/htmlpurifier",
-            "version": "v4.17.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/bbc513d79acf6691fa9cf10f192c90dd2957f18c",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
-            },
-            "require-dev": {
-                "cerdic/css-tidy": "^1.7 || ^2.0",
-                "simpletest/simpletest": "dev-master"
-            },
-            "suggest": {
-                "cerdic/css-tidy": "If you want to use the filter 'Filter.ExtractStyleBlocks'.",
-                "ext-bcmath": "Used for unit conversion and imagecrash protection",
-                "ext-iconv": "Converts text to and from non-UTF-8 encodings",
-                "ext-tidy": "Used for pretty-printing HTML"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "library/HTMLPurifier.composer.php"
-                ],
-                "psr-0": {
-                    "HTMLPurifier": "library/"
-                },
-                "exclude-from-classmap": [
-                    "/library/HTMLPurifier/Language/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Edward Z. Yang",
-                    "email": "admin@htmlpurifier.org",
-                    "homepage": "http://ezyang.com"
-                }
-            ],
-            "description": "Standards compliant HTML filter written in PHP",
-            "homepage": "http://htmlpurifier.org/",
-            "keywords": [
-                "html"
-            ],
-            "support": {
-                "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
-            },
-            "time": "2023-11-17T15:01:25+00:00"
-        },
-        {
             "name": "fruitcake/php-cors",
             "version": "v1.3.0",
             "source": {
@@ -2240,6 +2179,8 @@
             "time": "2024-01-28T23:22:08+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "livewire/livewire",
             "version": "v3.4.12",
             "source": {
@@ -2504,6 +2445,7 @@
             "time": "2022-12-02T22:17:43+00:00"
         },
         {
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             "name": "masterminds/html5",
             "version": "2.9.0",
             "source": {
@@ -3071,6 +3013,8 @@
             "time": "2023-02-08T01:06:31+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "openspout/openspout",
             "version": "v4.24.0",
             "source": {
@@ -3164,6 +3108,7 @@
             "time": "2024-05-10T09:06:16+00:00"
         },
         {
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             "name": "phenx/php-font-lib",
             "version": "0.5.6",
             "source": {
@@ -3252,6 +3197,8 @@
                 "source": "https://github.com/dompdf/php-svg-lib/tree/0.5.4"
             },
             "time": "2024-04-08T12:52:34+00:00"
+<<<<<<< HEAD
+=======
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -3357,6 +3304,7 @@
                 "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.0"
             },
             "time": "2023-06-14T22:48:31+00:00"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
         },
         {
             "name": "phpoption/phpoption",
@@ -4392,6 +4340,18 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
+            "version": "v7.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc",
+                "reference": "b08a4ad89e84b29cec285b7b1f781a7ae51cf4bc",
+=======
             "version": "v6.4.7",
             "source": {
                 "type": "git",
@@ -4402,10 +4362,11 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/1c5d5c2103c3762aff27a27e1e2409e30a79083b",
                 "reference": "1c5d5c2103c3762aff27a27e1e2409e30a79083b",
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
+                "php": ">=8.2"
             },
             "type": "library",
             "autoload": {
@@ -4437,7 +4398,11 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/css-selector/tree/v7.0.7"
+=======
                 "source": "https://github.com/symfony/css-selector/tree/v6.4.7"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             },
             "funding": [
                 {
@@ -4453,7 +4418,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2024-04-18T09:29:19+00:00"
+=======
             "time": "2024-04-18T09:22:46+00:00"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4599,6 +4568,18 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
+            "version": "v7.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "db2a7fab994d67d92356bb39c367db115d9d30f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/db2a7fab994d67d92356bb39c367db115d9d30f9",
+                "reference": "db2a7fab994d67d92356bb39c367db115d9d30f9",
+=======
             "version": "v6.4.7",
             "source": {
                 "type": "git",
@@ -4609,14 +4590,15 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/d84384f3f67de3cb650db64d685d70395dacfc3f",
                 "reference": "d84384f3f67de3cb650db64d685d70395dacfc3f",
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "symfony/event-dispatcher-contracts": "^2.5|^3"
             },
             "conflict": {
-                "symfony/dependency-injection": "<5.4",
+                "symfony/dependency-injection": "<6.4",
                 "symfony/service-contracts": "<2.5"
             },
             "provide": {
@@ -4625,13 +4607,13 @@
             },
             "require-dev": {
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^5.4|^6.0|^7.0",
-                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
-                "symfony/error-handler": "^5.4|^6.0|^7.0",
-                "symfony/expression-language": "^5.4|^6.0|^7.0",
-                "symfony/http-foundation": "^5.4|^6.0|^7.0",
+                "symfony/config": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/error-handler": "^6.4|^7.0",
+                "symfony/expression-language": "^6.4|^7.0",
+                "symfony/http-foundation": "^6.4|^7.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/stopwatch": "^5.4|^6.0|^7.0"
+                "symfony/stopwatch": "^6.4|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -4659,7 +4641,11 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/event-dispatcher/tree/v7.0.7"
+=======
                 "source": "https://github.com/symfony/event-dispatcher/tree/v6.4.7"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             },
             "funding": [
                 {
@@ -4675,7 +4661,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2024-04-18T09:29:19+00:00"
+=======
             "time": "2024-04-18T09:22:46+00:00"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -6113,6 +6103,18 @@
         },
         {
             "name": "symfony/string",
+<<<<<<< HEAD
+            "version": "v7.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "e405b5424dc2528e02e31ba26b83a79fd4eb8f63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/e405b5424dc2528e02e31ba26b83a79fd4eb8f63",
+                "reference": "e405b5424dc2528e02e31ba26b83a79fd4eb8f63",
+=======
             "version": "v6.4.7",
             "source": {
                 "type": "git",
@@ -6123,10 +6125,11 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/ffeb9591c61f65a68d47f77d12b83fa530227a69",
                 "reference": "ffeb9591c61f65a68d47f77d12b83fa530227a69",
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-intl-grapheme": "~1.0",
                 "symfony/polyfill-intl-normalizer": "~1.0",
@@ -6136,11 +6139,11 @@
                 "symfony/translation-contracts": "<2.5"
             },
             "require-dev": {
-                "symfony/error-handler": "^5.4|^6.0|^7.0",
-                "symfony/http-client": "^5.4|^6.0|^7.0",
-                "symfony/intl": "^6.2|^7.0",
+                "symfony/error-handler": "^6.4|^7.0",
+                "symfony/http-client": "^6.4|^7.0",
+                "symfony/intl": "^6.4|^7.0",
                 "symfony/translation-contracts": "^2.5|^3.0",
-                "symfony/var-exporter": "^5.4|^6.0|^7.0"
+                "symfony/var-exporter": "^6.4|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -6179,7 +6182,11 @@
                 "utf8"
             ],
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/string/tree/v7.0.7"
+=======
                 "source": "https://github.com/symfony/string/tree/v6.4.7"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             },
             "funding": [
                 {
@@ -6195,7 +6202,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2024-04-18T09:29:19+00:00"
+=======
             "time": "2024-04-18T09:22:46+00:00"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
         },
         {
             "name": "symfony/translation",
@@ -6800,23 +6811,22 @@
         },
         {
             "name": "yajra/laravel-datatables",
-            "version": "v10.1.0",
+            "version": "v10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/datatables.git",
-                "reference": "7837d079edd88f088755a62b254e32068dfe16e1"
+                "reference": "5a65f1b611a53a07530915619869ec87dcb823ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/datatables/zipball/7837d079edd88f088755a62b254e32068dfe16e1",
-                "reference": "7837d079edd88f088755a62b254e32068dfe16e1",
+                "url": "https://api.github.com/repos/yajra/datatables/zipball/5a65f1b611a53a07530915619869ec87dcb823ad",
+                "reference": "5a65f1b611a53a07530915619869ec87dcb823ad",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1",
                 "yajra/laravel-datatables-buttons": "^10",
                 "yajra/laravel-datatables-editor": "1.*",
-                "yajra/laravel-datatables-export": "^10",
                 "yajra/laravel-datatables-fractal": "^10",
                 "yajra/laravel-datatables-html": "^10",
                 "yajra/laravel-datatables-oracle": "^10"
@@ -6845,7 +6855,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/datatables/issues",
-                "source": "https://github.com/yajra/datatables/tree/v10.1.0"
+                "source": "https://github.com/yajra/datatables/tree/v10.0.0"
             },
             "funding": [
                 {
@@ -6853,7 +6863,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-20T05:26:34+00:00"
+            "time": "2023-02-07T09:44:57+00:00"
         },
         {
             "name": "yajra/laravel-datatables-buttons",
@@ -7012,79 +7022,6 @@
                 }
             ],
             "time": "2023-02-21T06:57:59+00:00"
-        },
-        {
-            "name": "yajra/laravel-datatables-export",
-            "version": "v10.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yajra/laravel-datatables-export.git",
-                "reference": "18a1a22195af7b22b03ba07b47946b1e0aa176f2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-export/zipball/18a1a22195af7b22b03ba07b47946b1e0aa176f2",
-                "reference": "18a1a22195af7b22b03ba07b47946b1e0aa176f2",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "livewire/livewire": "^2.11.2|^3.0.1",
-                "openspout/openspout": "^4.12.1",
-                "php": "^8.1",
-                "phpoffice/phpspreadsheet": "^1.27",
-                "yajra/laravel-datatables": "^10.0"
-            },
-            "require-dev": {
-                "nunomaduro/larastan": "^2.4.1",
-                "orchestra/testbench": "^8.0.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "10.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Yajra\\DataTables\\ExportServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Yajra\\DataTables\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com"
-                }
-            ],
-            "description": "Laravel DataTables Queued Export Plugin.",
-            "keywords": [
-                "datatables",
-                "excel",
-                "export",
-                "laravel",
-                "livewire",
-                "queue"
-            ],
-            "support": {
-                "issues": "https://github.com/yajra/laravel-datatables-export/issues",
-                "source": "https://github.com/yajra/laravel-datatables-export/tree/v10.1.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/yajra",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-11-14T12:59:00+00:00"
         },
         {
             "name": "yajra/laravel-datatables-fractal",
@@ -9631,6 +9568,18 @@
         },
         {
             "name": "symfony/yaml",
+<<<<<<< HEAD
+            "version": "v7.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "0d3916ae69ea28b59d94b60c4f2b50f4e25adb5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0d3916ae69ea28b59d94b60c4f2b50f4e25adb5c",
+                "reference": "0d3916ae69ea28b59d94b60c4f2b50f4e25adb5c",
+=======
             "version": "v6.4.7",
             "source": {
                 "type": "git",
@@ -9641,18 +9590,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/53e8b1ef30a65f78eac60fddc5ee7ebbbdb1dee0",
                 "reference": "53e8b1ef30a65f78eac60fddc5ee7ebbbdb1dee0",
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
-                "symfony/deprecation-contracts": "^2.5|^3",
+                "php": ">=8.2",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "symfony/console": "<5.4"
+                "symfony/console": "<6.4"
             },
             "require-dev": {
-                "symfony/console": "^5.4|^6.0|^7.0"
+                "symfony/console": "^6.4|^7.0"
             },
             "bin": [
                 "Resources/bin/yaml-lint"
@@ -9683,7 +9632,11 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/yaml/tree/v7.0.7"
+=======
                 "source": "https://github.com/symfony/yaml/tree/v6.4.7"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
             },
             "funding": [
                 {
@@ -9699,7 +9652,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2024-04-28T11:44:19+00:00"
+=======
             "time": "2024-04-28T10:28:08+00:00"
+>>>>>>> 8192ecb239b103db5f1852636f5262812402106e
         },
         {
             "name": "theseer/tokenizer",
