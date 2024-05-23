@@ -41,6 +41,8 @@ Route::get('/re-registration/{id}', [AuthController::class, 're_registration']);
 Route::post('/submitRegistration', [AuthController::class, 'submitRegistration']);
 route::get('/data-list', [AuthController::class, 'getDataList'])->name('getDataList');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard-chart', [DashboardController::class, 'chartData'])->middleware('auth');
+
 
 Route::resource('students', StudentController::class)->middleware('auth');
 Route::get('/getDataListStudents', [StudentController::class, 'getData'])->name('getDataListStudents')->middleware('auth');

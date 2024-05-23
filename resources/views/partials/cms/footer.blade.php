@@ -53,6 +53,11 @@
 <script src="{!! asset('assets/node_modules/jquery-deserialize/src/jquery.deserialize.js') !!}"></script>
 <!-- jquery-deserialize modif -->
 
+<!-- apexChart -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- apexChart end -->
+
+
 <!-- Template jquery ui File -->
 <script src="{!! asset('assets/jquery-ui/jquery-ui.min.js') !!}"></script>
 
