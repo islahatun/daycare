@@ -154,12 +154,13 @@
 
             function onchangeData() {
                 var from = $('#assessment_from_val').val();
+                var student_id = $('#student_id').val();
                 dt_assessment = $('#dt-assessment').DataTable({
                     "destroy": true,
                     "processing": true,
                     "select": true,
                     "ajax": {
-                        "url": "/getData-assessment/" + from
+                        "url": "/getData-assessment/" + from + '/'+student_id
                     },
                     "columns": [{
                             data: "DT_RowIndex",

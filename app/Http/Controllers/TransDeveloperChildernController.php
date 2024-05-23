@@ -51,9 +51,9 @@ class TransDeveloperChildernController extends Controller
             ->make(true);
     }
 
-    public function getDataAssessment($from = null)
+    public function getDataAssessment($from = null,$student_id)
     {
-        $data_trans     = TransDevelopmentChild::where('assessment_from', $from)->get();
+        $data_trans     = TransDevelopmentChild::where('assessment_from', $from)->where('student_id',$student_id)->get();
         // dd($data_trans);
         if ($data_trans->isEmpty()) {
             $result     = DevelopmentChild::all();
@@ -63,7 +63,7 @@ class TransDeveloperChildernController extends Controller
                 })
                 ->make(true);
         } else {
-            $result     = TransDevelopmentChild::where('assessment_from', $from)->get();
+            $result     = TransDevelopmentChild::where('assessment_from', $from)->where('student_id',$student_id)->get();
 
             return DataTables::of($result)->addIndexColumn()
                 ->addColumn('argument', function ($data) {

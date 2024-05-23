@@ -60,7 +60,7 @@ class reportController extends Controller
 
     public function getReportAssessment(Request $request){
         $student_id = $request->student_id;
-        $data       = TransDevelopmentChild::where('student_id',$student_id)->get();
+        $data       = TransDevelopmentChild::where('student_id',$student_id)->where('assessment_from',$request->assessment)->get();
         return DataTables::of($data)->addIndexColumn()
         ->addColumn('argument',function($data){
             return $data->assessment->argument;

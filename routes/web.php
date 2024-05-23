@@ -62,7 +62,7 @@ Route::get('/getDataActivity', [activityChildernController::class, 'getData'])->
 
 Route::resource('trans-DevelopmentChildern', TransDeveloperChildernController::class)->middleware('auth');
 Route::get('/getData-trans-DevelopmentChildern', [TransDeveloperChildernController::class, 'getDataStudent'])->name('getDataStudent')->middleware('auth');
-Route::get('/getData-assessment/{id}', [TransDeveloperChildernController::class, 'getDataAssessment'])->name('getDataAssessment')->middleware('auth');
+Route::get('/getData-assessment/{id}/{student_id}', [TransDeveloperChildernController::class, 'getDataAssessment'])->name('getDataAssessment')->middleware('auth');
 Route::post('/submitAssessment', [TransDeveloperChildernController::class, 'store'])->name('submitAssessment')->middleware('auth');
 
 Route::get('/report', [reportController::class, 'index'])->name('indexReport');
