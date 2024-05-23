@@ -18,6 +18,7 @@
                     <th class="col-3">Judul</th>
                     <th class="col-3">Gambar</th>
                     <th class="col-2">Tanggal</th>
+                    <th class="col-2">Status</th>
                     <th>Detail</th>
                 </tr>
             </thead>
@@ -61,13 +62,16 @@
                     <div class="col-sm-8">
                         <input type="file" class="form-control" id="image" name="image"></div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="image" class="col-sm-4 col-form-label">Status</label>
+                        <div class="col-sm-8">
+                           <select name="status" id="status" class="form-control">
+                            <option value="1">Tampikan</option>
+                            <option value="0">Sembunyikan</option>
+                           </select>
+                        </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="image" class="col-sm-4 col-form-label">Status</label>
-                    <div class="col-sm-8">
-                        <input type="file" class="form-control" id="status" name="status"></div>
-                    </div>
-                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -232,6 +236,10 @@
                                     data: "date",
                                     orderable: true,
                                     searchable: true
+                                },{
+                                    data: "status",
+                                    orderable: true,
+                                    searchable: true
                                 }, {
                                     data: "index",
                                     orderable: true,
@@ -248,11 +256,23 @@
                                 },
                                 {
                                     "render": function (data, type, row, meta) {
+                                        var result ='';
+                                        if(data ==1){
+                                            result = 'Tampilkan'
+                                        }else{
+                                            result = 'Sembunyikan'
+                                        }
+                                        return result;
+                                    },
+                                    "targets": 4
+                                },
+                                {
+                                    "render": function (data, type, row, meta) {
                                         let id = row.id
                                         return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</' +
                                             'button>'
                                     },
-                                    "targets": 4
+                                    "targets": 5
                                 }
                             ]
                         });

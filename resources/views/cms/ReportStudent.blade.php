@@ -172,7 +172,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
@@ -255,7 +255,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
@@ -338,7 +338,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
@@ -421,7 +421,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
@@ -504,7 +504,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
@@ -587,7 +587,7 @@
                 "processing": true,
                 "select": true,
                 "ajax": {
-                    "url": "{{ route('getReportAssessment') }}",
+                    "url": "{{ route('getReportAssessmentStudent') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "student_id": data,
