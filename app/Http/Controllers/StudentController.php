@@ -37,6 +37,10 @@ class StudentController extends Controller
             $image  = asset('storage/' . $result->payment_image);
             return $image;
         })
+        ->addColumn('student_image', function ($result) {
+            $image  = asset('storage/' . $result->student_image);
+            return $image;
+        })
         ->addColumn('status', function ($data) {
             return $data->registration_status == 1?"Student":"Waiting list";
         })->make(true);
