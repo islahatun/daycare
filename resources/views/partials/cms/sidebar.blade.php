@@ -91,18 +91,19 @@
                 </a>
             </li><!-- End Login Page Nav -->
         @elseif(Auth()->user()->role == 'Headmaster')
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/profile">
-                    <i class="bi bi-person"></i>
-                    <span>Profil</span>
-                </a>
-            </li><!-- End Profile Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/validate">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Validasi penilaian Anak</span>
+            </a>
+        </li><!-- End Login Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/report">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Report</span>
                 </a>
             </li><!-- End Login Page Nav -->
+
         @endif
 
 

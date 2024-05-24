@@ -15,6 +15,7 @@ use App\Http\Controllers\reportController;
 use App\Http\Controllers\ReportStudent;
 use App\Http\Controllers\TransDeveloperChildernController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\validateAssessmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +87,9 @@ Route::get('/getInfo', [InfoController::class, 'getData'])->name('getInfo');
 Route::post('/profileStudent', [ProfileController::class, 'update']);
 Route::PUT('/profileUser/{id}', [ProfileController::class, 'updateUser']);
 Route::PUT('/profileTeacher/{id}', [ProfileController::class, 'updateTeacher']);
+
+
+Route::get('/validate', [validateAssessmentController::class, 'index']);
+Route::post('/submitValidate', [validateAssessmentController::class, 'validateAssessment']);
+
+
