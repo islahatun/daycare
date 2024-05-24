@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransDevelopmentChild;
@@ -10,7 +12,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('cms.index');
+        $student = Student::count();
+        $teacher = Teacher::count();
+        return view('cms.index',compact('student','teacher'));
     }
 
     public function chartData()

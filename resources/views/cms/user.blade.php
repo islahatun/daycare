@@ -37,6 +37,28 @@
                     <form id="form" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 row">
+                            <label for="birth_city" class="col-sm-4 col-form-label">Role</label>
+                            <div class="col-sm-8">
+                                <select name="role" id="role" class="form-control" onchange="changeRole()">
+                                    <option value="">-----------------</option>
+                                    <option value="Admininstrator">Admininstrator</option>
+                                    <option value="Headmaster">Kepala Sekolah</option>
+                                    <option value="Teacher">Guru</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row" id="teacher_select">
+                            <label for="birth_city" class="col-sm-4 col-form-label">Nama Guru</label>
+                            <div class="col-sm-8">
+                                <select name="personal_id" id="personal_id" class="form-control">
+                                    <option value="">-----------------</option>
+                                    @foreach ($teacher as $t )
+                                    <option value="{{ $t->id }}">{{ $t->name_teacher }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
                             <label for="name" class="col-sm-4 col-form-label">Username</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="name" name="name">
@@ -48,17 +70,6 @@
                                 <input type="text" class="form-control" id="email" name="email">
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="birth_city" class="col-sm-4 col-form-label">Role</label>
-                            <div class="col-sm-8">
-                                <select name="role" id="role" class="form-control">
-                                    <option value="Admininstrator">Admininstrator</option>
-                                    <option value="Headmaster">Kepala Sekolah</option>
-                                    <option value="Teacher">Guru</option>
-                                </select>
-                            </div>
-                        </div>
-
                         {{-- <div class="mb-3 row">
                             <label for="image_teacher" class="col-sm-4 col-form-label">Poto Profil</label>
                             <div class="col-sm-8">
@@ -81,6 +92,7 @@
         let formUrl = '';
         let fm = '#form';
         let method = '';
+        $('#teacher_select').hide();
 
         function add(obj) {
             // reset form
@@ -191,10 +203,10 @@
                     }
                 },
                 error: function(reject) {
-
                     var response = $.parseJSON(reject.responseText);
                     $.each(response.errors, function(key, val) {
-                        $("#" + key + "_error").text(val[0]);
+                        // $("#" + key + "_error").text(val[0]);
+                        toastr.error(val[0]);
                     })
 
                 }
@@ -203,6 +215,7 @@
         });
 
         $(document).ready(function() {
+
 
             dt = $('#dt').DataTable({
                 "destroy": true,
@@ -235,6 +248,14 @@
 
             initSelectRowDataTables('#dt', dt);
         })
+
+        function changeRole(){
+            if($('#role').val() == 'Teacher'){
+                $('#teacher_select').show();
+            }else{
+                $('#teacher_select').hide();
+            }
+        }
 
         function detail(id) {
             let idx = getSelectedRowDataTables(dt);

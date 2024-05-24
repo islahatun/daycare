@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        Return view('cms.user');
+        $teacher = Teacher::all();
+        Return view('cms.user',compact('teacher'));
     }
 
     /**
@@ -42,7 +44,7 @@ class UserController extends Controller
     {
         $validate   = $request->validate([
             'name'  => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'role'  => 'required',
             'name'  => 'required'
         ]);
@@ -56,7 +58,9 @@ class UserController extends Controller
         //     );
         // }
 
-        $validate['password']   = Hash::make('Password123');
+
+        $validate['password']       = Hash::make('Password123');
+        $validate['personal_id']    = $request->personal_id;
 
         $result = User::create($validate);
         $result->assignRole($request->role);
