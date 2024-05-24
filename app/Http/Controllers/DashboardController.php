@@ -79,4 +79,67 @@ class DashboardController extends Controller
 
         return response()->json($chartData);
     }
+
+    public function CahrtDataStudent(){
+        $chartStudent          = TransDevelopmentChild::with('student')
+        ->Select('assessment_from')
+        ->where('student_id',auth()->user()->personal_id)
+            ->groupBy('assessment_from')->orderBy('assessment_from')->get();
+
+        $score1         = TransDevelopmentChild::with('student')
+            ->Select('assessment_from','score', DB::raw('count(score) as total_score'))
+            ->where('score',1)
+            ->groupBy('assessment_from','score',)->orderBy('assessment_from')->get();
+
+        $score3         = TransDevelopmentChild::with('student')
+            ->Select('assessment_from','score', DB::raw('count(score) as total_score'))
+            ->where('score',3)
+            ->groupBy('assessment_from','score')->orderBy('assessment_from')->get();
+
+        $score5         = TransDevelopmentChild::with('student')
+            ->Select('assessment_from','score', DB::raw('count(score) as total_score'))
+            ->where('score',5)
+            ->groupBy('assessment_from','score')->orderBy('assessment_from')->get();
+
+        $student         = [];
+        $data1           = [];
+        $data3           = [];
+        $data5           = [];
+
+        foreach ($chartStudent as $c) {
+            $student[]    = $c->assessment_from;
+        }
+
+        foreach ($score1 as $c) {
+            $data1[] = $c->total_score;
+        }
+        foreach ($score3 as $c) {
+            $data3[] = $c->total_score;
+        }
+        foreach ($score5 as $c) {
+            $data5[] = $c->total_score;
+        }
+
+
+        $chartData      = [
+            'series'    => [
+                [
+                    'name'  => 'Kurang Baik',
+                    'data'  =>$data1
+                ],
+                [
+                    'name'  => 'Baik',
+                    'data'  =>$data3
+                ],
+                [
+                    'name'  => 'Sangat Baik',
+                    'data'  =>$data5
+                ]
+            ],
+            'categories' => $student
+        ];
+
+
+        return response()->json($chartData);
+    }
 }

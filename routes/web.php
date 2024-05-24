@@ -43,6 +43,7 @@ Route::post('/submitRegistration', [AuthController::class, 'submitRegistration']
 route::get('/data-list', [AuthController::class, 'getDataList'])->name('getDataList');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard-chart', [DashboardController::class, 'chartData'])->middleware('auth');
+Route::get('/dashboard-chart-student', [DashboardController::class, 'CahrtDataStudent'])->middleware('auth');
 
 
 Route::resource('students', StudentController::class)->middleware('auth');

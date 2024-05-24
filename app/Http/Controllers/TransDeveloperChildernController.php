@@ -84,7 +84,8 @@ class TransDeveloperChildernController extends Controller
                 'student_id'                => $request->student_id,
                 'development_childerns_id'  => $request->id,
                 'score'                     => $request->score,
-                'assessment_from'           => $request->assessment_from
+                'assessment_from'           => $request->assessment_from,
+                'validsi'                   => 0
             ];
 
             $result = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->update($update);
