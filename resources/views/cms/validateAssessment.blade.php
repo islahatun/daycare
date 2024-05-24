@@ -75,7 +75,7 @@
                 <div class="mb-3">
                     <h2 class="text-center">Peliaian 1</h2>
                     <div class="justify-content-end">
-                        <button class="btn btn-primary"  id="validasiData1" onclick="validasi1(1)">Validasi</button>
+                        <button class="btn btn-primary mb-3"  id="validasiData1" onclick="validasi1(1)">Validasi</button>
                     </div>
 
                     <table class="table table-bordered w-100 mb-3" id="dt-assessment1">
@@ -99,7 +99,7 @@
 
                 <div class="mb-3">
                     <h2 class="text-center">Penilaian 2</h2>
-                    <button class="btn btn-primary"  id="validasiData2" onclick="validasi2(2)">Validasi</button>
+                    <button class="btn btn-primary mb-3"  id="validasiData2" onclick="validasi2(2)">Validasi</button>
                     <table class="table table-bordered w-100 mb-3" id="dt-assessment2">
                         <thead>
                             <tr class="text-center">
@@ -143,7 +143,7 @@
 
                 <div class="mb-3">
                     <h2 class="content-center">Penilaian 4</h2>
-                    <button class="btn btn-primary"  id="validasiData4" onclick="validasi4(4)">Validasi</button>
+                    <button class="btn btn-primary mb-3"  id="validasiData4" onclick="validasi4(4)">Validasi</button>
                     <table class="table table-bordered w-100 mb-3" id="dt-assessment4">
                         <thead>
                             <tr class="text-center">
@@ -165,7 +165,7 @@
 
                 <div class="mb-3">
                     <h2 class="text-center">Penilaian 5</h2>
-                    <button class="btn btn-primary"  id="validasiData5" onclick="validasi5(5)">Validasi</button>
+                    <button class="btn btn-primary mb-3"  id="validasiData5" onclick="validasi5(5)">Validasi</button>
                     <table class="table table-bordered w-100 mb-3" id="dt-assessment5">
                         <thead>
                             <tr class="text-center">
@@ -187,7 +187,7 @@
 
                 <div class="mb-3">
                     <h2 class="text-center">Penilaian 6</h2>
-                    <button class="btn btn-primary"  id="validasiData6" onclick="validasi6(6)">Validasi</button>
+                    <button class="btn btn-primary mb-3"  id="validasiData6" onclick="validasi6(6)">Validasi</button>
                     <table class="table table-bordered w-100 mb-3" id="dt-assessment6">
                         <thead>
                             <tr class="text-center">
@@ -325,8 +325,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
-
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
             });
 
             $('#dt-assessment2').DataTable({
@@ -400,7 +405,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
 
             });
 
@@ -475,7 +486,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
 
             });
 
@@ -550,7 +567,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
 
             });
 
@@ -625,7 +648,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
 
             });
 
@@ -700,7 +729,13 @@
                                     return ' <label for="sad"'+style+'> <img src="{!! asset("assets/img/happy.png")!!}" alt="sad" width="50" height="50" class="mx-auto d-block"> </label>'
                                 },
                                 "targets": 4}
-                            ]
+                            ],
+                            "createdRow": function (row, data, dataIndex) {
+        // Apply custom style based on the score value
+        if (data.validasi == 1) {
+            $(row).css('background-color', '#dff0d8'); // light red for danger
+        }
+    }
 
             });
 

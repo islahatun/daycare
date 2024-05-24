@@ -809,7 +809,7 @@
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "teacher_name",
+                    data: "name_teacher",
                     orderable: true,
                     searchable: true
                 }, {
