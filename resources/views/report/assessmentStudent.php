@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ( $data as $key => $d )
+            @foreach ( $content as $key => $d )
             <tr>
                 <td align="center">{{ $key + 1 }}</td>
                 <td>{{ $d->assessment->argument }}</td>

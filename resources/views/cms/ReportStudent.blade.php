@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="syudent_id" id="student_id" value="{{ $user->student_id }}">
+            <input type="hidden" name="syudent_id" id="student_id" value="{{ $user->personal_id }}">
             <div class="mb-3">
                 <h2 class="text-center">Peliaian 1</h2>
                 <table class="table table-bordered w-100 mb-3" id="dt-assessment1">

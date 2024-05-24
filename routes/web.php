@@ -77,6 +77,7 @@ Route::post('/report/getReportAssessment', [reportController::class, 'getReportA
 // ortu
 Route::get('/reportStudent/assessment', [ReportStudent::class, 'index']);
 Route::get('/reportStudent/Printassessment', [ReportStudent::class, 'reportStudent'])->name('Printassessment');
+Route::post('/reportStudent/getReposrtStudent', [ReportStudent::class, 'getReportAssessment'])->name('getReportAssessmentStudent');
 
 Route::resource('user', UserController::class);
 Route::get('/getUser', [UserController::class, 'getData'])->name('getUser');
