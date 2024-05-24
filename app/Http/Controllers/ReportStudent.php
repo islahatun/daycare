@@ -14,15 +14,49 @@ class ReportStudent extends Controller
         $user = Auth::user();
         return view('cms.ReportStudent',compact('user'));
     }
-    public function reportStudent(){
-        $data['content']   = TransDevelopmentChild::where('student_id',Auth::user()->personal_id)->get();
 
+    public function reportStudent(){
+
+        set_time_limit(300);
+
+        $data = [
+            'content1'  => TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',1)
+                            ->where('validasi',1)
+                            ->get(),
+            'content2'  => TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',2)
+                            ->where('validasi',1)
+                            ->get(),
+            'content3'  => TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',3)
+                            ->where('validasi',1)
+                            ->get(),
+            'content4'   =>TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',4)
+                            ->where('validasi',1)
+                            ->get(),
+            'content5'   =>TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',5)
+                            ->where('validasi',1)
+                            ->get(),
+            'content6'   =>TransDevelopmentChild::with('assessment','student')
+                            ->where('student_id',Auth::user()->personal_id)
+                            ->where('assessment_from',6)
+                            ->where('validasi',1)
+                            ->get(),
+
+        ];
         // if($data == false){
             $pdf    = PDF::loadView('report.assessmentStudent', $data);
 
         return $pdf->download('Report-Assesment-'.Auth::user()->student_name.'.pdf');
         // }
-
 
     }
 
