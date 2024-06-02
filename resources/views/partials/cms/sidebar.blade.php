@@ -28,7 +28,7 @@
         @elseif(Auth()->user()->role == 'Admininstrator')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/students">
-                    <i class="bi bi-question-circle"></i>
+                    <i class="bi bi-person"></i>
                     <span>Daftar Anak</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
@@ -42,7 +42,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/teacher">
-                    <i class="bi bi-envelope"></i>
+                    <i class="bi bi-card-list"></i>
                     <span>Daftar Guru</span>
                 </a>
             </li><!-- End Contact Page Nav -->
@@ -59,7 +59,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/info">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-envelope"></i>
                     <span>Info</span>
                 </a>
             </li><!-- End Register Page Nav -->
@@ -86,20 +86,20 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/report">
-                    <i class="bi bi-box-arrow-in-right"></i>
+                    <i class="bi bi-envelope"></i>
                     <span>Report</span>
                 </a>
             </li><!-- End Login Page Nav -->
         @elseif(Auth()->user()->role == 'Headmaster')
         <li class="nav-item">
             <a class="nav-link collapsed" href="/validate">
-                <i class="bi bi-box-arrow-in-right"></i>
+                <i class="bi bi-envelope"></i>
                 <span>Validasi penilaian Anak</span>
             </a>
         </li><!-- End Login Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/report">
-                    <i class="bi bi-box-arrow-in-right"></i>
+                    <i class="bi bi-envelope"></i>
                     <span>Report</span>
                 </a>
             </li><!-- End Login Page Nav -->

@@ -27,7 +27,7 @@ class StudentController extends Controller
      */
 
     public function getData(){
-        $data   = Student::all();
+        $data   = Student::where('status_gradulation',0);
 
         return DataTables::of($data)->addIndexColumn()
         ->addColumn('payment_status',function($data){
