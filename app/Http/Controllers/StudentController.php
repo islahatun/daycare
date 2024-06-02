@@ -47,6 +47,12 @@ class StudentController extends Controller
 
     }
 
+    public function getDataGradulate(){
+        $data   = Student::where('status_gradulation',1);
+
+        return DataTables::of($data)->addIndexColumn()->make(true);
+    }
+
     public function sentEmail($id){
         $student    = Student::find($id);
         $detail     = [

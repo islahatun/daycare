@@ -7,255 +7,57 @@
         .page-break {
             page-break-after: always;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 5px;
+        }
     </style>
     <title>Report Anak</title>
 </head>
 <body>
     <h1 align="center">Report Anak</h1>
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content1 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="30" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="30" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="30" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
+    <h3>{{ Auth::user()->student->student_name }}</h3>
 
-   <div class="page-break"></div>
+    @foreach ($contents as $contentKey => $contentData)
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Deskripsi</th>
+                        <th>Penilaian</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($contentData['data'] as $key => $d)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $d->assessment->argument }}</td>
+                           <td>{{ $d->score }}</td>
+                            <td>@if ($d->score == 1)
+                                Kurang Baik
+                                @elseif ($d->score == 3)
+                                Baik
+                                @elseif ($d->score == 5)
+                                Sanagat Baik
+                            @endif</td>
+                        </tr>
 
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content2 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
-
-   <div class="page-break"></div>
-
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content3 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
-
-   <div class="page-break"></div>
-
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content4 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
-
-   <div class="page-break"></div>
-
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content5 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
-
-   <div class="page-break"></div>
-
-   <div>
-    <table border="1" cellspacing="0" style="width:100%">
-        <thead>
-            <tr align="center">
-                <th style="width:5%">No</th>
-                <th style="width:10%">Deskripsi</th>
-                <th style="width:10%">Kurang Baik</th>
-                <th style="width:10%">Baik</th>
-                <th style="width:10%">Sangat Baik</th>
-                <th style="width:10%">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ( $content6 as $key => $d )
-            <tr>
-                <td align="center">{{ $key + 1 }}</td>
-                <td>{{ $d->assessment->argument }}</td>
-                <td>
-                    <label for="sad" style="{{ $d->score == 1 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/sad.png') }}" alt="sad" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="happy" style="{{ $d->score == 3 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happiness.png') }}" alt="happy" width="10" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>
-                    <label for="very_happy" style="{{ $d->score == 5 ? 'filter: grayscale(0)' : 'filter: grayscale(1)' }}">
-                        <img src="{{ asset('assets/img/happy.png') }}" alt="very happy" width="30" height="30" class="mx-auto d-block">
-                    </label>
-                </td>
-                <td>{{ $d->score }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-   </div>
-
-   <div class="page-break"></div>
+                    @endforeach
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td>{{ $contentData['sum'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-break"></div>
+    @endforeach
 </body>
 </html>

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('trans_development_children', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id');
+            $table->foreignId('student_id')->index();
             $table->foreignId('development_childerns_id');
             $table->double('score',2,2);
-            $table->string('assessment_from')->nullable();
-            $table->string('validasi')->default('0');
+            $table->string('assessment_from')->nullable()->index();
+            $table->string('validasi')->default('0')->index();
             $table->timestamps();
         });
     }

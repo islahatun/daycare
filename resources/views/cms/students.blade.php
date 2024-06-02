@@ -33,6 +33,35 @@
 
     </div>
 
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-end ">
+                Daftar Anak Lulus
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="mt-3">
+                <table class="table table-striped w-100" id="dt-lulus">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th class="col-2">Nama Anak</th>
+                            <th class="col-1">Umur Anak (Tahun)</th>
+                            <th>Telepon/No. Hp</th>
+                            <th>E-mail</th>
+                            <th>Status Registrasi</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
     <div class="modal" id="modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -238,6 +267,68 @@
             });
 
             initSelectRowDataTables('#dt', dt);
+
+            dt = $('#dt').DataTable({
+                "destroy": true,
+                "processing": true,
+                "select": true,
+                "scrollX": true,
+                "ajax": {
+                    "url": "{{ route('getDataListStudents') }}",
+                },
+                "columns": [{
+                        data: "DT_RowIndex",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "student_name",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "student_age",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "telp",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "email",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "status",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "index",
+                        orderable: true,
+                        searchable: true
+                    }
+                ],
+                "columnDefs": [
+                {"render": function ( data, type, row, meta ) {
+                    let status = row.registration_status;
+                    let  color = 'bg-success';
+                    if(status != 'Student'){
+                        color  = 'bg-warning';
+                    }
+                    return '<span class="badge '+color+'">'+status+'</span>'
+                },
+                "targets": 5},
+                {"render": function ( data, type, row, meta ) {
+                    let id = row.id
+                    return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</button>'
+                },
+                "targets": 6},
+            ]
+            });
         })
 
         function validateRegist(obj){
