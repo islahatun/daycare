@@ -54,6 +54,7 @@ Route::get('/dashboard-chart-student', [DashboardController::class, 'CahrtDataSt
 
 Route::resource('students', StudentController::class)->middleware('auth');
 Route::get('/getDataListStudents', [StudentController::class, 'getData'])->name('getDataListStudents')->middleware('auth');
+Route::get('/getDataListStudents-gradulate', [StudentController::class, 'getDataGradulate'])->name('getDataListStudentsGardulate')->middleware('auth');
 Route::get('/student/sentEmail/{id}', [StudentController::class, 'sentEmail'])->middleware('auth');
 Route::get('/student/validateRegist/{id}', [StudentController::class, 'validateRegist'])->middleware('auth');
 Route::resource('profile', ProfileController::class)->middleware('auth');

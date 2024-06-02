@@ -274,7 +274,7 @@
                 "select": true,
                 "scrollX": true,
                 "ajax": {
-                    "url": "{{ route('getDataListStudents') }}",
+                    "url": "{{ route('getDataListStudentsGardulate') }}",
                 },
                 "columns": [{
                         data: "DT_RowIndex",
