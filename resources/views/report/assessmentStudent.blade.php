@@ -20,10 +20,19 @@
     <title>Report Anak</title>
 </head>
 <body>
-    <h1 align="center">Report Anak</h1>
-    <h3>{{ Auth::user()->student->student_name }}</h3>
+
 
     @foreach ($contents as $contentKey => $contentData)
+
+    <table>
+        <tr>
+            <td><img src="{!! public_path('assets/img/logo.jpg') !!}" alt="" height="50px" width="50px"></td>
+            <td> PUSPAGA PROVINSI BANTEN</td>
+        </tr>
+    </table>
+    <h1 align="center">Report Anak</h1>
+    <h3>{{ Auth::user()->student->student_name }}</h3>
+    
         <div>
             <table>
                 <thead>
@@ -39,14 +48,17 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $d->assessment->argument }}</td>
-                           <td>{{ $d->score }}</td>
-                            <td>@if ($d->score == 1)
-                                Kurang Baik
+
+                            <td>
+                                @if ($d->score == 1)
+                                    <img src="{{ public_path('assets/img/sad.png') }}" alt="sad" width="50" height="50" class="mx-auto d-block">
                                 @elseif ($d->score == 3)
-                                Baik
+                                    <img src="{{ public_path('assets/img/happiness.png') }}" alt="happiness" width="50" height="50" class="mx-auto d-block">
                                 @elseif ($d->score == 5)
-                                Sanagat Baik
-                            @endif</td>
+                                    <img src="{{ public_path('assets/img/happy.png') }}" alt="happy" width="50" height="50" class="mx-auto d-block">
+                                @endif
+                            </td>
+                            <td>{{ $d->score }}</td>
                         </tr>
 
                     @endforeach

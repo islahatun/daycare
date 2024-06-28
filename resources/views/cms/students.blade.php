@@ -41,7 +41,7 @@
         </div>
         <div class="card-body">
             <div class="mt-3">
-                <table class="table table-striped w-100" id="dt-lulus">
+                <table class="table table-striped w-100" id="dt1">
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
@@ -268,7 +268,7 @@
 
             initSelectRowDataTables('#dt', dt);
 
-            dt = $('#dt').DataTable({
+            dt1 = $('#dt1').DataTable({
                 "destroy": true,
                 "processing": true,
                 "select": true,

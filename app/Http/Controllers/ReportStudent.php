@@ -35,10 +35,11 @@ class ReportStudent extends Controller
                 'sum' => $groupedData->sum('score')
             ];
         }
+        
 
 $pdf = PDF::loadView('report.assessmentStudent', compact('contents'));
 
-return $pdf->download('Report-Assesment-'.Auth::user()->student->student_name.'.pdf');
+return $pdf->stream('Report-Assesment-'.Auth::user()->student->student_name.'.pdf');
 
 
     }

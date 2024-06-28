@@ -159,7 +159,9 @@
 
 
         function print() {
-            window.location.href = "{{ route('Printassessment') }}"
+            const url = "{{ route('Printassessment') }}"
+
+            window.open(url, '_blank');
 
         }
 

@@ -64,27 +64,27 @@ class StudentController extends Controller
         Mail::to($student->email)->send(new registration($detail) );
     }
 
-    public function validateRegis($id){
-        $student    = student::find($id);
-        $data       = [
-                    'personal_id'    => $student->id,
-                    'name'          => $student->name,
-                    'email'         => $student->email
-                ];
+    // public function validateRegis($id){
+    //     $student    = student::find($id);
+    //     $data       = [
+    //                 'personal_id'    => $student->id,
+    //                 'name'          => $student->name,
+    //                 'email'         => $student->email
+    //             ];
 
-                $data['password']   = Hash::make('Password123');
-                $data['role']       = 'Parent';
-                $user = User::create($data);
-                $user->assignRole('Parent');
+    //             $data['password']   = Hash::make('Password123');
+    //             $data['role']       = 'Parent';
+    //             $user = User::create($data);
+    //             $user->assignRole('Parent');
 
-                $detail = [
-                    'name'      => $student->name,
-                    'email'     => $student->email,
-                    'password'  => 'Password123'
-                ];
+    //             $detail = [
+    //                 'name'      => $student->name,
+    //                 'email'     => $student->email,
+    //                 'password'  => 'Password123'
+    //             ];
 
-                Mail::to($student->email)->send(new registration($detail) );
-    }
+    //             Mail::to($student->email)->send(new registration($detail) );
+    // }
 
     public function validateRegist($id){
 

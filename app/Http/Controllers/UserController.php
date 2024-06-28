@@ -59,7 +59,7 @@ class UserController extends Controller
         // }
 
 
-        $validate['password']       = Hash::make('Password123');
+        $validate['password']       = Hash::make('password');
         $validate['personal_id']    = $request->personal_id;
 
         $result = User::create($validate);
