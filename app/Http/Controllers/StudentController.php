@@ -101,7 +101,7 @@ class StudentController extends Controller
                 $detail = [
                     'name'      => $student->name,
                     'email'     => $student->email,
-                    'password'  => 'Password123'
+                    'password'  => 'password'
                 ];
                 DB::beginTransaction();
 
