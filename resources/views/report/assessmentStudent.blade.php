@@ -47,7 +47,9 @@
     <h1 align="center">Preeschool progress Report</h1>
     <p>Nama    : {{ Auth::user()->student->student_name }}</p>
     <p>Usia    : {{ Auth::user()->student->student_age }} Tahun</p>
-    <img src="{!! public_path('storage/' .  Auth::user()->student->student_image) !!}" alt="" width="30" height="30">
+    <img src="{!! public_path('storage/' .  Auth::user()->student->student_image) !!}" alt="" width="50" height="50">
+    <br>
+    <br>
 
         <div>
             <table>
@@ -69,9 +71,9 @@
                                 @if ($d->score == 1)
                                     <img src="{{ public_path('assets/img/sad.png') }}" alt="sad" width="30" height="30" class="mx-auto d-block">
                                 @elseif ($d->score == 3)
-                                    <img src="{{ public_path('assets/img/happiness.png') }}" alt="happiness" width="50" height="50" class="mx-auto d-block">
+                                    <img src="{{ public_path('assets/img/happiness.png') }}" alt="happiness"width="30" height="30" class="mx-auto d-block">
                                 @elseif ($d->score == 5)
-                                    <img src="{{ public_path('assets/img/happy.png') }}" alt="happy" width="50" height="50" class="mx-auto d-block">
+                                    <img src="{{ public_path('assets/img/happy.png') }}" alt="happy"width="30" height="30" class="mx-auto d-block">
                                 @endif
                             </td>
                             <td>@if ($d->score == 1)

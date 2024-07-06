@@ -93,7 +93,7 @@ class StudentController extends Controller
 
         $student    = student::find($id);
         $data       = [
-            'student_id'    => $student->id,
+            'personal_id'    => $student->id,
             'name'          => $student->student_name,
             'email'         => $student->email
         ];
