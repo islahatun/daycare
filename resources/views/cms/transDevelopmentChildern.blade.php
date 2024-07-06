@@ -69,7 +69,7 @@
         @section('script')
             <script>
                 let dt;
-                var dt_assessment;
+                let dt_assessment;
                 let formUrl = '';
                 let fm = '#form';
                 let method = '';
@@ -171,24 +171,31 @@
                             orderable: true,
                             searchable: true
                         }, {
-                            data: "index",
+                            data: "sad",
+                            orderable: true,
+                            searchable: true
+                        }, {
+                            data: "happiness",
                             orderable: true,
                             searchable: true
                         },
-                        {
+                            {
+                                data: "happy",
+                                orderable: true,
+                                searchable: true
+                            },
+                            {
                                 data: "score",
                                 orderable: true,
                                 searchable: true
-                        }
+                            }
                         ],
                         "columnDefs": [{
                             "render": function(data, type, row, meta) {
-                                console.log(row)
-
+                                console.log(row.id)
+                                var style = "style ='filter: grayscale(1)'"
                                 if (row.score == 1) {
                                     var style = "style ='filter: grayscale(0)'"
-                                }else{
-                                var style = "style ='filter: grayscale(1)'"
                                 }
                                 return '<input name="flexRadioDefault" id="sad" type="radio" value="1" onclick="setSad(' +
                                     row.id +
