@@ -20,6 +20,16 @@
     <title>Report Anak</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <td><img src="{!! public_path('assets/img/logo.jpg') !!}" alt="" height="90px" width="90px"></td>
+            <td style="align-content: center">
+                <p>Daycare</p>
+                <p>Pusat Pembelajaran Keluarga</p>
+                <p>Kawasan Pusat Pemerintahan Provinsi Banten</p>
+            </td>
+        </tr>
+    </table>
 
 
     @foreach ($contents as $contentKey => $contentData)
@@ -27,12 +37,18 @@
     <table>
         <tr>
             <td><img src="{!! public_path('assets/img/logo.jpg') !!}" alt="" height="50px" width="50px"></td>
-            <td> PUSPAGA PROVINSI BANTEN</td>
+            <td style="align-content: center">
+                <p>Daycare</p>
+                <p>Pusat Pembelajaran Keluarga</p>
+                <p>Kawasan Pusat Pemerintahan Provinsi Banten</p>
+            </td>
         </tr>
     </table>
-    <h1 align="center">Report Anak</h1>
-    <h3>{{ Auth::user()->student->student_name }}</h3>
-    
+    <h1 align="center">Preeschool progress Report</h1>
+    <p>Nama    : {{ Auth::user()->student->student_name }}</p>
+    <p>Usia    : {{ Auth::user()->student->student_age }} Tahun</p>
+    <img src="{!! public_path('storage/' .  Auth::user()->student->student_image) !!}" alt="" width="30" height="30">
+
         <div>
             <table>
                 <thead>
@@ -51,14 +67,20 @@
 
                             <td>
                                 @if ($d->score == 1)
-                                    <img src="{{ public_path('assets/img/sad.png') }}" alt="sad" width="50" height="50" class="mx-auto d-block">
+                                    <img src="{{ public_path('assets/img/sad.png') }}" alt="sad" width="30" height="30" class="mx-auto d-block">
                                 @elseif ($d->score == 3)
                                     <img src="{{ public_path('assets/img/happiness.png') }}" alt="happiness" width="50" height="50" class="mx-auto d-block">
                                 @elseif ($d->score == 5)
                                     <img src="{{ public_path('assets/img/happy.png') }}" alt="happy" width="50" height="50" class="mx-auto d-block">
                                 @endif
                             </td>
-                            <td>{{ $d->score }}</td>
+                            <td>@if ($d->score == 1)
+                                    Belum Berkembang (BB)
+                                @elseif ($d->score == 3)
+                                    Mulai Berkembang (MB)
+                                @elseif ($d->score == 5)
+                                   Sudah Berkembang (SB)
+                                @endif</td>
                         </tr>
 
                     @endforeach

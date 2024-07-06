@@ -237,14 +237,17 @@
 
             function setSad(id, value) {
                 submit(id, value)
+                console.log('ini sdih'+id, value)
             }
 
             function setHappy(id, value) {
                 submit(id, value)
+                console.log('ini happy'+id, value)
             }
 
             function setHappiness(id, value) {
                 submit(id, value)
+                console.log('ini happyness'+id, value)
             }
 
             function submit(id, value) {

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Guru',
             'email' => 'guru@example.com',
             'password' =>Hash::make('password'),
-            'role' =>'teacher'
+            'role' =>'Teacher'
         ]);
 
         \App\Models\Student::create([

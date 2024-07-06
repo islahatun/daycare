@@ -26,34 +26,36 @@ class StudentController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function getData(){
-        $data   = Student::where('status_gradulation',0);
+    public function getData()
+    {
+        $data   = Student::where('status_gradulation', 0);
 
         return DataTables::of($data)->addIndexColumn()
-        ->addColumn('payment_status',function($data){
-            return $data->payment_status ==1?"PAID":"NOT PAID";
-        })
-        ->addColumn('payment_image', function ($result) {
-            $image  = asset('storage/' . $result->payment_image);
-            return $image;
-        })
-        ->addColumn('student_image', function ($result) {
-            $image  = asset('storage/' . $result->student_image);
-            return $image;
-        })
-        ->addColumn('status', function ($data) {
-            return $data->registration_status == 1?"Student":"Waiting list";
-        })->make(true);
-
+            ->addColumn('payment_status', function ($data) {
+                return $data->payment_status == 1 ? "PAID" : "NOT PAID";
+            })
+            ->addColumn('payment_image', function ($result) {
+                $image  = asset('storage/' . $result->payment_image);
+                return $image;
+            })
+            ->addColumn('student_image', function ($result) {
+                $image  = asset('storage/' . $result->student_image);
+                return $image;
+            })
+            ->addColumn('status', function ($data) {
+                return $data->registration_status == 1 ? "Student" : "Waiting list";
+            })->make(true);
     }
 
-    public function getDataGradulate(){
-        $data   = Student::where('status_gradulation',1);
+    public function getDataGradulate()
+    {
+        $data   = Student::where('status_gradulation', 1);
 
         return DataTables::of($data)->addIndexColumn()->make(true);
     }
 
-    public function sentEmail($id){
+    public function sentEmail($id)
+    {
         $student    = Student::find($id);
         $detail     = [
             'name'          => $student->student_name,
@@ -61,7 +63,7 @@ class StudentController extends Controller
             'mother_name'   => $student->mother_name,
             'status'        => $student->registration_status
         ];
-        Mail::to($student->email)->send(new registration($detail) );
+        Mail::to($student->email)->send(new registration($detail));
     }
 
     // public function validateRegis($id){
@@ -86,51 +88,50 @@ class StudentController extends Controller
     //             Mail::to($student->email)->send(new registration($detail) );
     // }
 
-    public function validateRegist($id){
+    public function validateRegist($id)
+    {
 
         $student    = student::find($id);
         $data       = [
-                    'student_id'    => $student->id,
-                    'name'          => $student->student_name,
-                    'email'         => $student->email
-                ];
+            'student_id'    => $student->id,
+            'name'          => $student->student_name,
+            'email'         => $student->email
+        ];
 
-                $data['password']   = Hash::make('Password123');
-                $data['role']       = 'Parent';
+        $data['password']   = Hash::make('password');
+        $data['role']       = 'Parent';
 
-                $detail = [
-                    'name'      => $student->name,
-                    'email'     => $student->email,
-                    'password'  => 'password'
-                ];
-                DB::beginTransaction();
+        $detail = [
+            'name'      => $student->name,
+            'email'     => $student->email,
+            'password'  => 'password'
+        ];
+        DB::beginTransaction();
 
-                try {
-                    // update data student
-                    $student->validate  = 1;
-                    $student->save();
+        try {
+            // update data student
+            $student->validate  = 1;
+            $student->save();
 
-                    $user = User::create($data);
-                    $user->assignRole('Parent');
+            $user = User::create($data);
+            $user->assignRole('Parent');
 
-                    Mail::to($student->email)->send(new login($detail) );
+            Mail::to($student->email)->send(new login($detail));
 
-                   DB::commit();
-                $message    = array(
-                    'status' => true,
-                    'message' => 'Data berhsil terkirim'
-                );
-                } catch (\Throwable $th) {
-                    DB::rollback();
+            DB::commit();
+            $message    = array(
+                'status' => true,
+                'message' => 'Data berhsil terkirim'
+            );
+        } catch (\Throwable $th) {
+            DB::rollback();
 
-                    $message    = array(
-                        'status' => false,
-                        'message' => 'Gagal mengirim data'
-                    );
-                }
-                echo json_encode($message);
-
-
+            $message    = array(
+                'status' => false,
+                'message' => 'Gagal mengirim data'
+            );
+        }
+        echo json_encode($message);
     }
 
     public function create()
