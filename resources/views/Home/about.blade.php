@@ -63,6 +63,75 @@
 @section('container')
 
 
+   <!-- Classes Start -->
+   <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">About Us </h1>
+        </div>
+        <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="classes-item">
+                        <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                           <h1>Care Giver Kompeten</h1>
+                           <p>Kami menyeleksi dan memantau secara penuh Care Giver kami sebelum mereka mengasuh tiap anak ditempat penitipan dan kami memastikan anak anda berada ditangan orang yang menagsihi dan mendidik anak dalam karakter atau role yan baik dan benar</p>
+                        </div>
+                        <div class="bg-light rounded p-4 pt-5 mt-n5">
+                            <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="d-flex align-items-justify">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="classes-item">
+                        <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                            <h1>Info Perkembangan Anak</h1>
+                            <p>Prkembangan anak merupakan barometer bagi setiap orangtuaa dan pendidikan agar dapat mengarahkan aak dengan lebih baik. kami memberikan informasi perkembangan anak secara lisan pada saat penjemputan anak dan orangtua mendapatkan laporan persemester perkembangan anak oleh guru </p>
+                        </div>
+                        <div class="bg-light rounded p-4 pt-5 mt-n5">
+                            <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="d-flex align-items-justify">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="classes-item">
+                        <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                            <h1>Kegiatan Menarik</h1>
+                            <p>Kami menyadari bahwa anak-anak perlu ada kegiatan setiap hari untuk mereka dapat terus belajar, kami bukan hanya daycare tempat penitipan anak tanpa kegiatan. kami dapat mengupayakan kegiatan agar anak dapat aktif dan tumbuh, fasilitas education game/tools, kelas-kelas kecil seperti pengenalan bahasa, menonton tayangan edukatif.</p>
+                        </div>
+                        <div class="bg-light rounded p-4 pt-5 mt-n5">
+                            <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="d-flex align-items-justify">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- Classes End -->
+
+
     <!-- Facilities Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -281,7 +350,7 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kawasan Pusat Pemerintahan Provisi Baanten</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kawasan Pusat Pemerintahan Provisi Banten</p>
 
                 </div>
 
