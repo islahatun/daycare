@@ -34,7 +34,7 @@ use App\Http\Controllers\validateAssessmentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('login');
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('/index-home', [HomeController::class, 'indexHome']);
+Route::get('/index-home', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/classes', [HomeController::class, 'classes']);
 Route::get('/contact', [HomeController::class, 'contact']);
