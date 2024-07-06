@@ -1,5 +1,16 @@
 @extends('layouts.main')
 
+
+@section('style')
+<style>
+    .fixed-size-image {
+            width: 500px; /* Ganti dengan ukuran lebar yang diinginkan */
+            height: 400px; /* Ganti dengan ukuran tinggi yang diinginkan */
+            object-fit: cover; /* Memastikan gambar tetap proporsional */
+        }
+</style>
+@endsection
+
 @section('carousel')
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
@@ -11,15 +22,11 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-2 text-white animated slideInDown mb-4">The Best Kindergarten School For
+                                <h1 class="display-2 text-white animated slideInDown mb-4">The Best Daycare For
                                     Your Child</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at
-                                    sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Membentuk anak anda dengan positif sedini mungkin merupakan hal terbaik yang dapat anda berikan bagi masa depan mreka</p>
                                 <a href=""
-                                    class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
-                                    More</a>
-                                <a href=""
-                                    class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
+                                    class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Activity</a>
                             </div>
                         </div>
                     </div>
@@ -34,13 +41,9 @@
                             <div class="col-10 col-lg-8">
                                 <h1 class="display-2 text-white animated slideInDown mb-4">Make A Brighter Future For Your
                                     Child</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at
-                                    sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Membentuk anak anda dengan positif sedini mungkin merupakan hal terbaik yang dapat anda berikan bagi masa depan mreka.</p>
                                 <a href=""
-                                    class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
-                                    More</a>
-                                <a href=""
-                                    class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
+                                    class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Actifity</a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +73,7 @@
                         <div class="facility-text bg-primary">
                             <h3 class="text-primary mb-3">Gedung Sekolah</h3>
                             <img src="{!! asset('assets/img/tampak-depan.jpg') !!}" alt="">
-                            <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
+                            <p class="mb-0">Gedung sekolah yang bersih dan nyaman untuk anak-anak </p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +87,7 @@
                         <div class="facility-text bg-primary">
                             <h3 class="text-primary mb-3">Gedung Sekolah</h3>
                             <img src="{!! asset('assets/img/tampak-samping.jpg') !!}" alt="">
-                            <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
+                            <p class="mb-0">Memiliki lapangan sekolah yang luas untuk orang tua mengantarkan anak </p>
                         </div>
                     </div>
                 </div>
@@ -96,9 +99,10 @@
                             <span class="bg-success"></span>
                         </div>
                         <div class="facility-text bg-success">
-                            <h3 class="text-success mb-3">Playground</h3>
+                            <h3 class="text-success mb-3">Taman bermain</h3>
                             <img src="{!! asset('assets/img/playground.jpg') !!}" alt="" height="200px">
-                            <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
+                            <p class="mb-0">disediakan taman bermain untuk anak-anak melakukan aktifitas autdoor untuk
+                                melatih gerakan dan motorik anak</p>
                         </div>
                     </div>
                 </div>
@@ -110,9 +114,9 @@
                             <span class="bg-info"></span>
                         </div>
                         <div class="facility-text bg-info">
-                            <h3 class="text-info mb-3">Positive Learning</h3>
+                            <h3 class="text-info mb-3">Aktifitas Indoor</h3>
                             <img src="{!! asset('assets/img/inside.jpg') !!}" alt="" height="200px">
-                            <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
+                            <p class="mb-0">Anak anak melakukan aktifitas indor untuk mengasah kemampuan berpikir</p>
                         </div>
                     </div>
                 </div>
@@ -122,38 +126,146 @@
     <!-- Facilities End -->
 
 
-    <!-- About Start -->
+    <!-- Classes Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-4">Learn More About Our Work And Our Cultural Activities</h1>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                        ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum
-                        amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos, ipsum
-                        labore duo duo sit no sea diam. Et dolor et kasd ea. Eirmod diam at dolor est vero nonumy magna.</p>
-                </div>
-                <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{!! asset('assets-kider/img/about-1.jpg') !!}"
-                                alt="">
-                        </div>
-                        <div class="col-6 text-start" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-3" src="rcle bg-light p-3"
-                                src="{!! asset('assets-kider/img/about-2.jpg') !!}" alt="">
-                        </div>
-                        <div class="col-6 text-end" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-3" src="rcle bg-light p-3"
-                                src="{!! asset('assets-kider/img/about-2.jpg') !!}" alt="">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3">Gallery </h1>
+            </div>
+            <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/playground.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/inside.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/tampak-depan.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/tampak-dekat.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/2.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/3.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/4.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
             </div>
         </div>
     </div>
-    <!-- About End -->
+    <!-- Classes End -->
 
 
 
@@ -164,44 +276,44 @@
                 <h1 class="mb-3">Aktifitas </h1>
             </div>
             <div class="row g-4">
-                @foreach ( $activity as $a )
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="classes-item">
-                        <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                            <img class="img-fluid rounded-circle" src="{!! asset('storage/'.$a->image) !!}" alt="">
-                        </div>
-                        <div class="bg-light rounded p-4 pt-5 mt-n5">
-                            <a class="d-block text-center h3 mt-3 mb-4" href="">{{ $a->title }}</a>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="d-flex align-items-justify">
-                                    <div class="ms-3">
-                                        <p>{{ $a->description }}</p>
-                                    </div>
-                                </div>
+                @foreach ($activity as $a)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                                <img class="img-fluid rounded-circle" src="{!! asset('storage/' . $a->image) !!}" alt="">
                             </div>
-                            <div class="row g-1">
-                                <div class="col-4">
-                                    <div class="border-top border-3 border-primary pt-2">
-                                        <h6 class="text-primary mb-1">Waktu</h6>
-                                        <small>{{  date('d-M-Y', strtotime($a->date))}}</small>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">{{ $a->title }}</a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                        <div class="ms-3">
+                                            <p>{{ $a->description }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="border-top border-3 border-success pt-2">
-                                        <h6 class="text-success mb-1">Time:</h6>
-                                        <small>9-10 AM</small>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Waktu</h6>
+                                            <small>{{ date('d-M-Y', strtotime($a->date)) }}</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="border-top border-3 border-warning pt-2">
-                                        <h6 class="text-warning mb-1">Capacity:</h6>
-                                        <small>30 Kids</small>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Time:</h6>
+                                            <small>9-10 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Capacity:</h6>
+                                            <small>30 Kids</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
 
 
@@ -301,31 +413,18 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kawasan Pusat Pemetintahan Provinsi Banten</p>
+
                 </div>
+                
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <a class="btn btn-link text-white-50" href="">About Us</a>
-                    <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                    <a class="btn btn-link text-white-50" href="">Our Services</a>
-                    <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                    <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Photo Gallery</h3>
+                    <h3 class="text-white mb-4">Photo Gallery Aactivity</h3>
                     <div class="row g-2 pt-2">
-                        @foreach ( $activity as $a )
-                        <div class="col-4">
-                            <img class="img-fluid rounded bg-light p-1" src="{!! asset('storage/'.$a->image) !!}" alt="">
-                        </div>
+                        @foreach ($activity as $a)
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="{!! asset('storage/' . $a->image) !!}"
+                                    alt="">
+                            </div>
                         @endforeach
                     </div>
                 </div>

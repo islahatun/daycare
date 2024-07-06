@@ -10,8 +10,7 @@
         <div class="navbar-nav mx-auto">
             <a href="/index-home" class="nav-item nav-link active">Home</a>
             <a href="/about" class="nav-item nav-link">About Us</a>
-            <a href="/classes" class="nav-item nav-link">Classes</a>
-            <a href="/contact" class="nav-item nav-link">Contact Us</a>
+            <a href="/classes" class="nav-item nav-link">Activity</a>
         </div>
         <a href="{{ url('/register') }}"" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i
                 class="fa fa-arrow-right ms-3"></i></a>

@@ -1,4 +1,13 @@
 @extends('layouts.main')
+@section('style')
+<style>
+    .fixed-size-image {
+            width: 500px; /* Ganti dengan ukuran lebar yang diinginkan */
+            height: 400px; /* Ganti dengan ukuran tinggi yang diinginkan */
+            object-fit: cover; /* Memastikan gambar tetap proporsional */
+        }
+</style>
+@endsection
 
 @section('carousel')
     <!-- Carousel Start -->
@@ -54,38 +63,217 @@
 @section('container')
 
 
-    <!-- About Start -->
+    <!-- Facilities Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-4">Learn More About Our Work And Our Cultural Activities</h1>
-                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                        ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum
-                        amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos, ipsum
-                        labore duo duo sit no sea diam. Et dolor et kasd ea. Eirmod diam at dolor est vero nonumy magna.</p>
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3">Fasilitas</h1>
+                <p>Puspaga memberikan fasilitas anak yang dapat melatih motorik dan sosial anak</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="facility-item">
+                        <div class="facility-icon bg-primary">
+                            <span class="bg-primary"></span>
+                            <i class="fa fa-home fa-3x text-warning"></i>
+                            <span class="bg-primary"></span>
+                        </div>
+                        <div class="facility-text bg-primary">
+                            <h3 class="text-primary mb-3">Gedung Sekolah</h3>
+                            <img src="{!! asset('assets/img/tampak-depan.jpg') !!}" alt="">
+                            <p class="mb-0">Gedung sekolah yang bersih dan nyaman untuk anak-anak </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{!! asset('assets-kider/img/about-1.jpg') !!}"
-                                alt="">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="facility-item">
+                        <div class="facility-icon bg-primary">
+                            <span class="bg-primary"></span>
+                            <i class="fa fa-home fa-3x text-warning"></i>
+                            <span class="bg-primary"></span>
                         </div>
-                        <div class="col-6 text-start" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-3" src="rcle bg-light p-3"
-                                src="{!! asset('assets-kider/img/about-2.jpg') !!}" alt="">
+                        <div class="facility-text bg-primary">
+                            <h3 class="text-primary mb-3">Gedung Sekolah</h3>
+                            <img src="{!! asset('assets/img/tampak-samping.jpg') !!}" alt="">
+                            <p class="mb-0">Memiliki lapangan sekolah yang luas untuk orang tua mengantarkan anak </p>
                         </div>
-                        <div class="col-6 text-end" style="margin-top: -150px;">
-                            <img class="img-fluid w-100 rounded-circle bg-light p-3" src="rcle bg-light p-3"
-                                src="{!! asset('assets-kider/img/about-2.jpg') !!}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="facility-item">
+                        <div class="facility-icon bg-success">
+                            <span class="bg-success"></span>
+                            <i class="fa fa-futbol fa-3x text-success"></i>
+                            <span class="bg-success"></span>
+                        </div>
+                        <div class="facility-text bg-success">
+                            <h3 class="text-success mb-3">Taman bermain</h3>
+                            <img src="{!! asset('assets/img/playground.jpg') !!}" alt="" height="200px">
+                            <p class="mb-0">disediakan taman bermain untuk anak-anak melakukan aktifitas autdoor untuk
+                                melatih gerakan dan motorik anak</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="facility-item">
+                        <div class="facility-icon bg-info">
+                            <span class="bg-info"></span>
+                            <i class="fa fa-chalkboard-teacher fa-3x text-info"></i>
+                            <span class="bg-info"></span>
+                        </div>
+                        <div class="facility-text bg-info">
+                            <h3 class="text-info mb-3">Aktifitas Indoor</h3>
+                            <img src="{!! asset('assets/img/inside.jpg') !!}" alt="" height="200px">
+                            <p class="mb-0">Anak anak melakukan aktifitas indor untuk mengasah kemampuan berpikir</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+    <!-- Facilities End -->
+
+
+    <!-- Classes Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3">Gallery </h1>
+            </div>
+            <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/playground.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/inside.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/tampak-depan.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/tampak-dekat.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/2.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/3.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded float-start fixed-size-image w-75 mx-auto p-3">
+                                <img class="img-fluid rounded float-start fixed-size-image" src="{!! asset('assets/img/4.jpg') !!}" alt="">
+                            </div>
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <div class="d-flex align-items-justify">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Classes End -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -93,26 +281,12 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kawasan Pusat Pemerintahan Provisi Baanten</p>
+
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <a class="btn btn-link text-white-50" href="">About Us</a>
-                    <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                    <a class="btn btn-link text-white-50" href="">Our Services</a>
-                    <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                    <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Photo Gallery</h3>
+                    <h3 class="text-white mb-4">Photo Gallery Activity</h3>
                     <div class="row g-2 pt-2">
                         @foreach ( $activity as $a )
                         <div class="col-4">
