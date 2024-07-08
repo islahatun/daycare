@@ -124,15 +124,15 @@ class DashboardController extends Controller
         $chartData      = [
             'series'    => [
                 [
-                    'name'  => 'Kurang Baik',
+                    'name'  => 'Belum Berkembang (BB)',
                     'data'  =>$data1
                 ],
                 [
-                    'name'  => 'Baik',
+                    'name'  => 'Mulai Berkembang (MB)',
                     'data'  =>$data3
                 ],
                 [
-                    'name'  => 'Sangat Baik',
+                    'name'  => 'Sudah Berkembang (SB)',
                     'data'  =>$data5
                 ]
             ],
