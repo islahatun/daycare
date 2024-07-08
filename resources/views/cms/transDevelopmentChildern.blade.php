@@ -49,7 +49,7 @@
                             <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Deskripsi</th>
+                                <th>Aspek Perkembangan</th>
                                 <th>Kurang Baik</th>
                                 <th>Baik</th>
                                 <th>Sangat Baik</th>
