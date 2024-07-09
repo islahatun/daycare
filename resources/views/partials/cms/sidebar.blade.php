@@ -73,7 +73,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/DevelopmentChildern">
                     <i class="bi bi-card-list"></i>
-                    <span>Master Penilaian</span>
+                    <span>Master Perkembangan</span>
                 </a>
             </li><!-- End Register Page Nav -->
 

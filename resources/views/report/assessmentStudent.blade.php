@@ -7,35 +7,28 @@
         .page-break {
             page-break-after: always;
         }
-        table {
+        .table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+        /* th {
             border: 1px solid #000;
             text-align: center;
             padding: 5px;
         }
+        .td{
+            border: 1px solid #000;
+        } */
     </style>
     <title>Report Anak</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td><img src="{!! public_path('assets/img/logo.jpg') !!}" alt="" height="90px" width="90px"></td>
-            <td style="align-content: center">
-                <p>Daycare</p>
-                <p>Pusat Pembelajaran Keluarga</p>
-                <p>Kawasan Pusat Pemerintahan Provinsi Banten</p>
-            </td>
-        </tr>
-    </table>
 
 
     @foreach ($contents as $contentKey => $contentData)
 
-    <table>
-        <tr>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tr style=" text-align: center;">
             <td><img src="{!! public_path('assets/img/logo.jpg') !!}" alt="" height="50px" width="50px"></td>
             <td style="align-content: center">
                 <p>Daycare</p>
@@ -44,30 +37,39 @@
             </td>
         </tr>
     </table>
-    <h1 align="center">Preeschool progress Report</h1>
-    <p>Nama    : {{ Auth::user()->student->student_name }}</p>
-    <p>Usia    : {{ Auth::user()->student->student_age }} Tahun</p>
-    <img src="{!! public_path('storage/' .  Auth::user()->student->student_image) !!}" alt="" width="50" height="50">
+    <h1 align="center">PREESCHOL PROGRESS REPORT</h1>
+    <table width="100%" border="0">
+        <tr>
+            <td><p style="text-align:left;">Nama    : {{ Auth::user()->student->student_name }}</p></td>
+            <td><p style="text-align:right;">
+                Usia    : {{ Auth::user()->student->student_age }} Tahun</p></td>
+        </tr>
+    </table>
+
+        <img src="{!! public_path('storage/' .  Auth::user()->student->student_image) !!}" alt="" width="50" height="50">
+
+
     <br>
     <br>
 
         <div>
-            <table>
+            <table  width="100%" border="1" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Deskripsi</th>
+                        <th>Aspek Perkembangan</th>
                         <th>Penilaian</th>
                         <th>Keterangan</th>
+                        <th>Nilai</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($contentData['data'] as $key => $d)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
+                            <td  style="text-align: center;">{{ $key + 1 }}</td>
                             <td>{{ $d->assessment->argument }}</td>
 
-                            <td>
+                            <td style=" text-align: center;">
                                 @if ($d->score == 1)
                                     <img src="{{ public_path('assets/img/sad.png') }}" alt="sad" width="30" height="30" class="mx-auto d-block">
                                 @elseif ($d->score == 3)
@@ -82,13 +84,17 @@
                                     Mulai Berkembang (MB)
                                 @elseif ($d->score == 5)
                                    Sudah Berkembang (SB)
-                                @endif</td>
+                                @endif
+                            </td>
+                            <td  style=" text-align: center;">{{ $d->score }}</td>
                         </tr>
 
+                </tr>
+
                     @endforeach
-                    <tr>
-                        <td colspan="3">Total</td>
-                        <td>{{ $contentData['sum'] }}</td>
+                    <tr style=" text-align: center;">
+                        <td colspan="4">Total</td>
+                        <td >{{ $contentData['sum'] }}</td>
                     </tr>
                 </tbody>
             </table>
