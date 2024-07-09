@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'validate' =>1,
             'email' =>"orangtua@example.com",
             'payment_status' =>1,
-            'status_gradulation' =>0,
+            // 'status_gradulation' =>0,
         ]);
 
         \App\Models\User::factory()->create([

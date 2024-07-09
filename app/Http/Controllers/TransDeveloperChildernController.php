@@ -93,7 +93,7 @@ class TransDeveloperChildernController extends Controller
             $insert = [
                 'student_id'                => $request->student_id,
                 'development_childerns_id'  => $request->id,
-                'score'                     => $request->score,
+                'score'                     => (int) $request->score,
                 'assessment_from'           => $request->assessment_from
             ];
 
