@@ -132,7 +132,7 @@
                             <div class="mb-3 row">
                                 <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="address" name="address"></textarea value="{{ $teacher == null ?'':$teacher->address }}" ></div>
+                                    <textarea type="text" class="form-control" id="address" name="address">{{ $teacher == null ?'':$teacher->address }}</textarea value="{{ $teacher == null ?'':$teacher->address }}" ></div>
                                 </div>
                             <div class="mb-3 row">
                                 <label for="graduate_of" class="col-sm-4 col-form-label">Jenjang pendidika (SMA/D3/S1/S2/S3)</label>
