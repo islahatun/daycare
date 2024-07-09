@@ -106,49 +106,48 @@
             Profile
         </div>
         <div class="card-body mb-3">
-            <form id="FormRegister" method="post" enctype="multipart/form-data"
-                action="/profileTeacher/{{ $teacher->id }}">
+            <form id="FormRegister_teacher" method="post" enctype="multipart/form-data"
+                action="/profileTeacher/{{ $teacher == null ?0:$teacher->id}}">
                 @csrf
                 @method('PUT')
                 <div class="mb-3 row">
                     <label for="name_teacher" class="col-sm-4 col-form-label">Nama Guru</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="name_teacher" name="name_teacher" value="{{ $teacher->name_teacher }}" ></div>
+                        <input type="text" class="form-control" id="name_teacher" name="name_teacher" value="{{  $teacher == null ?$user->name:$teacher->name_teacher }}" ></div>
                     </div>
                     <div class="mb-3 row">
                         <label for="birth_date" class="col-sm-4 col-form-label">Tanggal Lahir</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $teacher->birth_date }}" ></div>
+                        <div class="col-sm-8">      <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $teacher == null ?'':$teacher->birth_date }}" ></div>
                         </div>
                         <div class="mb-3 row">
                             <label for="birth_city" class="col-sm-4 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="birth_city" name="birth_city" value="{{ $teacher->birth_city }}" ></div>
+                                <input type="text" class="form-control" id="birth_city" name="birth_city" value="{{ $teacher == null ?'':$teacher->birth_city }}" ></div>
                             </div>
                         <div class="mb-3 row">
                             <label for="telp" class="col-sm-4 col-form-label">No Telepon/ No Hp</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="telp" name="telp" value="{{ $teacher->telp }}" ></div>
+                                <input type="text" class="form-control" id="telp" name="telp" value="{{ $teacher == null ?'':$teacher->telp }}" ></div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" id="address" name="address"></textarea value="{{ $teacher->address }}" ></div>
+                                    <textarea type="text" class="form-control" id="address" name="address"></textarea value="{{ $teacher == null ?'':$teacher->address }}" ></div>
                                 </div>
                             <div class="mb-3 row">
                                 <label for="graduate_of" class="col-sm-4 col-form-label">Jenjang pendidika (SMA/D3/S1/S2/S3)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="graduate_of" name="graduate_of" value="{{ $teacher->graduate_of }}" ></div>
+                                    <input type="text" class="form-control" id="graduate_of" name="graduate_of" value="{{ $teacher == null ?'':$teacher->graduate_of }}" ></div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="major" class="col-sm-4 col-form-label">Jurusan</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="major" name="major" value="{{ $teacher->major }}" ></div>
+                                        <input type="text" class="form-control" id="major" name="major" value="{{ $teacher == null ?'':$teacher->major }}" ></div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="university" class="col-sm-4 col-form-label">Universitas</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="university" name="university" value="{{ $teacher->university }}" ></div>
+                                            <input type="text" class="form-control" id="university" name="university" value="{{ $teacher == null ?'':$teacher->university }}" ></div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="graduation_year" class="col-sm-4 col-form-label">Tahun Lulus</label>
@@ -157,12 +156,17 @@
                                                     type="text"
                                                     class="form-control"
                                                     id="graduation_year"
-                                                    name="graduation_year" value="{{ $teacher->graduation_year }}" ></div>
+                                                    name="graduation_year" value="{{ $teacher == null ?'':$teacher->graduation_year }}" ></div>
                                             </div>
+                                            <div class="mb-3 row">
+                                        <label for="university" class="col-sm-4 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="email" name="email" value="{{ $teacher == null ?$user->email:$teacher->email }}" ></div>
+                                        </div>
                                             <div class="mb-3 row">
                                                 <label for="image_teacher" class="col-sm-4 col-form-label">Poto Profil</label>
                                                 <div class="col-sm-8">
-                                                    <img src="{!! asset('storage/' . $teacher->image_teacher) !!}" width="100" height="100">
+                                                    <img src="{ $teacher == null ?'': !! asset('storage/' .$teacher->image_teacher) !!}" width="100" height="100">
                                                     <input type="file" class="form-control" id="image_teacher" name="image_teacher"  ></div>
                                                 </div>
 
@@ -220,6 +224,7 @@
 
 @section('script')
     <script>
+        $('input[name="birth_date"]').datepicker({changeYear: true, changeMonth: true});
         $('#FormRegister').submit(function(e) {
             e.preventDefault();
             var formData = new FormData(this);

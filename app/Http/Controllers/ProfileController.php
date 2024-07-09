@@ -140,7 +140,7 @@ class ProfileController extends Controller
         return redirect()->intended('/profile');
     }
 
-    public function profileTeacher(Request $request, $id){
+    public function updateTeacher(Request $request, $id){
 
         $validate = $request->validate([
             'name_teacher'      => 'required',
@@ -150,9 +150,11 @@ class ProfileController extends Controller
             'graduate_of'       => 'required',
             'major'             => 'required',
             'university'        => 'required',
+            'email'             => 'required',
+            'telp'              => 'required',
             'graduation_year'   => 'required'
         ]);
-
+        $validate['birth_date'] = date('Y-m-d',strtotime($request->birth_date));
         if ($request->file('image_teacher')) {
             $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
         }else{
@@ -162,7 +164,14 @@ class ProfileController extends Controller
             );
         }
 
-        $result = Teacher::where('id',$id)->update($validate);
+        if($id == 0){
+            $result = Teacher::create($validate);
+            $result = User::where('id',$id)->update(['personal_id'=>$result->id]);
+        }else{
+            $result = Teacher::where('id',$id)->update($validate);
+        }
+
+       
         if($result){
             $message = array(
                 'status' => true,

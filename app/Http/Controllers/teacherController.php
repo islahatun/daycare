@@ -56,6 +56,7 @@ class teacherController extends Controller
             'graduate_of'       => 'required',
             'major'             => 'required',
             'university'        => 'required',
+            'email'        => 'required',
             'graduation_year'   => 'required'
         ]);
 
@@ -113,6 +114,8 @@ class teacherController extends Controller
             'graduate_of'       => 'required',
             'major'             => 'required',
             'university'        => 'required',
+            'email'        => 'required',
+            'telp'        => 'required',
             'graduation_year'   => 'required'
         ]);
 

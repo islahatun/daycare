@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('major',50);
             $table->string('university',30);
             $table->year('graduation_year');
+            $table->string('email');
             $table->timestamps();
         });
     }
