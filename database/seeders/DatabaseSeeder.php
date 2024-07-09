@@ -56,6 +56,8 @@ class DatabaseSeeder extends Seeder
             // 'status_gradulation' =>0,
         ]);
 
+    
+
         \App\Models\User::factory()->create([
             'name' => 'Orang Tua',
             'personal_id'=>1,

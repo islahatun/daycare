@@ -107,7 +107,7 @@
         </div>
         <div class="card-body mb-3">
             <form id="FormRegister" method="post" enctype="multipart/form-data"
-                action="/profileTeacher/{{ $personal->id }}">
+                action="/profileTeacher/{{ $teacher->id }}">
                 @csrf
                 @method('PUT')
                 <div class="mb-3 row">

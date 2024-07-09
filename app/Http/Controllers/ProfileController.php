@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $user       = Auth::User();
         $student    = Student::find($user->personal_id);
         $teacher    = Teacher::find($user->personal_id);
-        return view('cms.profile', compact('roleUser', 'user','student'));
+        return view('cms.profile', compact('roleUser', 'user','student','teacher'));
     }
 
     /**

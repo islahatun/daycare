@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->index();
             $table->foreignId('development_childerns_id');
-            $table->double('score',2,2);
+            $table->integer('score');
             $table->string('assessment_from')->nullable()->index();
             $table->string('validasi')->default('0')->index();
             $table->timestamps();

@@ -48,6 +48,7 @@ class activityChildernController extends Controller
             'date'          => 'required',
             'status'        => 'required'
         ]);
+        $validate['date'] = date('Y-m-d',strtotime($request->date));
 
         if ($request->file('image')) {
             $validate['image']  = $request->file('image')->store('activityImage');

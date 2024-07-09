@@ -78,27 +78,27 @@ class TransDeveloperChildernController extends Controller
      */
     public function store(Request $request)
     {
-        // $data   = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->where('assessment_from',$request->assessment_from)->first();
-        // if ($data) {
-        //     $update = [
-        //         'student_id'                => $request->student_id,
-        //         'development_childerns_id'  => $request->id,
-        //         'score'                     => $request->score,
-        //         'assessment_from'           => $request->assessment_from,
-        //         'validasi'                  => 0
-        //     ];
+        $data   = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->where('assessment_from',$request->assessment_from)->first();
+        if ($data) {
+            $update = [
+                'student_id'                => $request->student_id,
+                'development_childerns_id'  => $request->id,
+                'score'                     => $request->score,
+                'assessment_from'           => $request->assessment_from,
+                'validasi'                  => 0
+            ];
 
-        //     $result = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->update($update);
-        // } else {
+            $result = TransDevelopmentChild::where('development_childerns_id', $request->id)->where('student_id', $request->student_id)->update($update);
+        } else {
             $insert = [
                 'student_id'                => $request->student_id,
                 'development_childerns_id'  => $request->id,
-                'score'                     => (int) $request->score,
+                'score'                     => $request->score,
                 'assessment_from'           => $request->assessment_from
             ];
 
             $result = TransDevelopmentChild::create($insert);
-        // }
+        }
 
 
         if ($result) {
