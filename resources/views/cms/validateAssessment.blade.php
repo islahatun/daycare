@@ -82,7 +82,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                 <th>Belum Berkembang</th>
+                                <th>Aspek Perkembangan</th>
+                                <th>Belum Berkembang</th>
                                 <th>Mulai Berkembang</th>
                                 <th>Berkembang Baik</th>
                                 <th>Score</th>
@@ -109,7 +110,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                 <th>Belum Berkembang</th>
+                                <th>Aspek Perkembangan</th>
+                                <th>Belum Berkembang</th>
                                 <th>Mulai Berkembang</th>
                                 <th>Berkembang Baik</th>
                                 <th>Score</th>
@@ -136,7 +138,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                 <th>Belum Berkembang</th>
+                                <th>Aspek Perkembangan</th>
+                                <th>Belum Berkembang</th>
                                 <th>Mulai Berkembang</th>
                                 <th>Berkembang Baik</th>
                                 <th>Score</th>
@@ -163,7 +166,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                 <th>Belum Berkembang</th>
+                                <th>Aspek Perkembangan</th>
+                                <th>Belum Berkembang</th>
                                 <th>Mulai Berkembang</th>
                                 <th>Berkembang Baik</th>
                                 <th>Score</th>
@@ -229,11 +233,11 @@
 
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th colspan="5" class="text-end">Total:</th>
-                                <th id="total-score"></th>
-                            </tr>
-                        </tfoot>
+                                <tr>
+                                    <th colspan="5" class="text-end">Total:</th>
+                                    <th id="total-score"></th>
+                                </tr>
+                            </tfoot>
                     </table>
                 </div>
 

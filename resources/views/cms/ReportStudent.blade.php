@@ -27,15 +27,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
@@ -48,15 +54,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
@@ -69,15 +81,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
@@ -90,15 +108,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
@@ -111,15 +135,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
@@ -132,15 +162,21 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Aspek Perkembangan</th>
-                            <th>Kurang Baik</th>
-                            <th>Baik</th>
-                            <th>Sangat Baik</th>
+                           <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-end">Total:</th>
+                            <th id="total-score"></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -248,7 +284,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
@@ -331,7 +381,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
@@ -414,7 +478,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
@@ -497,7 +575,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
@@ -580,7 +672,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
@@ -663,7 +769,21 @@
                         },
                         "targets": 4
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                            var api = this.api();
+
+                            // Calculate the total score for the entire dataset
+                            var total = api
+                                .column(5)
+                                .data()
+                                .reduce(function (a, b) {
+                                    return a + parseInt(b, 10);
+                                }, 0);
+
+                            // Update footer with the total score
+                            $(api.column(5).footer()).html( + total);
+                        },
 
             });
 
