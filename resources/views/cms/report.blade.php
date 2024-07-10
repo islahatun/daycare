@@ -115,9 +115,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
@@ -136,9 +136,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
@@ -157,9 +157,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
@@ -178,9 +178,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
@@ -199,9 +199,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>
@@ -220,9 +220,9 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Deskripsi</th>
-                                <th>Kurang Baik</th>
-                                <th>Baik</th>
-                                <th>Sangat Baik</th>
+                                <th>Belum Berkembang</th>
+                                <th>Mulai Berkembang</th>
+                                <th>Berkembang Baik</th>
                                 <th>Score</th>
                             </tr>
                         </thead>

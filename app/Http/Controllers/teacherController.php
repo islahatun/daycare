@@ -59,7 +59,7 @@ class teacherController extends Controller
             'email'        => 'required',
             'graduation_year'   => 'required'
         ]);
-
+        $validate['birth_date'] = date('Y-m-d',strtotime($request->birth_date));
         if ($request->file('image_teacher')) {
             $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
         }else{
@@ -118,6 +118,8 @@ class teacherController extends Controller
             'telp'        => 'required',
             'graduation_year'   => 'required'
         ]);
+
+        $validate['birth_date'] = date('Y-m-d',strtotime($request->birth_date));
 
         if ($request->file('image_teacher')) {
             $validate['image_teacher']  = $request->file('image_teacher')->store('profileTeacher');
