@@ -56,7 +56,7 @@ class TransDeveloperChildernController extends Controller
         $data_trans     = TransDevelopmentChild::where('assessment_from', $from)->where('student_id',$student_id)->get();
         // dd($data_trans);
         if ($data_trans->isEmpty()) {
-            $result     = DevelopmentChild::all();
+            $result     = DevelopmentChild::where('status',1)->get();
             return DataTables::of($result)->addIndexColumn()
                 ->addColumn('score', function ($data) {
                     return '';

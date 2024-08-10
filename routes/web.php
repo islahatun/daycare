@@ -100,5 +100,6 @@ Route::PUT('/profileTeacher/{id}', [ProfileController::class, 'updateTeacher']);
 
 Route::get('/validate', [validateAssessmentController::class, 'index']);
 Route::post('/submitValidate', [validateAssessmentController::class, 'validateAssessment']);
+Route::delete('/student/{id}', [StudentController::class, 'destroy']);
 
 

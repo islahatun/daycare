@@ -133,10 +133,10 @@
                                                 table
                                                     .ajax
                                                     .reload();
-                                                toastr.success('Data sandi berhasil dihapus.');
+                                                toastr.success('Data berhasil di hapus.');
                                             },
                                             error: function (jqXHR, textStatus, errorThrown) {
-                                                toastr.error('Data sandi gagal dihapus.');
+                                                toastr.error('Data gagal dihapus.');
                                             }
                                         });
                                     }

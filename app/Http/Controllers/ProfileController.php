@@ -60,11 +60,10 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         $validate = $request->validate([
             'student_name'  => 'required',
-            'student_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'birth_date'    => 'required',
             'birth_city'    => 'required',
             'address'       => 'required',
@@ -81,9 +80,9 @@ class ProfileController extends Controller
         $age                        = $yearNow - $birth_date;
 
 
-        if ($request->file('student_image')) {
+        // if ($request->file('student_image')) {
             $validate['student_age']    = $age;
-            $validate['student_image']  = $request->file('student_image')->store('profilStudent');
+            // $validate['student_image']  = $request->file('student_image')->store('profilStudent');
 
 
             $regist = Student::where('id', $request->id)->update($validate);
@@ -98,12 +97,12 @@ class ProfileController extends Controller
                     'message' => 'Data gagal di simpan'
                 );
             }
-        } else {
-            $message = array(
-                'status'  => false,
-                'message' => 'Gagal uplaod foto'
-            );
-        }
+        // } else {
+        //     $message = array(
+        //         'status'  => false,
+        //         'message' => 'Gagal uplaod foto'
+        //     );
+        // }
 
         echo json_encode($message);
     }

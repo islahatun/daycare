@@ -8,9 +8,8 @@
             </div>
             <div class="card-body mb-3">
                 <form id="FormRegister" method="post" enctype="multipart/form-data"
-                    action="/profileStudent/{{ $student->id }}">
+                    action="/profileStudent">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col">
                             <input type="hidden" name="id" value="{{ $student->id }}">

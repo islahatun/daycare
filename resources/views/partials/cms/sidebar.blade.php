@@ -57,12 +57,7 @@
       </li> --}}
             <!-- End Contact Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/info">
-                    <i class="bi bi-envelope"></i>
-                    <span>Info</span>
-                </a>
-            </li><!-- End Register Page Nav -->
+           
         @elseif(Auth()->user()->role == 'Teacher')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/activityChildern">

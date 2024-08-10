@@ -14,10 +14,10 @@
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                             type="button" role="tab" aria-controls="profile" aria-selected="false">Register</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <!-- <li class="nav-item" role="presentation">
                         <button class="nav-link" id="list-tab" data-bs-toggle="tab" data-bs-target="#list" type="button"
                             role="tab" aria-controls="list" aria-selected="false">List Student</button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="card-body">
@@ -145,7 +145,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                    <!-- <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
                         <div>
                             <table class="table table-striped table-hover w-100" id="dt">
                                 <thead>
@@ -159,7 +159,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

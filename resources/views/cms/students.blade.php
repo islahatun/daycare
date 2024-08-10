@@ -5,6 +5,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-end ">
                 <button class="btn btn-sm btn-success mx-2" type="button" onclick="validateRegist(this)">Validate</button>
+                <button class="btn btn-sm btn-danger " type="button" onclick="remove(this)">Delete</button>
             </div>
         </div>
         <div class="card-body">
@@ -39,7 +40,7 @@
                 Daftar Anak Lulus
             </div>
         </div>
-        <div class="card-body">
+        <!-- <div class="card-body">
             <div class="mt-3">
                 <table class="table table-striped w-100" id="dt1">
                     <thead>
@@ -58,7 +59,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
 
     </div>
 
@@ -268,67 +269,67 @@
 
             initSelectRowDataTables('#dt', dt);
 
-            dt1 = $('#dt1').DataTable({
-                "destroy": true,
-                "processing": true,
-                "select": true,
-                "scrollX": true,
-                "ajax": {
-                    "url": "{{ route('getDataListStudentsGardulate') }}",
-                },
-                "columns": [{
-                        data: "DT_RowIndex",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "student_name",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "student_age",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "telp",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "email",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "status",
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: "index",
-                        orderable: true,
-                        searchable: true
-                    }
-                ],
-                "columnDefs": [
-                {"render": function ( data, type, row, meta ) {
-                    let status = row.registration_status;
-                    let  color = 'bg-success';
-                    if(status != 'Student'){
-                        color  = 'bg-warning';
-                    }
-                    return '<span class="badge '+color+'">'+status+'</span>'
-                },
-                "targets": 5},
-                {"render": function ( data, type, row, meta ) {
-                    let id = row.id
-                    return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</button>'
-                },
-                "targets": 6},
-            ]
-            });
+            // dt1 = $('#dt1').DataTable({
+            //     "destroy": true,
+            //     "processing": true,
+            //     "select": true,
+            //     "scrollX": true,
+            //     "ajax": {
+            //         "url": "{{ route('getDataListStudentsGardulate') }}",
+            //     },
+            //     "columns": [{
+            //             data: "DT_RowIndex",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "student_name",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "student_age",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "telp",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "email",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "status",
+            //             orderable: true,
+            //             searchable: true
+            //         },
+            //         {
+            //             data: "index",
+            //             orderable: true,
+            //             searchable: true
+            //         }
+            //     ],
+            //     "columnDefs": [
+            //     {"render": function ( data, type, row, meta ) {
+            //         let status = row.registration_status;
+            //         let  color = 'bg-success';
+            //         if(status != 'Student'){
+            //             color  = 'bg-warning';
+            //         }
+            //         return '<span class="badge '+color+'">'+status+'</span>'
+            //     },
+            //     "targets": 5},
+            //     {"render": function ( data, type, row, meta ) {
+            //         let id = row.id
+            //         return '<button class="btn btn-sm btn-primary" type="button" onclick="detail('+id+')">Detail</button>'
+            //     },
+            //     "targets": 6},
+            // ]
+            // });
         })
 
         function validateRegist(obj){
@@ -364,6 +365,59 @@
                 }
 
             });
+            }
+        }
+
+        function remove(obj) {
+            let idx = getSelectedRowDataTables(dt);
+            if (idx) {
+                let data = dt
+                    .row(idx.row)
+                    .data();
+                let dv = data.id
+                let value = {
+                    id: dv
+                }
+
+                Swal
+                    .fire({
+                        title: 'Apakah anda yakin.?',
+                        text: "Data yang dihapus tidak dapat dikembalikan!",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya!'
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: `/student/${dv}`,
+                                type: "DELETE",
+                                cache: false,
+                                data: {
+                                    "_token": "{{ csrf_token() }}"
+                                },
+                                success: function(data, textStatus, jqXHR) {
+                                    var data = JSON.parse(data);
+                        
+                                    let table = $('#dt').DataTable();
+                                    table
+                                        .ajax
+                                        .reload();
+                                        if(data.status== true){
+                                            toastr.success(data.message);
+                                        }else{
+                                            toastr.error(data.message);
+                                        }
+                                    
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    toastr.error('Data tidak dapat dihapus');
+                                }
+                            });
+                        }
+                    })
+
             }
         }
 

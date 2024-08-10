@@ -11,6 +11,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\TransDevelopmentChild;
 
 class StudentController extends Controller
 {
@@ -32,7 +33,7 @@ class StudentController extends Controller
 
         return DataTables::of($data)->addIndexColumn()
             ->addColumn('payment_status', function ($data) {
-                return $data->payment_status == 1 ? "PAID" : "NOT PAID";
+                return $data->payment_status != null ? "PAID" : "NOT PAID";
             })
             ->addColumn('payment_image', function ($result) {
                 $image  = asset('storage/' . $result->payment_image);
@@ -177,6 +178,20 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $penilaian = TransDevelopmentChild::where('student_id',$id)->first();
+        if($penilaian){
+            $message    = array(
+                'status' => false,
+                'message' => 'Data tidak dapat dihapus '
+            );
+        }else{
+            student::where('id',$id)->delete();
+            User::where('personal_id',$id)->where('role','Parent')->delete();
+            $message    = array(
+                'status' => true,
+                'message' => 'Data berhasil dihapus '
+            );
+        }
+        echo json_encode($message);
     }
 }

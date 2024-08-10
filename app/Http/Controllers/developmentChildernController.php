@@ -34,6 +34,7 @@ class developmentChildernController extends Controller
         $validate   = $request->validate([
             'argument'  => 'required'
         ]);
+        $validate['status']=1;
 
         $result     = DevelopmentChild::create($validate);
 
@@ -61,7 +62,7 @@ class developmentChildernController extends Controller
     }
 
     public function getData(){
-        $result = DevelopmentChild::all();
+        $result = DevelopmentChild::where('status',1)->get();
 
         return DataTables::of($result)->addIndexColumn()->make(true);
     }
@@ -90,7 +91,7 @@ class developmentChildernController extends Controller
         if($result){
             $message = array(
                 'status' => true,
-                'message' => 'Data gagal disimpan'
+                'message' => 'Data berhasil disimpan'
             );
         }else{
             $message = array(
@@ -107,7 +108,9 @@ class developmentChildernController extends Controller
      */
     public function destroy(string $id)
     {
-        $result     = DevelopmentChild::where('id',$id)->delete();
+        // $result     = DevelopmentChild::where('id',$id)->delete();
+        $result     = DevelopmentChild::where('id',$id)->update(['status'=>0]);
+
 
         if($result){
             $message = array(
